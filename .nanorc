@@ -1,0 +1,3 @@
+#set nowrap
+include /usr/share/nano-syntax-highlighting/*.nanorc
+set linenumbers
