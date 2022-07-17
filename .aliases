@@ -21,6 +21,10 @@ brew() {
 	citra-qt *3dsx
 }
 
+localdevices(){
+	nmap -sn 192.168.1.1/24 | grep -o "[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]"
+}
+
 git() {
     if [[ $1 == "clone" ]]; then
 	shift
@@ -62,7 +66,7 @@ color()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))
 ## Colorize the ls output ##
 alias ls="ls --color=auto"
 alias l="ls -sailh"
-alias nautilus="nautilus \`pwd\`"
+alias nautilus='nautilus "$(pwd)"'
 alias fucking=sudo
 alias please=sudo
 #alias rm="safe-rm -I" #safe-rm adds itself to the path before the real rm path
@@ -113,3 +117,12 @@ alias ip2geo=geoiplookup
 alias ip2geo2="ip2geotools -d dbipcity"
 alias sus="systemctl suspend"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias fixdayz='sudo sysctl -w vm.max_map_count=1048576'
+alias dayzfix=fixdayz
+alias prettyjson="jq . "
+alias gimp2=digikam
+alias imageeditor=digikam
+alias imageviewer=geeqie
+alias findduplicateimages=czkawka
+alias findduplicateimages2=findimagedupes
+alias objdump="objdump -M intel"
