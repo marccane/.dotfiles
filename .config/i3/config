@@ -1,4 +1,6 @@
+#Super key
 set $mod Mod4
+#Alt key
 set $mod2 Mod1
 
 new_window pixel 1
@@ -14,56 +16,43 @@ font xft:URWGothic-Book 11
 
 floating_modifier $mod
 
-#bindsym $mod+Return exec alacritty
-#we should be able to use this one: 
+#TERMINAL is defined in /etc/environment
 bindsym $mod+Return exec i3-sensible-terminal
-#bindsym $mod+Return exec rofi-sensible-terminal
 
 bindsym Ctrl+Mod1+e exec nautilus
 bindsym Ctrl+Mod1+w exec firefox
 
-# Window kill command
+# Window kill command (With workaround for correctly terminating teamspeak instance)
 #bindsym $mod+Shift+q kill
 
+#per testejar les PCRE regex: https://regex101.com/
 #https://faq.i3wm.org/question/7662/reverse-perl-matches-in-criteria-in-i3-config.1.html
 #aixo tambe funciona!!
-#bindsym $mod+Shift+q exec --no-startup-id i3-msg [id="$(xdotool getactivewindow)" instance="^(?!urxvt).*$"] kill 
+#bindsym $mod+Shift+q exec --no-startup-id i3-msg [id="$(xdotool getactivewindow)" instance="^(?!urxvt).*$"] kill
 bindsym $mod+Shift+q [con_id="__focused__" instance="^(?!ts3).*$"] kill; exec /home/markus/canethings/apanyosi3/killTSIfFocused.py
-#per testejar les PCRE regex: https://regex101.com/
 
 # start program launcher
-#bindsym $mod+d exec --no-startup-id rofi -show run
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec --no-startup-id rofi -show run
 
-# rofi window viewer 
+# rofi window viewer
 # Mod1 és Alt
 #bindsym $mod+a exec rofi -show window #descomentar aixo rebenta la config WTF MY FUCKING BROTHER, WHAT ARE YOU DOING?. WHY ARENT YOU RUNNING?
 bindsym $mod+Mod1+Tab exec rofi -show window
 
 # change focus
-#bindsym $mod+j focus left
-#bindsym $mod+k focus down
-#bindsym $mod+l focus up
-#bindsym $mod+ntilde focus right
-
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+ntilde focus right
 
 # move focused window
-#bindsym $mod+Shift+j move left
-#bindsym $mod+Shift+k move down
-#bindsym $mod+Shift+l move up
-#bindsym $mod+Shift+ntilde move right
-
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+ntilde move right
 
 #interactive screenshot by pressing printscreen
-bindsym Print exec flameshot gui 
+bindsym Print exec flameshot gui
 #crop-area screenshot by pressing Mod + printscreen
 bindsym $mod+Print exec flameshot full -p ~/Pictures
 bindsym Ctrl+Print exec flameshot full -c -d 3000
@@ -161,14 +150,8 @@ set $wsF10 710
 set $wsF11 711
 set $wsF12 712
 
-#idk exactly what this does, looks like prev and next to me...
-#its previous and next but only cycles through the desktops of the same screen
-#bindsym $mod+comma workspace prev_on_output
-#bindsym $mod+period workspace next_on_output
-
+#its like "previous" and "next" but only cycles through the desktops of the same screen
 #cityhax per moure entre desktops de la mateixa pantalla amb nomes la ma esquerra
-#bindsym $mod+Ctrl+less workspace prev_on_output
-#bindsym $mod+Ctrl+z workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 bindsym $mod+Tab workspace next_on_output
 
@@ -334,9 +317,10 @@ mode "resize" {
 }
 
 # Autostart applications
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-#exec --no-startup-id nm-applet
+#exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-power-manager
+#exec --no-startup-id nm-applet
 #exec --no-startup-id pamac-tray
 #exec --no-startup-id clipit
 #exec_always --no-startup-id ff-theme-util

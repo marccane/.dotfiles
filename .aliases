@@ -63,6 +63,21 @@ color()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))
 #limitacio dels alias: no es poden usar al mod + d
 #en el find per limitar el depth és -maxdepth X, no -depth
 
+# wrap long lines using backslashes
+wrap() { perl -pe 's/.{'$(( ${COLUMNS:-80} - 1))'}/$&\\\n/g' -- "$@" }
+# reload zshrc
+alias reload='source ~/.zshrc'
+# create a 256M ramdisk
+alias ramdisk='sudo mount -t tmpfs -o size=256m tmpfs /mnt/ramdisk && cd /mnt/ramdisk'
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+mkd() { mkdir -p "$1" && cd "$1" }
+exe() { chmod a+x "$1" }
+
 ## Colorize the ls output ##
 alias ls="ls --color=auto"
 alias l="ls -sailh"
@@ -95,7 +110,7 @@ alias soundControl=pavucontrol
 alias equalizer=pulseeffects
 alias cutter=iaito
 alias podcasts=clementine
-alias wallaper=nitrogen
+alias wallpaper=nitrogen
 alias blame=praise
 alias gitblame=praise
 alias paint=kolourpaint
@@ -126,3 +141,16 @@ alias imageviewer=geeqie
 alias findduplicateimages=czkawka
 alias findduplicateimages2=findimagedupes
 alias objdump="objdump -M intel"
+alias torrents=transmission-qt
+alias torrents2=deluge
+alias brainfuck=bfc
+alias startnm='sudo systemctl start NetworkManager'
+alias networkmanagerstart='sudo systemctl start NetworkManager'
+alias compositor=picom
+alias processExplorer=qps
+alias settings=xfce4-settings-manager
+alias settings2=systemsettings
+alias hexeditor1=wxHexEditor
+alias hexeditor2=bless
+alias hexeditor3=fhex
+alias hexeditor4=ghex

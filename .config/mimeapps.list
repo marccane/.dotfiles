@@ -18,7 +18,7 @@ application/x-extension-shtml=firefox.desktop
 application/xhtml+xml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
-inode/directory=org.gnome.Nautilus.desktop
+inode/directory=xfce4-file-manager.desktop
 video/x-matroska=smplayer.desktop
 video/webm=vlc.desktop
 video/mp4=smplayer.desktop
@@ -27,6 +27,7 @@ x-scheme-handler/postman=Postman.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-QZ46X0.desktop
 x-scheme-handler/discord-478576776990425110=discord-478576776990425110.desktop
 x-scheme-handler/discord-719647875465871400=discord-719647875465871400.desktop
+x-scheme-handler/trash=xfce4-file-manager.desktop
 
 [Added Associations]
 x-scheme-handler/mailto=userapp-Thunderbird-8KJ4TZ.desktop;
@@ -102,6 +103,10 @@ audio/prs.sid=sublime_text.desktop;audacity.desktop;org.xfce.Parole.desktop;vlc.
 text/x-scheme=org.kde.ark.desktop;
 audio/flac=vlc.desktop;
 application/x-trash=org.gnome.gedit.desktop;
+application/x-mswinurl=leafpad.desktop;
+inode/directory=xfce4-file-manager.desktop;
+x-scheme-handler/trash=xfce4-file-manager.desktop;
 
 [Removed Associations]
 video/x-matroska=vlc.desktop;
+
