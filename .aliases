@@ -58,15 +58,13 @@ function hex2string () {
 #STDERR printed in RED. Example: color ping
 color()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))
 
-#example of multiple strings with grep (or): grep -E 'str1|str2'
-#search regular files that are executable: find -type f --executable
-#limitacio dels alias: no es poden usar al mod + d
-#en el find per limitar el depth és -maxdepth X, no -depth
+#Example of multiple strings with grep (or): grep -E 'str1|str2'
+#Search regular files that are executable: find -type f --executable
+#Aliases limitation: they don't work with $mod + d
+#Find's parameter for directory depth limit is -maxdepth X, not -depth X
 
 # wrap long lines using backslashes
 wrap() { perl -pe 's/.{'$(( ${COLUMNS:-80} - 1))'}/$&\\\n/g' -- "$@" }
-# reload zshrc
-alias reload='source ~/.zshrc'
 # create a 256M ramdisk
 alias ramdisk='sudo mount -t tmpfs -o size=256m tmpfs /mnt/ramdisk && cd /mnt/ramdisk'
 alias ..="cd .."
@@ -78,34 +76,28 @@ alias egrep="egrep --color=auto"
 mkd() { mkdir -p "$1" && cd "$1" }
 exe() { chmod a+x "$1" }
 
-## Colorize the ls output ##
+#Command improvements/default parameters
 alias ls="ls --color=auto"
 alias l="ls -sailh"
+alias diff="diff --color"
 alias nautilus='nautilus "$(pwd)"'
-alias fucking=sudo
-alias please=sudo
-#alias rm="safe-rm -I" #safe-rm adds itself to the path before the real rm path
+alias dd="dd status=progress"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -I"
+alias objdump="objdump -M intel"
+#alias rm="safe-rm -I" #safe-rm adds itself to the path before the real rm path
+#alias cd=cd -P #not sure what this does
+
+#Alias/short names
 alias c=cat
-alias i3config="nano ~/.config/i3/config"
-alias dd="dd status=progress"
 alias py=python
-alias myip="echo Public:;dig +short myip.opendns.com @resolver1.opendns.com;echo Local:;ip a|grep 'inet '|grep -v 127.0.0.1|tr -s ' '|cut -d' ' -f3|cut -d/ -f1"
-# alias cd=cd -P #not sure what this does
-alias realfolder=realdir
 alias code=codium
-alias normalUsers="cat /etc/passwd | grep -vE 'nologin|false' | cut -d: -f1,5 --output-delimiter=' -> '"
-alias livecat="tail -f"
-alias liveless="less +F"
-alias whichPackage="pacman -Qo" #maybe name could be improved? whichPackageFileBelongsTo?
-alias pyenvVersions="ls ~/.pyenv/versions/"
-alias setxkb="setxkbmap es,ru -option grp:alt_shift_toggle"
-alias i3-notify=notify-send
+alias sus="systemctl suspend"
+alias please=sudo
+alias fucking=sudo
 alias equalizer=qpaeq
-alias tojpg="mogrify -format jpg -quality 95"
-alias whiteNoise="cvlc /home/markus/Sounds/03-White-Noise-10min.mp3"
+alias i3-notify=notify-send
 alias soundControl=pavucontrol
 alias equalizer=pulseeffects
 alias cutter=iaito
@@ -114,38 +106,23 @@ alias wallpaper=nitrogen
 alias blame=praise
 alias gitblame=praise
 alias paint=kolourpaint
-alias decolorize="sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'"
 alias ci=citra-qt
 alias homebrew=brew
 alias sl=ls
 alias inputdebug=xev
 alias keyboardtest=xev
-alias fixPacmanKeyring="sudo pacman -S archlinux-keyring"
-alias editPacmanConfigGUI="sudo leafpad /etc/pacman.conf"
-alias pacmanRemoveUnstableRepos="sudo sed -i 's/^\([^#].*\(dkp-libs\|dkp-linux\|pkg\.devkitpro\).*\)$/#\1/' /etc/pacman.conf"
-alias pacmanAddUnstableRepos="sudo sed -i 's/^#\(.*\(dkp-libs\|dkp-linux\|pkg\.devkitpro\).*\)$/\1/' /etc/pacman.conf"
 alias freejsfirefox=icecat
 alias notepad1=leafpad
 alias notepad2=mousepad
 alias notepad3=gedit
-alias ip2geo=geoiplookup
-alias ip2geo2="ip2geotools -d dbipcity"
-alias sus="systemctl suspend"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias fixdayz='sudo sysctl -w vm.max_map_count=1048576'
-alias dayzfix=fixdayz
-alias prettyjson="jq . "
 alias gimp2=digikam
 alias imageeditor=digikam
 alias imageviewer=geeqie
 alias findduplicateimages=czkawka
 alias findduplicateimages2=findimagedupes
-alias objdump="objdump -M intel"
 alias torrents=transmission-qt
 alias torrents2=deluge
 alias brainfuck=bfc
-alias startnm='sudo systemctl start NetworkManager'
-alias networkmanagerstart='sudo systemctl start NetworkManager'
 alias compositor=picom
 alias processExplorer=qps
 alias settings=xfce4-settings-manager
@@ -154,3 +131,33 @@ alias hexeditor1=wxHexEditor
 alias hexeditor2=bless
 alias hexeditor3=fhex
 alias hexeditor4=ghex
+
+#Custom commands/shortcuts
+alias i3config="nano ~/.config/i3/config"
+alias myip="echo Public:;dig +short myip.opendns.com @resolver1.opendns.com;echo Local:;ip a|grep 'inet '|grep -v 127.0.0.1|tr -s ' '|cut -d' ' -f3|cut -d/ -f1"
+alias normalUsers="cat /etc/passwd | grep -vE 'nologin|false' | cut -d: -f1,5 --output-delimiter=' -> '"
+alias livecat="tail -f"
+alias liveless="less +F"
+alias whichPackage="pacman -Qo" #maybe name could be improved? whichPackageFileBelongsTo?
+alias pyenvVersions="ls ~/.pyenv/versions/"
+alias setxkb="setxkbmap es,ru -option grp:alt_shift_toggle"
+alias tojpg="mogrify -format jpg -quality 95"
+alias whiteNoise="cvlc ~/Sounds/03-White-Noise-10min.mp3"
+alias decolorize="sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'"
+alias fixPacmanKeyring="sudo pacman -S archlinux-keyring"
+alias editPacmanConfigGUI="sudo leafpad /etc/pacman.conf"
+alias pacmanRemoveUnstableRepos="sudo sed -i 's/^\([^#].*\(dkp-libs\|dkp-linux\|pkg\.devkitpro\).*\)$/#\1/' /etc/pacman.conf"
+alias pacmanAddUnstableRepos="sudo sed -i 's/^#\(.*\(dkp-libs\|dkp-linux\|pkg\.devkitpro\).*\)$/\1/' /etc/pacman.conf"
+alias ip2geo=geoiplookup
+alias ip2geo2="ip2geotools -d dbipcity"
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias fixdayz='sudo sysctl -w vm.max_map_count=1048576'
+alias dayzfix=fixdayz
+alias prettyjson="jq . "
+alias networkmanagerstart='sudo systemctl start NetworkManager'
+alias startnm=networkmanagerstart
+alias citraLog="cat ~/.local/share/citra-emu/log/citra_log.txt"
+alias citraLogDir=~/.local/share/citra-emu/log/
+alias citraDir=~/.local/share/citra-emu/
+alias reloadZsh="source ~/.zshrc"
+alias reload=reloadZsh

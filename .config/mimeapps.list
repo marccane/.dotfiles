@@ -38,7 +38,7 @@ x-scheme-handler/nntp=userapp-Thunderbird-O944TZ.desktop;
 x-scheme-handler/feed=userapp-Thunderbird-E0L2TZ.desktop;
 application/rss+xml=userapp-Thunderbird-E0L2TZ.desktop;
 application/x-extension-rss=userapp-Thunderbird-E0L2TZ.desktop;
-image/jpeg=org.nomacs.ImageLounge.desktop;chromium.desktop;geeqie.desktop;phototonic.desktop;nomacs.desktop;
+image/jpeg=org.nomacs.ImageLounge.desktop;gimp.desktop;chromium.desktop;okularApplication_kimgio.desktop;phototonic.desktop;geeqie.desktop;nomacs.desktop;
 application/vnd.oasis.opendocument.text=libreoffice-writer.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
@@ -92,14 +92,14 @@ image/x-portable-pixmap=phototonic.desktop;gimp.desktop;nomacs.desktop;
 application/x-bzip-compressed-tar=org.kde.ark.desktop;org.gnome.Nautilus.desktop;
 text/x-c++src=code-oss.desktop;
 audio/x-opus+ogg=vlc.desktop;mpv.desktop;
-image/webp=chromium.desktop;vlc.desktop;org.nomacs.ImageLounge.desktop;phototonic.desktop;mpv.desktop;org.kde.kolourpaint.desktop;smplayer.desktop;
+image/webp=org.nomacs.ImageLounge.desktop;chromium.desktop;vlc.desktop;phototonic.desktop;mpv.desktop;org.kde.kolourpaint.desktop;smplayer.desktop;
 text/csv=sublime_text.desktop;
 video/mpeg=smplayer.desktop;vlc.desktop;mpv.desktop;
 video/x-msvideo=smplayer.desktop;vlc.desktop;mpv.desktop;
 x-scheme-handler/tg=userapp-Telegram Desktop-QZ46X0.desktop;
 audio/x-wav=vlc.desktop;
 audio/mp4=vlc.desktop;
-audio/prs.sid=sublime_text.desktop;audacity.desktop;org.xfce.Parole.desktop;vlc.desktop;
+audio/prs.sid=snes9x-gtk.desktop;audacity.desktop;Player.desktop;org.xfce.Parole.desktop;vlc.desktop;sublime_text.desktop;
 text/x-scheme=org.kde.ark.desktop;
 audio/flac=vlc.desktop;
 application/x-trash=org.gnome.gedit.desktop;
@@ -109,4 +109,3 @@ x-scheme-handler/trash=xfce4-file-manager.desktop;
 
 [Removed Associations]
 video/x-matroska=vlc.desktop;
-
