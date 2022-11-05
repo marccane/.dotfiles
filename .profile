@@ -9,6 +9,7 @@ export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/canethings
 export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin
 
 export DEVKITPRO=/opt/devkitpro
 export DEVKITARM=/opt/devkitpro/devkitARM

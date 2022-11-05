@@ -13,7 +13,7 @@ send3dsx() {
 	result=1
 	while [ $result -ne 0 ] ; do
 	        3dslink *3dsx
-        	result=$?
+		result=$?
 	done
 }
 
@@ -63,8 +63,11 @@ color()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))
 #Aliases limitation: they don't work with $mod + d
 #Find's parameter for directory depth limit is -maxdepth X, not -depth X
 
+#Warning: in bash functions cannot be oneliners, for compatibility make them 3 lines
 # wrap long lines using backslashes
-wrap() { perl -pe 's/.{'$(( ${COLUMNS:-80} - 1))'}/$&\\\n/g' -- "$@" }
+wrap() { 
+	perl -pe 's/.{'$(( ${COLUMNS:-80} - 1))'}/$&\\\n/g' -- "$@" 
+}
 # create a 256M ramdisk
 alias ramdisk='sudo mount -t tmpfs -o size=256m tmpfs /mnt/ramdisk && cd /mnt/ramdisk'
 alias ..="cd .."
@@ -73,8 +76,12 @@ alias ....="cd ../../.."
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
-mkd() { mkdir -p "$1" && cd "$1" }
-exe() { chmod a+x "$1" }
+mkd() { 
+	mkdir -p "$1" && cd "$1" 
+}
+exe() { 
+	chmod a+x "$1" 
+}
 
 #Command improvements/default parameters
 alias ls="ls --color=auto"
