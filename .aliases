@@ -55,6 +55,7 @@ function hex2string () {
   fi
 }
 
+#https://www.linuxfordevices.com/tutorials/linux/extract-compressed-files-custom-command
 extract() {
   if [ -f $1 ] ; then
     case $1 in
@@ -180,6 +181,21 @@ alias hexeditor1=wxHexEditor
 alias hexeditor2=bless
 alias hexeditor3=fhex
 alias hexeditor4=ghex
+alias vnc1=gvncviewer
+alias vnc2=vinagre
+alias vnc3=vncviewer
+alias vnc4=vncdo
+alias vnc5=ultravnc-viewer
+alias vncServer1=Xvnc
+alias vncServer2=x11vnc
+alias nintendoFilesystemMount=ninfs
+alias xmplayer=ft2-clone
+alias fasttracker=ft2-clone
+alias logitech=solaar
+alias ndsEmu1=desmume
+alias ndsEmu2=melonDS
+alias petitComputer=PTCUtilities.sh
+alias shshSaver=blobsaver
 
 #Custom commands/shortcuts
 alias i3config="nano ~/.config/i3/config"

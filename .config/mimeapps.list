@@ -28,6 +28,7 @@ x-scheme-handler/tg=userapp-Telegram Desktop-CN8DX1.desktop
 x-scheme-handler/discord-478576776990425110=discord-478576776990425110.desktop
 x-scheme-handler/discord-719647875465871400=discord-719647875465871400.desktop
 x-scheme-handler/trash=xfce4-file-manager.desktop
+audio/midi=adlmidi.desktop
 
 [Added Associations]
 x-scheme-handler/mailto=userapp-Thunderbird-8KJ4TZ.desktop;
@@ -106,6 +107,7 @@ application/x-trash=org.gnome.gedit.desktop;
 application/x-mswinurl=leafpad.desktop;
 inode/directory=xfce4-file-manager.desktop;
 x-scheme-handler/trash=xfce4-file-manager.desktop;
+audio/midi=vlc.desktop;adlmidi.desktop;
 
 [Removed Associations]
 video/x-matroska=vlc.desktop;
