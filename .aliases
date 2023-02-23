@@ -196,6 +196,8 @@ alias ndsEmu1=desmume
 alias ndsEmu2=melonDS
 alias petitComputer=PTCUtilities.sh
 alias shshSaver=blobsaver
+alias gitgui1=gitk
+alias gitgui2=gittyup
 
 #Custom commands/shortcuts
 alias i3config="nano ~/.config/i3/config"
@@ -226,3 +228,6 @@ alias citraLogDir=~/.local/share/citra-emu/log/
 alias citraDir=~/.local/share/citra-emu/
 alias reloadZsh="source ~/.zshrc"
 alias reload=reloadZsh
+alias enablei2c="sudo modprobe i2c-dev"
+alias brilloBenq="sudo ddcutil -d 1 setvcp 0x10"
+alias brilloAcer="sudo ddcutil -d 2 setvcp 0x10" 
