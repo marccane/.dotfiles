@@ -1,5 +1,5 @@
 realdir() {
-	#we could use realpath to simplify this?
+	#could we use realpath to simplify this?
         V948143791354=`pwd`
         cd "$(readlink -f $V948143791354)"
         unset V948143791354
@@ -116,6 +116,7 @@ alias ramdisk='sudo mount -t tmpfs -o size=256m tmpfs /mnt/ramdisk && cd /mnt/ra
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias .....="cd ../../../.."
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
@@ -136,6 +137,7 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -I"
 alias objdump="objdump -M intel"
+alias chown="chown --preserve-root"
 #alias rm="safe-rm -I" #safe-rm adds itself to the path before the real rm path
 #alias cd=cd -P #not sure what this does
 
@@ -145,7 +147,6 @@ alias py=python
 alias code=codium
 alias sus="systemctl suspend"
 alias please=sudo
-alias fucking=sudo
 alias equalizer=qpaeq
 alias i3-notify=notify-send
 alias soundControl=pavucontrol
@@ -198,6 +199,9 @@ alias petitComputer=PTCUtilities.sh
 alias shshSaver=blobsaver
 alias gitgui1=gitk
 alias gitgui2=gittyup
+alias topgui=qps
+alias pdfreader1=okular
+alias pdfreaderr2=evince
 
 #Custom commands/shortcuts
 alias i3config="nano ~/.config/i3/config"
@@ -221,13 +225,17 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias fixdayz='sudo sysctl -w vm.max_map_count=1048576'
 alias dayzfix=fixdayz
 alias prettyjson="jq . "
-alias networkmanagerstart='sudo systemctl start NetworkManager'
-alias startnm=networkmanagerstart
 alias citraLog="cat ~/.local/share/citra-emu/log/citra_log.txt"
 alias citraLogDir=~/.local/share/citra-emu/log/
 alias citraDir=~/.local/share/citra-emu/
-alias reloadZsh="source ~/.zshrc"
+alias reloadZsh="source ~/.zshrc" #does not properly read the .aliases file and others if your current dir is not $HOME
 alias reload=reloadZsh
-alias enablei2c="sudo modprobe i2c-dev"
-alias brilloBenq="sudo ddcutil -d 1 setvcp 0x10"
+alias brilloBenq="sudo ddcutil -d 1 setvcp 0x10" #TODO: auto init i2c module if it's not already started
 alias brilloAcer="sudo ddcutil -d 2 setvcp 0x10" 
+alias cpProgress="rsync -ah --progress"
+alias stdinToClipboard="xclip -selection c"
+
+#Init/Start of services and other stuff
+alias starti2c="sudo modprobe i2c-dev"
+alias startnm="sudo systemctl start NetworkManager"
+alias startbt="sudo systemctl start bluetooth"

@@ -306,24 +306,28 @@ mode "$mode_system" {
 bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink height 5 px or 5 ppt
-        bindsym semicolon resize grow width 5 px or 5 ppt
+	set $resizeStep 40
+	#"left"
+        bindsym j resize shrink width $resizeStep px or $resizeStep ppt
+	#"down"
+	bindsym k resize shrink height $resizeStep px or $resizeStep ppt
+	#"up"
+        bindsym l resize grow height $resizeStep px or $resizeStep ppt
+	#"right"
+        bindsym ntilde resize grow width $resizeStep px or $resizeStep ppt
+	#semicolon equivalent of spanish keyboard is ntilde
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+	set $resizeStepArrows 20
+        bindsym Left resize shrink width $resizeStepArrows px or $resizeStepArrows ppt
+        bindsym Down resize shrink height $resizeStepArrows px or $resizeStepArrows ppt
+        bindsym Up resize grow height $resizeStepArrows px or $resizeStepArrows ppt
+        bindsym Right resize grow width $resizeStepArrows px or $resizeStepArrows ppt
 
         # exit resize mode: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
 }
 
 # Autostart applications
