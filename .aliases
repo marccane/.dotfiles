@@ -201,7 +201,7 @@ alias gitgui1=gitk
 alias gitgui2=gittyup
 alias topgui=qps
 alias pdfreader1=okular
-alias pdfreaderr2=evince
+alias pdfreader2=evince
 
 #Custom commands/shortcuts
 alias i3config="nano ~/.config/i3/config"
@@ -228,7 +228,7 @@ alias prettyjson="jq . "
 alias citraLog="cat ~/.local/share/citra-emu/log/citra_log.txt"
 alias citraLogDir=~/.local/share/citra-emu/log/
 alias citraDir=~/.local/share/citra-emu/
-alias reloadZsh="source ~/.zshrc" #does not properly read the .aliases file and others if your current dir is not $HOME
+alias reloadZsh="source ~/.zshrc"
 alias reload=reloadZsh
 alias brilloBenq="sudo ddcutil -d 1 setvcp 0x10" #TODO: auto init i2c module if it's not already started
 alias brilloAcer="sudo ddcutil -d 2 setvcp 0x10" 

@@ -1,3 +1,7 @@
+###########
+#REMEMBER not to use relative paths when referencing files so a config reload can be done from anywhere!
+###########
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=100000
@@ -35,12 +39,13 @@ bindkey '^i' expand-or-complete-prefix
 
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/markus/.zshrc'
+zstyle :compinstall filename "~/.zshrc"
 
 #PROMPT='%m:%1~ %n%#'
 
-source .aliases
-source .aliases_private
+#TODO: only execute if they exist
+source ~/.aliases
+source ~/.aliases_private
 
 #Auto-color stderr in red
 #src: https://serverfault.com/a/570651
