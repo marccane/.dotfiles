@@ -22,14 +22,18 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym Ctrl+Mod1+e exec nautilus
 bindsym Ctrl+Mod1+w exec firefox
 
-# Window kill command (With workaround for correctly terminating teamspeak instance)
-#bindsym $mod+Shift+q kill
-
-#per testejar les PCRE regex: https://regex101.com/
+#Test PCRE regex: https://regex101.com/
 #https://faq.i3wm.org/question/7662/reverse-perl-matches-in-criteria-in-i3-config.1.html
-#aixo tambe funciona!!
-#bindsym $mod+Shift+q exec --no-startup-id i3-msg [id="$(xdotool getactivewindow)" instance="^(?!urxvt).*$"] kill
-bindsym $mod+Shift+q [con_id="__focused__" instance="^(?!ts3).*$"] kill; exec /home/markus/canethings/apanyosi3/killTSIfFocused.py
+
+# Window kill command (With workaround for correctly terminating teamspeak instance)
+bindsym $mod+Shift+q [con_id="__focused__" instance="^(?!ts3).*$"] kill; exec ~/.config/i3/scripts/killTs3IfFocused.py
+#Explanation of the problem this workaround is solving:
+#For some reason ts3 (the one from aur) does not close properly when it's connected to a server and you close it using any "normal" methods (Ctrl+Q, closing the window (i3 kill in this case), sending SIGTERM, etc) in ONE of my computers
+#This left a background process of ts3 using the entirety of a thread for each instance that I closed. These processes could pile up and use a considerable ammount of CPU.
+#It turned out to be quite a challenge to close it **cleanly**, that is, without directly SIGKILLing the ts3 process (as that temporarily prevents the user from reconnecting to the last server because the connection has to timeout)
+#because due to the asynchronous nature of my solution a race condition between the script to SIGKILL ts3 and i3 closing the program was constantly happening.
+#Finally I achieved a reliable solution by stopping i3 from interfering in the termination of the ts3 process and running a script (that closes teamSpeak only if it is focused) each time a window is closed in i3
+#The script still has a small problem detecting the ts3 focused window when there is also a floating window in the same desktop where there is a ts3 window but preventing the situation from happening is not that difficult
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
@@ -135,7 +139,7 @@ bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
 #set $workspaceF7 ""
 
 # workspaces
-# OJO! Si es canvien els workspaces també s'han d'actualitzar de ~/canethings/apanyosi3/i3findEmptyWorkspace.py
+# Warning! If the workspaces are changed they have to be updated from ~/.config/i3/scripts/i3findEmptyWorkspace.py
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -166,7 +170,7 @@ bindsym $mod+Shift+Tab workspace prev_on_output
 bindsym $mod+Tab workspace next_on_output
 
 #switch to the first empty workspace we can find
-bindsym $mod+Shift+Return exec --no-startup-id i3findEmptyWorkspace.py
+bindsym $mod+Shift+Return exec --no-startup-id ~/.config/i3/scripts/i3findEmptyWorkspace.py
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1

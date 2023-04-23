@@ -41,28 +41,15 @@ bindkey '^i' expand-or-complete-prefix
 # The following lines were added by compinstall
 zstyle :compinstall filename "~/.zshrc"
 
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
 #PROMPT='%m:%1~ %n%#'
 
 #TODO: only execute if they exist
 source ~/.aliases
 source ~/.aliases_private
 
-#Auto-color stderr in red
-#src: https://serverfault.com/a/570651
-#exec 9>&2
-#exec 8> >(
-#    while IFS='' read -r line || [ -n "$line" ]; do
-#       echo -e "\033[31m${line}\033[0m"
-#    done
-#)
-#function undirect(){ exec 2>&9; }
-#function redirect(){ exec 2>&8; }
-#trap "redirect;" DEBUG
-#PROMPT_COMMAND='undirect;'
-#end auto-color
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
 neofetch
 PATH=$(pyenv root)/shims:$PATH
