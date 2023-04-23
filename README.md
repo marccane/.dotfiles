@@ -39,10 +39,6 @@ dotfiles push
 # Install your dotfiles onto a new system (or migrate to this setup)
 If you already store your configuration/dotfiles in a Git repository, on a new system you can migrate to this setup with the following steps:
 
-- Prior to the installation make sure you have committed the alias to your .bashrc or .zsh:
-```
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-```
 - And that your source repository ignores the folder where you'll clone it, so that you don't create weird recursion problems:
 ```
 echo ".dotfiles" >> .gitignore
@@ -80,6 +76,11 @@ dotfiles checkout
 - Set the flag showUntrackedFiles to no on this specific (local) repository:
 ```
 dotfiles config --local status.showUntrackedFiles no
+```
+- Remove README.md so it doesn't pollute our home directory and ignore changes so it doesn't annoy us:
+```
+rm ~/README.md
+dotfiles update-index --assume-unchanged README.md
 ```
 - You're done, from now on you can now type config commands to add and update your dotfiles:
 ```
