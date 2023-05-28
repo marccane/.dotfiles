@@ -15,7 +15,7 @@ export DEVKITPRO=/opt/devkitpro
 export DEVKITARM=/opt/devkitpro/devkitARM
 export DEVKITPPC=/opt/devkitpro/devkitPPC
 
-export NIHSTRO=$HOME/canethings/nihstro/build #com s'afegeix això al path?
+export NIHSTRO=$HOME/canethings/nihstro/build
 export AEMSTRO=$HOME/canethings/aemstro
 
 export VITASDK=/usr/local/vitasdk

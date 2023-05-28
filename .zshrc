@@ -47,9 +47,12 @@ compinit
 
 #PROMPT='%m:%1~ %n%#'
 
-#TODO: only execute if they exist
-source ~/.aliases
-source ~/.aliases_private
+if [[ -a ~/.aliases ]]; then
+	source ~/.aliases
+fi
+if [[ -a ~/.aliases_private ]]; then
+	source ~/.aliases_private
+fi
 
 neofetch
 PATH=$(pyenv root)/shims:$PATH

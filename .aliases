@@ -147,6 +147,7 @@ alias py=python
 alias code=codium
 alias sus="systemctl suspend"
 alias please=sudo
+alias uefiReboot="systemctl reboot --firmware-setup"
 alias equalizer=qpaeq
 alias i3-notify=notify-send
 alias soundControl=pavucontrol
@@ -230,11 +231,16 @@ alias citraLogDir=~/.local/share/citra-emu/log/
 alias citraDir=~/.local/share/citra-emu/
 alias reloadZsh="source ~/.zshrc"
 alias reload=reloadZsh
-alias brilloBenq="sudo ddcutil -d 1 setvcp 0x10" #TODO: auto init i2c module if it's not already started
-alias brilloAcer="sudo ddcutil -d 2 setvcp 0x10" 
+alias brilloBenq="starti2c && sudo ddcutil -d 1 setvcp 0x10"
+alias brilloAcer="starti2c && sudo ddcutil -d 2 setvcp 0x10"
 alias cpProgress="rsync -ah --progress"
 alias stdinToClipboard="xclip -selection c"
 alias gitUrl="git config --get remote.origin.url"
+alias nanolines="nano -l"
+alias nanowrap="nano -S"
+#alias cascos="startbt && bluetoothctl connect X" #.aliases_private
+alias cascosdisconnect="bluetoothctl disconnect"
+alias btdisconnect="bluetoothctl disconnect"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
