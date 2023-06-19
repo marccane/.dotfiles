@@ -328,7 +328,7 @@ mode "resize" {
 	#semicolon equivalent of spanish keyboard is ntilde
 
         # same bindings, but for the arrow keys
-	set $resizeStepArrows 20
+	set $resizeStepArrows 10
         bindsym Left resize shrink width $resizeStepArrows px or $resizeStepArrows ppt
         bindsym Down resize shrink height $resizeStepArrows px or $resizeStepArrows ppt
         bindsym Up resize grow height $resizeStepArrows px or $resizeStepArrows ppt
