@@ -130,6 +130,10 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioPlay exec --no-startup-id playerctl play
 bindsym XF86AudioPause exec --no-startup-id playerctl pause
 
+# Bluetooth (BT) headset connection shortcut
+bindsym Ctrl+$mod2+j exec systemctl is-active --quiet bluetooth && (notify-send "Connecting to XM3 headset..." && cascos.sh && notify-send "Connection successfull" || notify-send "Connection could not be established") || notify-send "BT daemon not running. Run 'startbt' and try again"
+bindsym Ctrl+$mod2+k exec systemctl is-active --quiet bluetooth && (notify-send "Disconnecting BT devices..." && bluetoothctl disconnect && notify-send "Disconnection successfull" || notify-send "Could not disconnect") || notify-send "BT daemon not running. Run 'startbt' and try again"
+
 # Workspaces
 #set $workspace1 ""
 #set $workspace2 ""

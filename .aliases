@@ -239,7 +239,8 @@ alias toclipboard="xclip -selection c"
 alias gitUrl="git config --get remote.origin.url"
 alias nanolines="nano -l"
 alias nanowrap="nano -S"
-#alias cascos="startbt && bluetoothctl connect X" #.aliases_private
+#TODO: improve so doesn't ask for sudo password when bt is already initialized
+alias cascos="startbt && cascos.sh" #cascos.sh is a bash script wich does "bluetoothctl connect XX:XX:XX:XX:XX:XX"
 alias cascosdisconnect="bluetoothctl disconnect"
 alias btdisconnect="bluetoothctl disconnect"
 alias networkUsage="watch -n1 ifconfig enp33s0"
