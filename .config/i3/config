@@ -22,18 +22,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym Ctrl+Mod1+e exec nautilus
 bindsym Ctrl+Mod1+w exec firefox
 
-#Test PCRE regex: https://regex101.com/
-#https://faq.i3wm.org/question/7662/reverse-perl-matches-in-criteria-in-i3-config.1.html
-
-# Window kill command (With workaround for correctly terminating teamspeak instance)
-bindsym $mod+Shift+q [con_id="__focused__" instance="^(?!ts3).*$"] kill; exec ~/.config/i3/scripts/killTs3IfFocused.py
-#Explanation of the problem this workaround is solving:
-#For some reason ts3 (the one from aur) does not close properly when it's connected to a server and you close it using any "normal" methods (Ctrl+Q, closing the window (i3 kill in this case), sending SIGTERM, etc) in ONE of my computers
-#This left a background process of ts3 using the entirety of a thread for each instance that I closed. These processes could pile up and use a considerable ammount of CPU.
-#It turned out to be quite a challenge to close it **cleanly**, that is, without directly SIGKILLing the ts3 process (as that temporarily prevents the user from reconnecting to the last server because the connection has to timeout)
-#because due to the asynchronous nature of my solution a race condition between the script to SIGKILL ts3 and i3 closing the program was constantly happening.
-#Finally I achieved a reliable solution by stopping i3 from interfering in the termination of the ts3 process and running a script (that closes teamSpeak only if it is focused) each time a window is closed in i3
-#The script still has a small problem detecting the ts3 focused window when there is also a floating window in the same desktop where there is a ts3 window but preventing the situation from happening is not that difficult
+# Window kill command
+bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
