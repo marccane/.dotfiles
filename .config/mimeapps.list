@@ -1,6 +1,6 @@
 [Default Applications]
-x-scheme-handler/mailto=userapp-Thunderbird-8KJ4TZ.desktop
-message/rfc822=userapp-Thunderbird-8KJ4TZ.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-RMYX81.desktop
+message/rfc822=userapp-Thunderbird-RMYX81.desktop
 x-scheme-handler/news=userapp-Thunderbird-O944TZ.desktop
 x-scheme-handler/snews=userapp-Thunderbird-O944TZ.desktop
 x-scheme-handler/nntp=userapp-Thunderbird-O944TZ.desktop
@@ -29,9 +29,14 @@ x-scheme-handler/discord-478576776990425110=discord-478576776990425110.desktop
 x-scheme-handler/discord-719647875465871400=discord-719647875465871400.desktop
 x-scheme-handler/trash=xfce4-file-manager.desktop
 audio/midi=adlmidi.desktop
+x-scheme-handler/mid=userapp-Thunderbird-RMYX81.desktop
+video/x-ms-wmv=mpv.desktop
+video/x-flv=mpv.desktop
+audio/x-ms-wma=mpv.desktop
+text/x-chdr=codium.desktop
 
 [Added Associations]
-x-scheme-handler/mailto=userapp-Thunderbird-8KJ4TZ.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-8KJ4TZ.desktop;userapp-Thunderbird-RMYX81.desktop;
 message/rfc822=userapp-Thunderbird-8KJ4TZ.desktop;
 x-scheme-handler/news=userapp-Thunderbird-O944TZ.desktop;
 x-scheme-handler/snews=userapp-Thunderbird-O944TZ.desktop;
@@ -108,6 +113,11 @@ application/x-mswinurl=leafpad.desktop;
 inode/directory=xfce4-file-manager.desktop;
 x-scheme-handler/trash=xfce4-file-manager.desktop;
 audio/midi=vlc.desktop;adlmidi.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-RMYX81.desktop;
+video/x-ms-wmv=mpv.desktop;
+video/x-flv=mpv.desktop;
+audio/x-ms-wma=mpv.desktop;
+text/x-chdr=codium.desktop;
 
 [Removed Associations]
 video/x-matroska=vlc.desktop;

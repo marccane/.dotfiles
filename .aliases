@@ -34,6 +34,12 @@ git() {
     fi
 }
 
+function mountTemp(){
+    device=$1
+    shift
+    sudo mount $device /mnt/temp $@
+}
+
 function hex2string () {
   if [ "$#" -eq 0 ]; then
     while read line
@@ -71,6 +77,7 @@ extract() {
       *.zip)        unzip $1       ;;
       *.Z)        uncompress $1  ;;
       *.7z)        7z x $1        ;;
+      *.cab)        cabextract $1        ;;
       *)        echo "don't know how to extract '$1'..." ;;
     esac
   else
@@ -91,6 +98,7 @@ contents() {
       *.rar)        unrar v $1     ;;
       *.zip)        unzip -l $1       ;;
       *.7z)        7z l $1        ;;
+      *.cab)        cabextract -l $1        ;;
       *)        echo "don't know how to list '$1'..." ;;
     esac
   else
@@ -172,6 +180,7 @@ alias imageeditor=digikam
 alias imageviewer=geeqie
 alias findduplicateimages=czkawka
 alias findduplicateimages2=findimagedupes
+alias removeduplicatefiles=rdfind
 alias torrents=transmission-qt
 alias torrents2=deluge
 alias brainfuck=bfc
@@ -244,8 +253,14 @@ alias cascos="startbt && cascos.sh" #cascos.sh is a bash script wich does "bluet
 alias cascosdisconnect="bluetoothctl disconnect"
 alias btdisconnect="bluetoothctl disconnect"
 alias networkUsage="watch -n1 ifconfig enp33s0"
+alias androidFtp="ftp android@192.168.1.245 -p 2221"
+alias flatpakPackageSizes="flatpak list --columns=size,name|sort -g"
+alias mountNtfsWritePermissionsAllUsers="sudo mount -o user,umask=0000"
+alias mountFatWritePermissionsAllUsers="sudo mount -o user,umask=0000"
+alias umountTemp="sudo umount /mnt/temp"
+alias utemp=umountTemp
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
-alias startnm="sudo systemctl start NetworkManager"
+alias startnm="sudo systemctl start NetworkManager && nm-applet & disown"
 alias startbt="sudo systemctl start bluetooth"
