@@ -34,6 +34,7 @@ video/x-ms-wmv=mpv.desktop
 video/x-flv=mpv.desktop
 audio/x-ms-wma=mpv.desktop
 text/x-chdr=codium.desktop
+application/x-shellscript=sublime_text.desktop
 
 [Added Associations]
 x-scheme-handler/mailto=userapp-Thunderbird-8KJ4TZ.desktop;userapp-Thunderbird-RMYX81.desktop;
@@ -80,7 +81,7 @@ audio/mpeg=vlc.desktop;smplayer.desktop;mpv.desktop;
 image/gif=org.nomacs.ImageLounge.desktop;phototonic.desktop;okularApplication_kimgio.desktop;nomacs.desktop;
 application/vnd.rar=org.kde.ark.desktop;org.gnome.Nautilus.desktop;xarchiver.desktop;
 application/x-bittorrent=transmission-qt.desktop;
-application/x-shellscript=notepadqq.desktop;
+application/x-shellscript=notepadqq.desktop;leafpad.desktop;sublime_text.desktop;
 application/x-sharedlib=chromium.desktop;
 text/x-csrc=code-oss.desktop;sublime_text.desktop;notepadqq.desktop;
 application/rtf=libreoffice-writer.desktop;
