@@ -19,7 +19,7 @@ floating_modifier $mod
 #TERMINAL is defined in /etc/environment
 bindsym $mod+Return exec i3-sensible-terminal
 
-bindsym Ctrl+Mod1+e exec nautilus
+bindsym Ctrl+Mod1+e exec thunar
 bindsym Ctrl+Mod1+w exec firefox
 
 # Window kill command
