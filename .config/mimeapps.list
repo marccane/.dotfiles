@@ -35,6 +35,7 @@ video/x-flv=mpv.desktop
 audio/x-ms-wma=mpv.desktop
 text/x-chdr=codium.desktop
 application/x-shellscript=sublime_text.desktop
+audio/prs.sid=userapp-alacritty -e sidplayer -F66XB2.desktop
 
 [Added Associations]
 x-scheme-handler/mailto=userapp-Thunderbird-8KJ4TZ.desktop;userapp-Thunderbird-RMYX81.desktop;
@@ -66,7 +67,7 @@ application/octet-stream=notepadqq.desktop;vlc.desktop;
 text/x-matlab=notepadqq.desktop;
 application/vnd.debian.binary-package=org.gnome.Nautilus.desktop;
 font/ttf=notepadqq.desktop;atom.desktop;
-image/svg+xml=firefox.desktop;phototonic.desktop;
+image/svg+xml=org.nomacs.ImageLounge.desktop;sublime_text.desktop;firefox.desktop;phototonic.desktop;
 application/zip=org.kde.ark.desktop;org.gnome.Nautilus.desktop;xarchiver.desktop;
 application/x-7z-compressed=org.kde.ark.desktop;org.gnome.Nautilus.desktop;xarchiver.desktop;
 video/x-matroska=smplayer.desktop;mpv.desktop;
@@ -106,7 +107,7 @@ video/x-msvideo=smplayer.desktop;vlc.desktop;mpv.desktop;
 x-scheme-handler/tg=userapp-Telegram Desktop-U6FL51.desktop;
 audio/x-wav=vlc.desktop;
 audio/mp4=vlc.desktop;
-audio/prs.sid=snes9x-gtk.desktop;audacity.desktop;Player.desktop;org.xfce.Parole.desktop;vlc.desktop;sublime_text.desktop;
+audio/prs.sid=userapp-alacritty -e sidplayer -F66XB2.desktop;
 text/x-scheme=org.kde.ark.desktop;
 audio/flac=vlc.desktop;
 application/x-trash=org.gnome.gedit.desktop;

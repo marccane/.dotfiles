@@ -162,44 +162,46 @@ draw_bold_text_with_bright_colors: true
 # Colors (Tangoish)
 # Note: Orange is used in place of Cyan
 colors:
-  # COLORSCHEME: base16-atelier-forest-256.yml
+  # COLORSCHEME: base16-atelier-seaside-256.yml
   # Default colors
   primary:
-    background: '0x1b1918'
+    background: '0x131513'
+#    foreground: '0x8ca68c'
     foreground: '0xa8a19f'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   normal:
-    black: '0x1b1918'
-    red: '0xf22c40'
-    green: '0x7b9726'
-    yellow: '0xc38418'
-    blue: '0x407ee7'
-    magenta: '0x6666ea'
-    cyan: '0x3d97b8'
-    white: '0xa8a19f'
+    black: '0x131513'
+    red: '0xe6193c'
+    green: '0x29a329'
+    yellow: '0x98981b'
+    blue: '0x3d62f5'
+    magenta: '0xad2bee'
+    cyan: '0x1999b3'
+    white: '0x8ca68c'
 
   # Bright colors
   bright:
-    black: '0x766e6b'
-    red: '0xf22c40'
-    green: '0x7b9726'
-    yellow: '0xc38418'
-    blue: '0x407ee7'
-    magenta: '0x6666ea'
-    cyan: '0x3d97b8'
-    white: '0xf1efee'
+    black: '0x687d68'
+    red: '0xe6193c'
+    green: '0x29a329'
+    yellow: '0x98981b'
+    blue: '0x3d62f5'
+    magenta: '0xad2bee'
+    cyan: '0x1999b3'
+    white: '0xf4fbf4'
 
   indexed_colors:
-    - {index: 16, color: '0xdf5320'}
-    - {index: 17, color: '0xc33ff3'}
-    - {index: 18, color: '0x2c2421'}
-    - {index: 19, color: '0x68615e'}
-    - {index: 20, color: '0x9c9491'}
-    - {index: 21, color: '0xe6e2e0'}
+    - {index: 16, color: '0x87711d'}
+    - {index: 17, color: '0xe619c3'}
+    - {index: 18, color: '0x242924'}
+    - {index: 19, color: '0x5e6e5e'}
+    - {index: 20, color: '0x809980'}
+    - {index: 21, color: '0xcfe8cf'}
   cursor:
-    text: '0x1b1918'
-    cursor: '0xa8a19f'
+    #text: '0x1b1918'
+    text: '0x131513'
+    cursor: '0x8ca68c'
 
   # Normal colors
 bell:
