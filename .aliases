@@ -106,6 +106,13 @@ contents() {
   fi
 }
 
+_alarm() {
+  ( \speaker-test --frequency $1 --test sine )&
+  pid=$!
+  \sleep 0.${2}s
+  \kill -9 $pid
+}
+
 #STDERR printed in RED. Example: color ping
 color()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))
 
@@ -259,6 +266,7 @@ alias mountNtfsWritePermissionsAllUsers="sudo mount -o user,umask=0000"
 alias mountFatWritePermissionsAllUsers="sudo mount -o user,umask=0000"
 alias umountTemp="sudo umount /mnt/temp"
 alias utemp=umountTemp
+alias fakebeep="_alarm 1000 400"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
