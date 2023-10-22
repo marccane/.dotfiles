@@ -54,9 +54,12 @@ if [[ -a ~/.aliases_private ]]; then
 	source ~/.aliases_private
 fi
 
-neofetch
-PATH=$(pyenv root)/shims:$PATH
-
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if which neofetch > /dev/null; then
+	neofetch
+fi
+if which pyenv > /dev/null; then
+	PATH=$(pyenv root)/shims:$PATH
+	export PYENV_ROOT="$HOME/.pyenv"
+	command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)"
+fi
