@@ -106,6 +106,7 @@ contents() {
   fi
 }
 
+#https://unix.stackexchange.com/a/163716
 _alarm() {
   ( \speaker-test --frequency $1 --test sine )&
   pid=$!
