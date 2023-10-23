@@ -212,6 +212,14 @@ alias gitgui2=gittyup
 alias topgui=qps
 alias pdfreader1=okular
 alias pdfreader2=evince
+alias rssreader=liferea
+alias webbrowser1=firefox
+alias webbrowser2=chromium
+alias webbrowser3=epiphany
+alias webbrowser4=midori
+alias webbrowser5=lynx
+
+
 
 #Custom commands/shortcuts
 alias i3config="nano ~/.config/i3/config"
