@@ -20,11 +20,11 @@ bindkey "\e[5C" forward-word
 bindkey "\eOc" emacs-forward-word
 bindkey "\e[5D" backward-word
 bindkey "\eOd" emacs-backward-word
-bindkey "5C" forward-word
-bindkey "5D" backward-word
+#bindkey "5C" forward-word
+#bindkey "5D" backward-word
 bindkey "^H" backward-delete-word
-bindkey "5~" kill-word
-bindkey "6~" kill-line
+#bindkey "5~" kill-word
+#bindkey "6~" kill-line
 # for rxvt
 bindkey "\e[8~" end-of-line
 bindkey "\e[7~" beginning-of-line
