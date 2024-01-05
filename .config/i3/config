@@ -26,6 +26,7 @@ font pango: Noto Sans Regular 10
 
 # set the mod key to the winkey:
 set $mod Mod4
+set $mod2 Mod1
 
 #####################
 # workspace layout: #
@@ -119,6 +120,45 @@ bindsym $mod+Shift+8    move container to workspace  $ws8
 bindsym $mod+Shift+9    move container to workspace  $ws9
 bindsym $mod+Shift+0    move container to workspace  $ws10
 
+bindsym $mod+Shift+F1  move container to workspace $wsF1; workspace $wsF1
+bindsym $mod+Shift+F2  move container to workspace $wsF2; workspace $wsF2
+bindsym $mod+Shift+F3  move container to workspace $wsF3; workspace $wsF3
+bindsym $mod+Shift+F4  move container to workspace $wsF4; workspace $wsF4
+bindsym $mod+Shift+F5  move container to workspace $wsF5; workspace $wsF5
+bindsym $mod+Shift+F6  move container to workspace $wsF6; workspace $wsF6
+bindsym $mod+Shift+F7  move container to workspace $wsF7; workspace $wsF7
+bindsym $mod+Shift+F8  move container to workspace $wsF8; workspace $wsF8
+bindsym $mod+Shift+F9  move container to workspace $wsF9; workspace $wsF9
+bindsym $mod+Shift+F10 move container to workspace $wsF10; workspace $wsF10
+bindsym $mod+Shift+F11 move container to workspace $wsF11; workspace $wsF11
+bindsym $mod+Shift+F12 move container to workspace $wsF12; workspace $wsF12
+
+
+# Move focused container to workspace
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10
+
+bindsym $mod+Ctrl+F1 move container to workspace $wsF1
+bindsym $mod+Ctrl+F2 move container to workspace $wsF2
+bindsym $mod+Ctrl+F3 move container to workspace $wsF3
+bindsym $mod+Ctrl+F4 move container to workspace $wsF4
+bindsym $mod+Ctrl+F5 move container to workspace $wsF5
+bindsym $mod+Ctrl+F6 move container to workspace $wsF6
+bindsym $mod+Ctrl+F7 move container to workspace $wsF7
+bindsym $mod+Ctrl+F8 move container to workspace $wsF8
+bindsym $mod+Ctrl+F9 move container to workspace $wsF9
+bindsym $mod+Ctrl+F10 move container to workspace $wsF10
+bindsym $mod+Ctrl+F11 move container to workspace $wsF11
+bindsym $mod+Ctrl+F12 move container to workspace $wsF12
+
 # move focused container to workspace with numpad keys
 bindcode $mod+Shift+Mod2+87 	move container to workspace  $ws1
 bindcode $mod+Shift+Mod2+88 	move container to workspace  $ws2
@@ -143,30 +183,34 @@ bindcode $mod+Shift+80 	 move container to workspace  $ws8
 bindcode $mod+Shift+81 	 move container to workspace  $ws9
 bindcode $mod+Shift+90 	 move container to workspace  $ws10
 
+# multi screen shortcuts config
+bindsym $mod+$mod2+Left move workspace to output left
+bindsym $mod+$mod2+Right move workspace to output right
+
 # resize window (you can also use the mouse for that):
-#mode "resize" {
-# These bindings trigger as soon as you enter the resize mode
-# Pressing left will shrink the window's width.
-# Pressing right will grow the window's width.
-# Pressing up will shrink the window's height.
-# Pressing down will grow the window's height.
-#        bindsym j resize shrink width 10 px or 10 ppt
-#        bindsym k resize grow height 10 px or 10 ppt
-#        bindsym l resize shrink height 10 px or 10 ppt
-#        bindsym ntilde resize grow width 10 px or 10 ppt
+mode "resize" {
+	# These bindings trigger as soon as you enter the resize mode
+	# Pressing left will shrink the window's width.
+	# Pressing right will grow the window's width.
+	# Pressing up will shrink the window's height.
+	# Pressing down will grow the window's height.
+	bindsym j resize shrink width 10 px or 10 ppt
+	bindsym k resize grow height 10 px or 10 ppt
+	bindsym l resize shrink height 10 px or 10 ppt
+	bindsym ntilde resize grow width 10 px or 10 ppt
 
-# same bindings, but for the arrow keys
-#	bindsym Left resize shrink width 10 px or 10 ppt
-#        bindsym Down resize grow height 10 px or 10 ppt
-#        bindsym Up resize shrink height 10 px or 10 ppt
-#        bindsym Right resize grow width 10 px or 10 ppt
+	# same bindings, but for the arrow keys
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
 
-# back to normal: Enter or Escape
-#	bindsym Return mode "default"
-#        bindsym Escape mode "default"
-#}
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
 
-#bindsym $mod+r mode "resize"
+bindsym $mod+r mode "resize"
 
 ######################################
 # keybindings for different actions: #
@@ -177,6 +221,9 @@ bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
+
+# shortcut to launch webbrowser
+bindsym Ctrl+Mod1+w exec firefox
 
 # exit-menu
 bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
@@ -259,7 +306,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # open new empty workspace
-bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
+bindsym $mod+Shift+n exec --no-startup-id ~/.config/i3/scripts/empty_workspace
 
 # Multimedia Keys
 
@@ -323,14 +370,33 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+set $wsF1 "F1"
+set $wsF2 "F2"
+set $wsF3 "F3"
+set $wsF4 "F4"
+set $wsF5 "F5"
+set $wsF6 "F6"
+set $wsF7 "F7"
+set $wsF8 "F8"
+set $wsF9 "F9"
+set $wsF10 "F10"
+set $wsF11 "F11"
+set $wsF12 "F12"
+
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
-#workspace $ws1 output VGA-0
-#workspace $ws2 output VGA-0
-#workspace $ws3 output HDMI-0
-#workspace $ws4 output HDMI-0
-#workspace $ws5 output HDMI-0
+workspace $ws1 output DP-1-3
+workspace $ws2 output DP-1-3
+workspace $ws3 output DP-1-3
+workspace $ws4 output DP-1-3
+workspace $ws5 output DP-1-3
+workspace $ws6 output DP-1-3
+workspace $ws7 output eDP-1
+workspace $ws8 output eDP-1
+workspace $ws9 output eDP-1
+workspace $ws9 output eDP-1
+workspace $ws10 output eDP-1
 
 # bind program to workspace and focus to them on startup:
 #assign [class="Xfce4-terminal"] $ws1

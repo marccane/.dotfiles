@@ -74,7 +74,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source /opt/esp-idf/export.sh > /dev/null
+#source /opt/esp-idf/export.sh > /dev/null #slowed down startup too much
 
 # User configuration
 
