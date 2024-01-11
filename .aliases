@@ -185,7 +185,8 @@ alias notepad2=mousepad
 alias notepad3=gedit
 alias gimp2=digikam
 alias imageeditor=digikam
-alias imageviewer=geeqie
+#alias imageviewer=geeqie
+alias imageviewer=gthumb
 alias findduplicateimages=czkawka
 alias findduplicateimages2=findimagedupes
 alias removeduplicatefiles=rdfind
@@ -268,6 +269,7 @@ alias mountFatWritePermissionsAllUsers="sudo mount -o user,umask=0000"
 alias umountTemp="sudo umount /mnt/temp"
 alias utemp=umountTemp
 alias fakebeep="_alarm 1000 400"
+alias calendar="imageviewer ~/Pictures/calendar_2024.png 2> /dev/null & disown"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
