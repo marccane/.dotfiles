@@ -2,7 +2,7 @@
 # ~/.bash_profile
 #
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+#[[ -f ~/.bashrc ]] && . ~/.bashrc
 
 export PATH=$HOME/scripts/prio:$PATH
 export PATH=$PATH:$HOME/scripts
