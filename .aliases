@@ -270,6 +270,7 @@ alias umountTemp="sudo umount /mnt/temp"
 alias utemp=umountTemp
 alias fakebeep="_alarm 1000 400"
 alias calendar="imageviewer ~/Pictures/calendar_2024.png 2> /dev/null & disown"
+alias gits="git status"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"

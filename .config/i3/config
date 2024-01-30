@@ -66,6 +66,41 @@ gaps outer 1
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+##########################################
+# configuration for workspace behaviour: #
+##########################################
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+#set $ws1 "1:"
+#set $ws2 "2:"
+#set $ws3 "3:"
+#set $ws4 "4:"
+#set $ws5 "5:"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+set $wsF1 "F1"
+set $wsF2 "F2"
+set $wsF3 "F3"
+set $wsF4 "F4"
+set $wsF5 "F5"
+set $wsF6 "F6"
+set $wsF7 "F7"
+set $wsF8 "F8"
+set $wsF9 "F9"
+set $wsF10 "F10"
+set $wsF11 "F11"
+set $wsF12 "F12"
+
 # switch/iterate between workspaces
 #bindsym $mod+Tab workspace next
 #bindsym $mod+Shift+Tab workspace prev
@@ -83,6 +118,19 @@ bindsym $mod+7    workspace  $ws7
 bindsym $mod+8    workspace  $ws8
 bindsym $mod+9    workspace  $ws9
 bindsym $mod+0    workspace  $ws10
+
+bindsym $mod+F1    workspace  $wsF1
+bindsym $mod+F2    workspace  $wsF2
+bindsym $mod+F3    workspace  $wsF3
+bindsym $mod+F4    workspace  $wsF4
+bindsym $mod+F5    workspace  $wsF5
+bindsym $mod+F6    workspace  $wsF6
+bindsym $mod+F7    workspace  $wsF7
+bindsym $mod+F8    workspace  $wsF8
+bindsym $mod+F9    workspace  $wsF9
+bindsym $mod+F10    workspace  $wsF10
+bindsym $mod+F11    workspace  $wsF11
+bindsym $mod+F12    workspace  $wsF12
 
 # switch to workspace with numpad keys
 bindcode $mod+87 workspace 1
@@ -224,6 +272,11 @@ bindsym $mod+Shift+q kill
 
 # shortcut to launch webbrowser
 bindsym Ctrl+Mod1+w exec firefox
+bindsym XF86HomePage exec firefox
+
+bindsym XF86Mail exec i3-sensible-terminal
+bindsym XF86Explorer exec thunar
+bindsym XF86Calculator exec i3-sensible-terminal -e python
 
 # exit-menu
 bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
@@ -347,41 +400,6 @@ bindsym Print exec flameshot gui
 
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
-
-##########################################
-# configuration for workspace behaviour: #
-##########################################
-
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-#set $ws1 "1:"
-#set $ws2 "2:"
-#set $ws3 "3:"
-#set $ws4 "4:"
-#set $ws5 "5:"
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
-set $wsF1 "F1"
-set $wsF2 "F2"
-set $wsF3 "F3"
-set $wsF4 "F4"
-set $wsF5 "F5"
-set $wsF6 "F6"
-set $wsF7 "F7"
-set $wsF8 "F8"
-set $wsF9 "F9"
-set $wsF10 "F10"
-set $wsF11 "F11"
-set $wsF12 "F12"
 
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
