@@ -9,16 +9,8 @@ path() {
 	echo $PATH | sed 's/:/\n/g'
 }
 
-send3dsx() {
-	result=1
-	while [ $result -ne 0 ] ; do
-	        3dslink *3dsx
-		result=$?
-	done
-}
-
-brew() {
-	citra-qt *3dsx
+arduinotempSketchFolder(){
+	cd /tmp/arduino/sketches/*
 }
 
 localdevices(){
@@ -271,8 +263,11 @@ alias utemp=umountTemp
 alias fakebeep="_alarm 1000 400"
 alias calendar="imageviewer ~/Pictures/calendar_2024.png 2> /dev/null & disown"
 alias gits="git status"
+alias gitb="git branch | cat"
+alias gitc="git checkout"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
 alias startnm="sudo systemctl start NetworkManager && nm-applet & disown"
 alias startbt="sudo systemctl start bluetooth"
+alias startKvmDefaultNetwork="sudo virsh net-start default"

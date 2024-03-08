@@ -404,17 +404,17 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
-workspace $ws1 output DP-1-3
-workspace $ws2 output DP-1-3
-workspace $ws3 output DP-1-3
-workspace $ws4 output DP-1-3
-workspace $ws5 output DP-1-3
-workspace $ws6 output DP-1-3
-workspace $ws7 output eDP-1
-workspace $ws8 output eDP-1
-workspace $ws9 output eDP-1
-workspace $ws9 output eDP-1
-workspace $ws10 output eDP-1
+#workspace $ws1 output DP-1-3
+#workspace $ws2 output DP-1-3
+#workspace $ws3 output DP-1-3
+#workspace $ws4 output DP-1-3
+#workspace $ws5 output DP-1-3
+#workspace $ws6 output DP-1-3
+#workspace $ws7 output eDP-1
+#workspace $ws8 output eDP-1
+#workspace $ws9 output eDP-1
+#workspace $ws9 output eDP-1
+#workspace $ws10 output eDP-1
 
 # bind program to workspace and focus to them on startup:
 #assign [class="Xfce4-terminal"] $ws1
