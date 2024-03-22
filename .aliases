@@ -265,6 +265,7 @@ alias calendar="imageviewer ~/Pictures/calendar_2024.png 2> /dev/null & disown"
 alias gits="git status"
 alias gitb="git branch | cat"
 alias gitc="git checkout"
+alias gitadog="git log --all --decorate --oneline --graph" #CLI branch graph
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"

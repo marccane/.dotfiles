@@ -274,7 +274,8 @@ bindsym $mod+Shift+q kill
 bindsym Ctrl+Mod1+w exec firefox
 bindsym XF86HomePage exec firefox
 
-bindsym XF86Mail exec i3-sensible-terminal
+#bindsym XF86Mail exec i3-sensible-terminal
+bindsym XF86Mail exec gthumb /home/markus/Pictures/calendar_2024.png 2> /dev/null 
 bindsym XF86Explorer exec thunar
 bindsym XF86Calculator exec i3-sensible-terminal -e python
 
