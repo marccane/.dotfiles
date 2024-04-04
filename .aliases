@@ -9,6 +9,10 @@ lessbat() {
 	bat --color always $@ | less
 }
 
+ard() {
+	arduino-cli compile --fqbn arduino:avr:uno --upload --port /dev/ttyACM0 *.ino
+}
+
 path() {
 	echo $PATH | sed 's/:/\n/g'
 }
@@ -23,10 +27,6 @@ send3dsx() {
 
 brew() {
 	citra-qt *3dsx
-}
-
-localdevices(){
-	nmap -sn 192.168.1.1/24 | grep -o "[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]"
 }
 
 git() {
@@ -279,11 +279,13 @@ alias mountNtfsWritePermissionsAllUsers="sudo mount -o user,umask=0000"
 alias mountFatWritePermissionsAllUsers="sudo mount -o user,umask=0000"
 alias umountTemp="sudo umount /mnt/temp"
 alias utemp=umountTemp
+alias localdevices="nmap -sn 192.168.1.1/24 | grep -o '[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]'"
 alias fakebeep="_alarm 1000 400"
 alias gits="git status"
 alias gitb="git branch | cat"
 alias gitc="git checkout"
 alias gitadog="git log --all --decorate --oneline --graph" #CLI branch graph
+alias fixbrillo="sudo ddcutil detect"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
