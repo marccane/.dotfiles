@@ -5,6 +5,10 @@ realdir() {
         unset V948143791354
 }
 
+lessbat() {
+	bat --color always $@ | less
+}
+
 path() {
 	echo $PATH | sed 's/:/\n/g'
 }
