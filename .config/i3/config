@@ -402,6 +402,9 @@ bindsym Print exec flameshot gui
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 
+#Building/compiling claitec projects
+bindsym Ctrl+$mod2+3 exec bash -c "cd /home/markus/projects/TestDelsTags && ./buildRun.sh"
+
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
