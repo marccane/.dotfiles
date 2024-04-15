@@ -253,8 +253,6 @@ alias pacmanAddUnstableRepos="sudo sed -i 's/^#\(.*\(dkp-libs\|dkp-linux\|pkg\.d
 alias ip2geo=geoiplookup
 alias ip2geo2="ip2geotools -d dbipcity"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias fixdayz="sudo sysctl -w vm.max_map_count=1048576"
-alias dayzfix=fixdayz
 alias prettyjson="jq . "
 alias citraLog="cat ~/.local/share/citra-emu/log/citra_log.txt"
 alias citraLogDir=~/.local/share/citra-emu/log/
