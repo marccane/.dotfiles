@@ -159,6 +159,7 @@ alias rm="rm -I"
 alias objdump="objdump -M intel"
 alias chown="chown --preserve-root"
 alias pactree="pactree -c"
+alias file="file -L"
 #alias rm="safe-rm -I" #safe-rm adds itself to the path before the real rm path
 #alias cd=cd -P #not sure what this does
 
