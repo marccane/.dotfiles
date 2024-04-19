@@ -167,3 +167,6 @@ if which pyenv > /dev/null; then
 	command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
 fi
+
+# opam configuration
+[[ ! -r /home/markus/.opam/opam-init/init.zsh ]] || source /home/markus/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
