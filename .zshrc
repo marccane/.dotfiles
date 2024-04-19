@@ -151,6 +151,9 @@ compinit
 
 #PROMPT='%m:%1~ %n%#'
 
+if [[ -a ~/.profile ]]; then
+	source ~/.profile
+fi
 if [[ -a ~/.aliases ]]; then
 	source ~/.aliases
 fi
@@ -167,3 +170,4 @@ if which pyenv > /dev/null; then
 	command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
 fi
+
