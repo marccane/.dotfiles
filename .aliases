@@ -219,6 +219,14 @@ alias gitgui2=gittyup
 alias topgui=qps
 alias pdfreader=evince
 alias pdfreader2=okular
+alias rssreader=liferea
+alias webbrowser1=firefox
+alias webbrowser2=chromium
+alias webbrowser3=epiphany
+alias webbrowser4=midori
+alias webbrowser5=lynx
+
+
 
 #Custom commands/shortcuts
 alias i3config="nano ~/.config/i3/config"
@@ -239,8 +247,6 @@ alias pacmanAddUnstableRepos="sudo sed -i 's/^#\(.*\(dkp-libs\|dkp-linux\|pkg\.d
 alias ip2geo=geoiplookup
 alias ip2geo2="ip2geotools -d dbipcity"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias fixdayz="sudo sysctl -w vm.max_map_count=1048576"
-alias dayzfix=fixdayz
 alias prettyjson="jq . "
 alias citraLog="cat ~/.local/share/citra-emu/log/citra_log.txt"
 alias citraLogDir=~/.local/share/citra-emu/log/
@@ -273,6 +279,8 @@ alias gits="git status"
 alias gitb="git branch | cat"
 alias gitc="git checkout"
 alias gitadog="git log --all --decorate --oneline --graph" #CLI branch graph
+alias fixbrillo="sudo ddcutil detect"
+alias fixKvmNetwork="sudo virsh net-start default"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"

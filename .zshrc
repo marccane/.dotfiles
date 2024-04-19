@@ -151,6 +151,9 @@ compinit
 
 #PROMPT='%m:%1~ %n%#'
 
+if [[ -a ~/.profile ]]; then
+	source ~/.profile
+fi
 if [[ -a ~/.aliases ]]; then
 	source ~/.aliases
 fi
