@@ -233,7 +233,6 @@ alias webbrowser3=epiphany
 alias webbrowser4=chromium
 alias webbrowser5=lynx
 
-
 #Custom commands/shortcuts
 alias i3config="nano ~/.config/i3/config"
 alias myip="echo Public:;dig +short myip.opendns.com @resolver1.opendns.com;echo Local:;ip a|grep 'inet '|grep -v 127.0.0.1|tr -s ' '|cut -d' ' -f3|cut -d/ -f1"
@@ -286,6 +285,7 @@ alias gitc="git checkout"
 alias gitadog="git log --all --decorate --oneline --graph" #CLI branch graph
 alias fixbrillo="sudo ddcutil detect"
 alias fixKvmNetwork="sudo virsh net-start default"
+alias crashes="coredumpctl list"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
