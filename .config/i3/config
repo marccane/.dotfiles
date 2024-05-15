@@ -19,6 +19,7 @@ floating_modifier $mod
 #TERMINAL is defined in /etc/environment
 bindsym $mod+Return exec i3-sensible-terminal
 
+#App shortcuts
 bindsym Ctrl+Mod1+e exec thunar
 bindsym Ctrl+Mod1+w exec firefox
 
@@ -80,10 +81,9 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-#bindsym $mod+Shift+space floating toggle
-
-bindsym $mod+Shift+space floating enable, border normal 2
-bindsym $mod+t floating disable, border none
+bindsym $mod+Shift+space floating toggle
+#bindsym $mod+Shift+space floating enable, border normal 2
+#bindsym $mod+t floating disable, border none
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
