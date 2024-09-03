@@ -3,6 +3,9 @@
 export PATH=$PATH:$HOME/.scripts
 export PATH=$PATH:$HOME/go/bin
 
+#export PATH=$PATH:/opt/esp-idf/tools/idf.py
+#export IDF_PATH=/opt/esp-idf
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
