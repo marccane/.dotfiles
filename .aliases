@@ -282,12 +282,15 @@ alias utemp=umountTemp
 alias localdevices="nmap -sn 192.168.1.1/24 | grep -o '[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]'"
 alias fakebeep="_alarm 1000 400 >/dev/null"
 alias gits="git status"
+alias gitsc="git status --cached"
 alias gitb="git branch | cat"
 alias gitc="git checkout"
 alias gitadog="git log --all --decorate --oneline --graph" #CLI branch graph
 alias fixbrillo="sudo ddcutil detect"
 alias fixKvmNetwork="sudo virsh net-start default"
 alias crashes="coredumpctl list"
+alias retry="while [ $? -ne 0 ]; do eval $(history -p !!); done"
+alias stophdd="sudo udisksctl power-off -b /dev/sda" #sudo permission in /etc/sudoers allows to execute without passwd
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
