@@ -288,6 +288,7 @@ alias fixKvmNetwork="sudo virsh net-start default"
 alias codiFrancescOg="bat ~/dw1000_stuff/francescM/T10UWBv3.00.14/libraries/arduino-dw1000-master/src/DW1000Ranging.cpp"
 alias todocane=todoscane
 alias todoscane="grep -i "//ToDo" src lib -R"
+alias retry="while [ $? -ne 0 ]; do eval $(history -p !!); done"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
