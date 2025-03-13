@@ -127,6 +127,7 @@ color()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))
 #Search regular files that are executable: find -type f --executable
 #Aliases limitation: they don't work with $mod + d
 #Find's parameter for directory depth limit is -maxdepth X, not -depth X
+#Example of find with multiple file extensions find \( -iname \*.h -o -iname \*.cpp -o -iname \*.c \)
 
 #Warning: in bash functions cannot be oneliners, for compatibility make them 3 lines
 # wrap long lines using backslashes
