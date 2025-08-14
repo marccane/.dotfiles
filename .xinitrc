@@ -1,3 +1,2 @@
 i3
-sleep 5
-nitrogen --restore
+sleep 20 && nitrogen --restore
