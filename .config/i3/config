@@ -66,6 +66,9 @@ gaps outer 1
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+#mouse_warping none
+focus_follows_mouse no
+
 ##########################################
 # configuration for workspace behaviour: #
 ##########################################
