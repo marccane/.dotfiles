@@ -233,6 +233,7 @@ alias cleanCStyleLanguageComments=rcom
 alias cleanComments=rcom
 alias rss=liferea
 alias diagrames=yed
+alias passwordManager=buttercup
 
 #Custom commands/shortcuts
 alias i3config="nano ~/.config/i3/config"
