@@ -201,6 +201,7 @@ alias torrents=transmission-qt
 alias torrents2=deluge
 alias brainfuck=bfc
 alias compositor=picom
+alias mozart=picom
 alias processExplorer=qps
 alias settings=xfce4-settings-manager
 alias settings2=systemsettings
@@ -272,6 +273,7 @@ alias nanolines="nano -l"
 alias nanowrap="nano -S"
 #TODO: improve so doesn't ask for sudo password when bt is already initialized
 alias cascos="startbt && cascos.sh" #cascos.sh is a bash script wich does "bluetoothctl connect XX:XX:XX:XX:XX:XX"
+alias pinganillosCasa="startbt && pinganillosCasa.sh"
 alias cascosdisconnect="bluetoothctl disconnect"
 alias btdisconnect="bluetoothctl disconnect"
 alias networkUsage="watch -n1 ifconfig enp33s0"
@@ -294,6 +296,7 @@ alias fixKvmNetwork="sudo virsh net-start default"
 alias crashes="coredumpctl list"
 alias retry="while [ $? -ne 0 ]; do eval $(history -p !!); done"
 alias stophdd="sudo udisksctl power-off -b /dev/sda" #sudo permission in /etc/sudoers allows to execute without passwd
+alias hibernacioNormal="sudo cp -f /etc/systemd/sleep.conf.normal /etc/systemd/sleep.conf" #perquè no rebooteji després d'hibernar
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
