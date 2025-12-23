@@ -297,7 +297,7 @@ alias mountFatWritePermissionsAllUsers="sudo mount -o user,umask=0000"
 alias umountTemp="sudo umount /mnt/temp"
 alias utemp=umountTemp
 alias localdevices="nmap -sn 192.168.1.1/24 | grep -o '[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]'"
-alias fakebeep="_alarm 1000 400"
+alias fakebeep="_alarm 900 999" #900mhz sound during 999ms. If time is increased more it fails?
 alias calendar="imageviewer ~/Pictures/calendars/2024.png 2> /dev/null & disown"
 alias gits="git status"
 alias gitb="git branch | cat"
@@ -312,6 +312,7 @@ alias todocane=todoscane
 alias todoscane="grep -i "//ToDo" src lib -R"
 alias retry="while [ $? -ne 0 ]; do eval $(history -p !!); done" #no funciona???
 alias interficieEspProg="readlink -f /dev/serial/by-id/usb-FTDI_Dual_RS232-HS-if01-port0"
+alias llistarKvmNetworkClients="sudo virsh net-dhcp-leases default"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
