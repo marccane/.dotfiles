@@ -172,6 +172,7 @@ alias pactree="pactree -c"
 alias file="file -L"
 #alias rm="safe-rm -I" #safe-rm adds itself to the path before the real rm path
 #alias cd=cd -P #not sure what this does
+alias shred="shred -n1 --remove=wipe"
 
 #Alias/short names
 alias c=cat
@@ -293,6 +294,7 @@ alias androidFtp="ftp android@192.168.1.245 -p 2221"
 alias flatpakPackageSizes="flatpak list --columns=size,name|sort -g"
 alias mountNtfsWritePermissionsAllUsers="sudo mount -o user,umask=0000"
 alias mountFatWritePermissionsAllUsers="sudo mount -o user,umask=0000"
+alias mountExfatWritePermissionsAllUsers="sudo mount -o user,umask=0000"
 alias umountTemp="sudo umount /mnt/temp"
 alias utemp=umountTemp
 alias localdevices="nmap -sn 192.168.1.1/24 | grep -o '[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]\.[0-9]\?[0-9]\?[0-9]'"
@@ -312,6 +314,7 @@ alias todoscane="grep -i "//ToDo" src lib -R"
 alias retry="while [ $? -ne 0 ]; do eval $(history -p !!); done" #no funciona???
 alias interficieEspProg="readlink -f /dev/serial/by-id/usb-FTDI_Dual_RS232-HS-if01-port0"
 alias llistarKvmNetworkClients="sudo virsh net-dhcp-leases default"
+alias infections="libredefender infections -C"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
