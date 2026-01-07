@@ -287,7 +287,7 @@ alias gitUrl="git config --get remote.origin.url"
 alias nanolines="nano -l"
 alias nanowrap="nano -S"
 #Append this to the end of visudo to avoid asking for password: %wheel ALL=(root) NOPASSWD: /usr/bin/systemctl start bluetooth
-alias cascos="startbt && cascos.sh" #cascos.sh is a bash script which does "bluetoothctl connect XX:XX:XX:XX:XX:XX"
+alias cascos="cascos.sh" #cascos.sh is a bash script which does "bluetoothctl connect XX:XX:XX:XX:XX:XX". Startbt is not necessary anymore as i configured the bluetooth service to autostart
 alias btdisconnect="bluetoothctl disconnect"
 alias networkUsage="watch -n1 ifconfig enp33s0"
 alias androidFtp="ftp android@192.168.1.245 -p 2221"
@@ -320,5 +320,5 @@ alias vmsImagesFolder="cd /var/lib/libvirt/images"
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
 alias startnm="sudo systemctl start NetworkManager && nm-applet & disown"
-alias startbt="sudo systemctl start bluetooth"
+alias startbt="sudo systemctl start bluetooth" #Ja no cal pk s'autoinicia...
 alias startKvmDefaultNetwork="sudo virsh net-start default"
