@@ -315,6 +315,7 @@ alias retry="while [ $? -ne 0 ]; do eval $(history -p !!); done" #no funciona???
 alias interficieEspProg="readlink -f /dev/serial/by-id/usb-FTDI_Dual_RS232-HS-if01-port0"
 alias llistarKvmNetworkClients="sudo virsh net-dhcp-leases default"
 alias infections="libredefender infections -C"
+alias vmsImagesFolder="cd /var/lib/libvirt/images"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
