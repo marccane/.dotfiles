@@ -144,6 +144,8 @@ markus ALL=(root) NOPASSWD: /usr/bin/tshark
 %wheel ALL=(root) NOPASSWD: /usr/bin/systemctl start bluetooth
 #Per iniciar la xarxa virtual kvm perquè no donguin error les VM's
 %wheel ALL=(root) NOPASSWD: /usr/bin/virsh net-start default
+#Per el beagle datacenter sniffer
+%wheel ALL=(root) NOPASSWD: /home/markus/.bin/data-center-linux-x86_64-v7.02.000/bin/datacenter *
 
 #Testing
 #%wheel ALL=(root) NOPASSWD: /usr/bin/ls, /usr/bin/ls *

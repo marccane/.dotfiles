@@ -507,7 +507,7 @@ exec --no-startup-id sleep 4 && nitrogen --restore
 exec --no-startup-id xset s 480 dpms 600 600 600
 
 #autostart teams amb algo de delay perquè ja tingui internet i arranqui bé (s'ha de desactivar l'autostart des de la app)
-exec --no-startup-id teams
+#exec --no-startup-id teams
 
 # disable power saving (for example if using xscreensaver)
 #exec --no-startup-id xset -dpms
