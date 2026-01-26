@@ -494,14 +494,9 @@ exec --no-startup-id dex --autostart --environment i3
 # start conky:
 #exec_always --no-startup-id conky
 
-# start a script to setup displays
+# start a script to setup displays & set wallpaper
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
-exec --no-startup-id sleep 4 && ~/.screenlayout/current.sh
-
-# set wallpaper
-#Usem els meus wallpapers setejats amb nitrogen en comptes del default d'endevouros
-exec --no-startup-id sleep 10 && nitrogen --restore
-#exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+exec --no-startup-id sleep 4 && ~/.screenlayout/current.sh && sleep 5 && nitrogen --restore
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
