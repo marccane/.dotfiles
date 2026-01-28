@@ -22,7 +22,7 @@ brillo(){
 }
 
 brilloPantalles(){
-	sudo modprobe i2c-dev && sudo ddcutil -d 2 setvcp 0x10 $1 && sudo ddcutil -d 1 setvcp 0x10 $1
+	sudo modprobe i2c-dev && bash -c "sudo ddcutil -d 2 setvcp 0x10 $1 & sudo ddcutil -d 1 setvcp 0x10 $1 &"
 }
 
 git() {

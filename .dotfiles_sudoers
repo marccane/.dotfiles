@@ -148,7 +148,9 @@ markus ALL=(root) NOPASSWD: /usr/bin/tshark
 %wheel ALL=(root) NOPASSWD: /home/markus/.bin/data-center-linux-x86_64-v7.02.000/bin/datacenter
 #Per imprimir ZPL amb la zebra
 %wheel ALL=(root) NOPASSWD: /usr/bin/tee /dev/usb/lp0
-
+#Per canviar el brillo de les pantalles amb ddcutil
+%wheel ALL=(root) NOPASSWD: /usr/bin/modprobe i2c-dev
+%wheel ALL=(root) NOPASSWD: /usr/bin/ddcutil *
 
 #Testing
 #%wheel ALL=(root) NOPASSWD: /usr/bin/ls, /usr/bin/ls *
