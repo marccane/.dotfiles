@@ -21,6 +21,10 @@ brillo(){
 	brightnessctl s $1%
 }
 
+brilloPantalles(){
+	sudo modprobe i2c-dev && sudo ddcutil -d 2 setvcp 0x10 $1 && sudo ddcutil -d 1 setvcp 0x10 $1
+}
+
 git() {
     if [[ $1 == "clone" ]]; then
 	shift
@@ -278,8 +282,6 @@ alias citraLogDir=~/.local/share/citra-emu/log/
 alias citraDir=~/.local/share/citra-emu/
 alias reloadZsh="source ~/.zshrc"
 alias reload=reloadZsh
-alias brilloBenq="starti2c && sudo ddcutil -d 1 setvcp 0x10"
-alias brilloAcer="starti2c && sudo ddcutil -d 2 setvcp 0x10"
 alias cpProgress="rsync -ah --progress"
 alias stdinToClipboard="xclip -selection c"
 alias toclipboard="xclip -selection c"
