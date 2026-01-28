@@ -3,7 +3,7 @@
 35 14 * * * DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send -t 100000 'Recordatori!' 'FITXAR'
 40 14 * * * DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send -t 100000 'Recordatori!' 'FITXAR'
 25 9 * * 1 DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send -t 100000 'Recordatori!' 'ANGLES!'
-36 9 * * 1 DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send -t 100000 'Recordatori!' 'ANGLES!'
+30 9 * * 1 DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send -t 100000 'Recordatori!' 'ANGLES!'
 0 10 * * * /home/markus/.scripts/checkMaliciousScriptsClaitec.sh
 
 #Autoiniciar xarxa virtual per les VMs de qemu/kvm/libvirtman. Regla NOPASSWD al visudo!
