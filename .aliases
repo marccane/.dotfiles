@@ -65,9 +65,7 @@ function hex2string () {
 extract() {
   if [ -f $1 ] ; then
     case $1 in
-      *.tar.bz2)    tar xvjf $1    ;;
-      *.tar.gz)    tar xvzf $1    ;;
-      *.tar.xz)    tar xvf $1      ;;
+      *.tar.*)    tar xvf $1      ;;
       *.tar)        tar xvf $1     ;;
       *.tbz2)        tar xvjf $1    ;;
       *.tgz)        tar xvzf $1    ;;
@@ -89,9 +87,7 @@ extract() {
 contents() {
   if [ -f $1 ] ; then
     case $1 in
-      *.tar.bz2)    tar tvf $1    ;;
-      *.tar.gz)    tar tvf $1    ;;
-      *.tar.xz)    tar tvf $1      ;;
+      *.tar.*)    tar tvf $1      ;;
       *.tar)        tar tvf $1     ;;
       *.tbz2)        tar tvf $1    ;;
       *.tgz)        tar tvf $1    ;;
