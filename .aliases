@@ -69,6 +69,9 @@ function hex2string () {
 extract() {
   if [ -f $1 ] ; then
     case $1 in
+      *.a)         ar x $1    ;;
+#      *.deb)         ar x $1    ;;
+      *.deb)         dpkg-deb -c $1    ;;
       *.tar.bz2)    tar xvjf $1    ;;
       *.tar.gz)    tar xvzf $1    ;;
       *.tar.xz)    tar xvf $1      ;;
@@ -93,6 +96,9 @@ extract() {
 contents() {
   if [ -f $1 ] ; then
     case $1 in
+      *.a)         ar t $1    ;;
+#      *.deb)         ar t $1    ;;
+      *.deb)        dpkg-deb -X  $1    ;;
       *.tar.bz2)    tar tvf $1    ;;
       *.tar.gz)    tar tvf $1    ;;
       *.tar.xz)    tar tvf $1      ;;
