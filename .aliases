@@ -200,6 +200,7 @@ alias notepad3=gedit
 alias gimp2=digikam
 alias imageeditor=digikam
 alias imageviewer=geeqie
+alias imageviewer2="feh -r" #mode recursiu
 alias findduplicateimages=czkawka
 alias findduplicateimages2=findimagedupes
 alias removeduplicatefiles=rdfind
@@ -305,6 +306,7 @@ alias stophdd="sudo udisksctl power-off -b /dev/sda" #sudo permission in /etc/su
 alias hibernacioNormal="sudo cp -f /etc/systemd/sleep.conf.normal /etc/systemd/sleep.conf" #perquè no rebooteji després d'hibernar
 alias printGitRepoRemotes="find -maxdepth 5 -type d -name ".git" 2>/dev/null | grep -v "\.cache" | xargs -I{} bash -c 'cd {}; cd ..; echo; echo '{}'; git remote -v'"
 alias alaconfig="nano ~/.config/alacritty/alacritty.toml"
+alias secureRm="shred -ufv -n1 --remove=wipe"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
