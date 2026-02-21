@@ -5,6 +5,12 @@ realdir() {
         unset V948143791354
 }
 
+pkginfo() {
+	yay -Qi $1
+	echo "#########################"
+	pactree -r $1
+}
+
 lessbat() {
 	bat --color always $@ | less
 }
@@ -268,8 +274,8 @@ alias citraLogDir=~/.local/share/citra-emu/log/
 alias citraDir=~/.local/share/citra-emu/
 alias reloadZsh="source ~/.zshrc"
 alias reload=reloadZsh
-alias brilloBenq="starti2c && sudo ddcutil --bus 5 setvcp 0x10 > /dev/null"
-alias brilloAcer="starti2c && sudo ddcutil --bus 9 setvcp 0x10 > /dev/null"
+alias brilloBenq="starti2c && sudo ddcutil --bus 6 setvcp 0x10 > /dev/null"
+alias brilloAcer="starti2c && sudo ddcutil --bus 10 setvcp 0x10 > /dev/null"
 alias bb=brilloBenq
 alias ba=brilloAcer
 alias cpProgress="rsync -ah --progress"
@@ -307,6 +313,7 @@ alias hibernacioNormal="sudo cp -f /etc/systemd/sleep.conf.normal /etc/systemd/s
 alias printGitRepoRemotes="find -maxdepth 5 -type d -name ".git" 2>/dev/null | grep -v "\.cache" | xargs -I{} bash -c 'cd {}; cd ..; echo; echo '{}'; git remote -v'"
 alias alaconfig="nano ~/.config/alacritty/alacritty.toml"
 alias secureRm="shred -ufv -n1 --remove=wipe"
+alias pacmanConfig="sudo nano /etc/pacman.conf"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
