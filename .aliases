@@ -199,8 +199,7 @@ alias homebrew=brew
 alias sl=ls
 alias inputdebug=xev
 alias keyboardtest=xev
-alias freejsfirefox=icecat
-alias notepad=leafpad
+alias notepad=xed
 alias notepad2=mousepad
 alias notepad3=gedit
 alias gimp2=digikam
@@ -240,8 +239,8 @@ alias shshSaver=blobsaver
 alias gitgui=gittyup
 alias gitgui2=gitk
 alias topgui=qps
-alias pdfreader=okular
-alias pdfreader2=evince
+alias pdfreader=evince
+alias pdfreader2=okular
 alias rssreader=liferea
 alias webbrowser=firefox
 alias webbrowser2=midori
@@ -314,6 +313,8 @@ alias printGitRepoRemotes="find -maxdepth 5 -type d -name ".git" 2>/dev/null | g
 alias alaconfig="nano ~/.config/alacritty/alacritty.toml"
 alias secureRm="shred -ufv -n1 --remove=wipe"
 alias pacmanConfig="sudo nano /etc/pacman.conf"
+alias yayConfig="nano ~/.config/yay/config.json"
+alias alacrittyConfig="nano .config/alacritty/alacritty.toml"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"

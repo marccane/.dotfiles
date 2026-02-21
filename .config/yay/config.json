@@ -1,6 +1,6 @@
 {
 	"aururl": "https://aur.archlinux.org",
-	"aurrpcurl": "",
+	"aurrpcurl": "https://aur.archlinux.org/rpc?",
 	"buildDir": "/home/markus/.cache/yay",
 	"editor": "",
 	"editorflags": "",
@@ -20,7 +20,7 @@
 	"sortby": "votes",
 	"searchby": "name-desc",
 	"gitflags": "",
-	"removemake": "ask",
+	"removemake": "yes",
 	"sudobin": "sudo",
 	"sudoflags": "",
 	"version": "12.5.7",
