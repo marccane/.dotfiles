@@ -251,6 +251,7 @@ alias cleanComments=rcom
 alias diagrames=yed
 alias passwordManager=buttercup
 alias terminalGros=gnome-terminal
+alias cputemperature=sensors
 
 #Custom commands/shortcuts
 alias i3config="nano ~/.config/i3/config"
@@ -304,7 +305,6 @@ alias gitd="git diff"
 alias gitdc="git diff --cached"
 alias gitadog="git log --all --decorate --oneline --graph" #CLI branch graph
 alias fixbrillo="sudo ddcutil detect"
-alias fixKvmNetwork="sudo virsh net-start default"
 alias codiFrancescOg="bat ~/dw1000_stuff/francescM/T10UWBv3.00.14/libraries/arduino-dw1000-master/src/DW1000Ranging.cpp"
 alias todocane=todoscane
 alias todoscane="grep -i "//ToDo" src lib -R"
@@ -318,4 +318,5 @@ alias vmsImagesFolder="cd /var/lib/libvirt/images"
 alias starti2c="sudo modprobe i2c-dev"
 alias startnm="sudo systemctl start NetworkManager && nm-applet & disown"
 alias startbt="sudo systemctl start bluetooth" #Ja no cal pk s'autoinicia...
-alias startKvmDefaultNetwork="sudo virsh net-start default"
+alias fixKvmNetwork="sudo virsh net-start default" #Ja no cal pk s'autoinicia...
+alias startKvmDefaultNetwork="sudo virsh net-start default" #Ja no cal pk s'autoinicia...

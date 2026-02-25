@@ -151,6 +151,8 @@ markus ALL=(root) NOPASSWD: /usr/bin/tshark
 #Per canviar el brillo de les pantalles amb ddcutil
 %wheel ALL=(root) NOPASSWD: /usr/bin/modprobe i2c-dev
 %wheel ALL=(root) NOPASSWD: /usr/bin/ddcutil *
+#dmesg
+%wheel ALL=(root) NOPASSWD: /usr/bin/dmesg -kw
 
 #Testing
 #%wheel ALL=(root) NOPASSWD: /usr/bin/ls, /usr/bin/ls *

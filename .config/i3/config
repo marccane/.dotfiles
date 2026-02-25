@@ -281,7 +281,7 @@ bindsym XF86HomePage exec firefox
 #bindsym XF86Mail exec gthumb /home/markus/Pictures/calendars/2024.png 2> /dev/null
 bindsym XF86Mail exec okular /home/markus/Pictures/calendars/CALENDARI\ 2025.pdf 2> /dev/null
 bindsym XF86Explorer exec thunar
-bindsym XF86Calculator exec i3-sensible-terminal -e python
+bindsym XF86Calculator exec i3-sensible-terminal -e qalc
 
 # exit-menu
 bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
@@ -402,6 +402,7 @@ bindsym $mod+w exec /usr/bin/firefox
 bindsym $mod+n exec /usr/bin/thunar
 #bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 bindsym Print exec flameshot gui
+bindsym shift+Print exec flameshot gui --path ~/Dropbox/screenshots
 
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
