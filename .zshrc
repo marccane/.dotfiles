@@ -134,9 +134,12 @@ if [[ -a ~/.aliases_private ]]; then
 	source ~/.aliases_private
 fi
 
-if which neofetch > /dev/null; then
-	neofetch
+if command -v fastfetch &>/dev/null; then
+    fastfetch
+elif command -v neofetch &>/dev/null; then
+    neofetch
 fi
+
 if which pyenv > /dev/null; then
 	PATH=$(pyenv root)/shims:$PATH
 	export PYENV_ROOT="$HOME/.pyenv"
