@@ -22,6 +22,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 #App shortcuts
 bindsym Ctrl+Mod1+e exec thunar
 bindsym Ctrl+Mod1+w exec firefox
+bindsym XF86Calculator exec i3-sensible-terminal -e qalc
 
 # Window kill command
 bindsym $mod+Shift+q kill
