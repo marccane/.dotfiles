@@ -313,6 +313,7 @@ alias interficieEspProg="readlink -f /dev/serial/by-id/usb-FTDI_Dual_RS232-HS-if
 alias llistarKvmNetworkClients="sudo virsh net-dhcp-leases default"
 alias infections="libredefender infections -C"
 alias vmsImagesFolder="cd /var/lib/libvirt/images"
+alias pes="pyenv shell 3.10.14 && echo pyenv shell setejat a 3.10.14"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
