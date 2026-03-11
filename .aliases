@@ -320,6 +320,7 @@ alias dfdc="dotfiles diff --cached"
 alias dfa="dotfiles add"
 alias dfc="dotfiles commit"
 alias dfp="dotfiles push"
+pdf() { evince "$@" > /dev/null 2>&1 & disown; }
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
