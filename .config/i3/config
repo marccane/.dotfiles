@@ -480,17 +480,11 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 exec --no-startup-id dex --autostart --environment i3
 
-# start welcome app
-#exec --no-startup-id sh /usr/share/endeavouros/scripts/welcome --startdelay=3 
-
 # num lock activated
 #exec --no-startup-id numlockx on
 
 # configure multiple keyboard layouts and hotkey to switch (Alt+CAPSLOCK in this example)
 #exec --no-startup-id setxkbmap -layout 'us,sk' -variant altgr-intl,qwerty -option 'grp:alt_caps_toggle'
-
-# start conky:
-#exec_always --no-startup-id conky
 
 # start a script to setup displays & set wallpaper
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
@@ -499,16 +493,12 @@ exec --no-startup-id sleep 3 && ~/.screenlayout/current.sh && sleep 2 && nitroge
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
 
-#autostart teams amb algo de delay perquè ja tingui internet i arranqui bé (s'ha de desactivar l'autostart des de la app)
-#exec --no-startup-id teams
-
 # disable power saving (for example if using xscreensaver)
 #exec --no-startup-id xset -dpms
 
 # use xautolock to use autosuspend rules for mobile devices
 # https://wiki.archlinux.org/title/Session_lock#xautolock
-#exec --no-startup-id xautolock -time 60 -locker "systemctl suspend"
-
+exec --no-startup-id xautolock -time 1 -locker "i3lock -detectsleep"
 
 # xscreensaver
 # https://www.jwz.org/xscreensaver
@@ -516,23 +506,14 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 
 # Desktop notifications
 # dunst config used ~/.config/dunst/dunstrc
-# set alternative config if needed:
-#exec --no-startup-id /usr/bin/dunst --config ~/.config/dunst/dunstrc
-# may yneed to run dbus-launch explicitly: 
-#exec --no-startup-id dbus-launch /usr/bin/dunst
 exec --no-startup-id /usr/bin/dunst
-# alternative if you installed aside with XFCE4:
-# exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
 # autotiling script
 # https://github.com/nwg-piotr/autotiling
 # `yay -S autotiling ;) (it is in AUR)
 #exec_always --no-startup-id autotiling
 
-# Autostart apps as you like
-#exec --no-startup-id sleep 2 && xfce4-terminal
-#exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
-#exec --no-startup-id sleep 3 && thunar
+exec --no-startup-id sleep 3 && ~/scripts/firefox-extension-reminder.sh
 
 ###############
 # system tray #
