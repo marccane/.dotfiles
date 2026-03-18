@@ -321,7 +321,7 @@ alias dfa="dotfiles add"
 alias dfc="dotfiles commit"
 alias dfp="dotfiles push"
 pdf() { evince "$@" > /dev/null 2>&1 & disown; }
-alias qmreset="py ~/qorvo_QM35825DK_devkit/qm35-sdk/Samples/Python/UWB-Qorvo-Tools/scripts/device/reset_device/reset_device.py -p /dev/serial/by-id/usb-Qorvo_Inc._Raspberry_Pi_Composite_Gadget-if00"
+alias qmreset="pes && py ~/qorvo_QM35825DK_devkit/qm35-sdk/Samples/Python/UWB-Qorvo-Tools/scripts/device/reset_device/reset_device.py -p /dev/serial/by-id/usb-Qorvo_Inc._Raspberry_Pi_Composite_Gadget-if00"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
