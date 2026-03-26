@@ -183,3 +183,5 @@ export PATH="$PATH:/home/markus/.local/bin"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)" #aixo delayeja l'startup del terminal pero es lo que hay
+
+export UQT_PORT="/dev/serial/by-id/usb-Qorvo_Inc._Raspberry_Pi_Composite_Gadget-if00"

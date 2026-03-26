@@ -317,7 +317,6 @@ alias interficieEspProg="readlink -f /dev/serial/by-id/usb-FTDI_Dual_RS232-HS-if
 alias llistarKvmNetworkClients="sudo virsh net-dhcp-leases default"
 alias infections="libredefender infections -C"
 alias vmsImagesFolder="cd /var/lib/libvirt/images"
-alias pes="pyenv shell 3.10.14 && echo pyenv shell setejat a 3.10.14"
 alias dfs="dotfiles status"
 alias dfd="dotfiles diff"
 alias dfdc="dotfiles diff --cached"
@@ -325,7 +324,7 @@ alias dfa="dotfiles add"
 alias dfc="dotfiles commit"
 alias dfp="dotfiles push"
 pdf() { evince "$@" > /dev/null 2>&1 & disown; }
-alias qmreset="pes && py ~/qorvo_QM35825DK_devkit/qm35-sdk/Samples/Python/UWB-Qorvo-Tools/scripts/device/reset_device/reset_device.py -p /dev/serial/by-id/usb-Qorvo_Inc._Raspberry_Pi_Composite_Gadget-if00"
+alias venv_qm35="pyenv shell 3.10.14 && source ~/qorvo_QM35825DK_devkit/qm35-sdk/Samples/Python/UWB-Qorvo-Tools/.venv/bin/activate"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
