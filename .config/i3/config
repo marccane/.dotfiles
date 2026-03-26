@@ -184,7 +184,6 @@ bindsym $mod+Shift+F10 move container to workspace $wsF10; workspace $wsF10
 bindsym $mod+Shift+F11 move container to workspace $wsF11; workspace $wsF11
 bindsym $mod+Shift+F12 move container to workspace $wsF12; workspace $wsF12
 
-
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
 bindsym $mod+Ctrl+2 move container to workspace $ws2
@@ -237,6 +236,8 @@ bindcode $mod+Shift+90 	 move container to workspace  $ws10
 # multi screen shortcuts config
 bindsym $mod+$mod2+Left move workspace to output left
 bindsym $mod+$mod2+Right move workspace to output right
+bindsym $mod+$mod2+Up move workspace to output up
+bindsym $mod+$mod2+Down move workspace to output down
 
 # resize window (you can also use the mouse for that):
 mode "resize" {
@@ -652,23 +653,14 @@ strip_workspace_numbers yes
 #####################################
 
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
-
 bindsym $mod+d exec rofi -modi drun -show drun \
 		-config ~/.config/rofi/rofidmenu.rasi
 
-#bindsym F9 exec rofi -modi drun -show drun \
-#		-config ~/.config/rofi/rofidmenu.rasi
-
 ## rofi bindings for window menu ($mod+t /F10 optional disabled)
-
 bindsym $mod+t exec rofi -show window \
 		-config ~/.config/rofi/rofidmenu.rasi
 
-#bindsym F10 exec rofi -show window \
-#		-config ~/.config/rofi/rofidmenu.rasi
-
 ## rofi bindings to manage clipboard (install rofi-greenclip from the AUR)
-
 #exec --no-startup-id greenclip daemon>/dev/null
 #bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
 #		-config ~/.config/rofi/rofidmenu.rasi
