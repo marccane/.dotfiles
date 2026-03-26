@@ -48,7 +48,7 @@ workspace_layout default
 ##############################
 
 #border indicator on windows:
-new_window pixel 1
+#new_window pixel 1 #tret perquè overrideja/solapa el default_border setting
 
 # thin borders
 # hide_edge_borders both
@@ -59,6 +59,7 @@ gaps outer 1
 
 # show window title bars (not officially supported with i3gaps)
 #default_border normal
+default_border pixel 3
 
 # window title alignment
 #title_align center
@@ -575,13 +576,18 @@ set $darkgrey		#383c4a
 set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
+set $electricblue	#0088FF
+set $neongreen		#00FF88
+set $hotpink		#FF0088
+set $brightyellow	#FFD700
+set $lightpink		#FF5FF0
 
-# define colors for windows:
-#class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
-client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
-client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
-client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+# Window colors
+# class                 border    backgr.   text      indicator  child_border
+client.focused          $neongreen $neongreen #FFFFFF #FF9900	 $neongreen
+client.focused_inactive #333333   #222222   #888888   #484848    #333333
+client.unfocused        #222222   #1A1A1A   #555555   #292929    #222222
+client.urgent           #FF0000   #900000   #FFFFFF   #900000    #900000
 
 ############################################
 # bar settings (input comes from i3blocks) #
