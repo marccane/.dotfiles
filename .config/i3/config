@@ -272,6 +272,8 @@ bindsym $mod+r mode "resize"
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
 
+bindsym Ctrl+Mod1+e exec thunar
+
 # kill focused window
 bindsym $mod+Shift+q kill
 

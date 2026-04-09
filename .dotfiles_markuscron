@@ -1,4 +1,4 @@
-40 14 * * * DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send -t 100000 'Recordatori!' 'FITXAR'
+0 14 * * * DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send -t 100000 'Recordatori!' 'FITXAR'
 25 9 * * 1 DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send -t 100000 'Recordatori!' 'ANGLES!'
 30 9 * * 1 DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send -t 100000 'Recordatori!' 'ANGLES!'
 0 10 * * * /home/markus/.scripts/checkMaliciousScriptsClaitec.sh
@@ -7,3 +7,4 @@
 #Aixo ho fem al i3config! Molt més reliable, tx klanc
 #@reboot sleep 25 && DISPLAY=:0 nitrogen --restore || DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send "Ha fallat el setup dels fons de pantalla"
 0 1  * * 0-5 RCLCRON_RCLINDEX= RECOLL_CONFDIR="/home/markus/.recoll" recollindex
+0 19 * * * /usr/bin/bluetoothctl disconnect
