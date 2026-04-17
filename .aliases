@@ -25,8 +25,8 @@ brilloPantalles(){
 	sudo modprobe i2c-dev && bash -c "sudo ddcutil -d 2 setvcp 0x10 $1 & sudo ddcutil -d 1 setvcp 0x10 $1 &"
 }
 
-brilloPantallesQuickClaitec2(){
-        sudo modprobe i2c-dev && bash -c "sudo ddcutil -b 4 setvcp 0x10 $1 & sudo ddcutil -b 16 setvcp 0x10 $1 &"
+brilloPantallesClaitec2(){
+        sudo modprobe i2c-dev && bash -c "sudo ddcutil -b 15 setvcp 0x10 $1 & sudo ddcutil -b 16 setvcp 0x10 $1 &"
 }
 
 git() {
