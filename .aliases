@@ -251,7 +251,7 @@ alias webbrowser5=lynx
 
 #Custom commands/shortcuts
 alias i3config="nano ~/.config/i3/config"
-alias myip="echo Public:;dig +short myip.opendns.com @resolver1.opendns.com;echo Local:;ip a|grep 'inet '|grep -v 127.0.0.1|tr -s ' '|cut -d' ' -f3|cut -d/ -f1"
+alias myip="echo Public:;curl https://ipinfo.io/ip;echo;echo Local:;ip a|grep 'inet '|grep -v 127.0.0.1|tr -s ' '|cut -d' ' -f3|cut -d/ -f1"
 alias normalUsers="cat /etc/passwd | grep -vE 'nologin|false' | cut -d: -f1,5 --output-delimiter=' -> '"
 alias livecat="tail -f"
 alias liveless="less +F"
