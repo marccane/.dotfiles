@@ -91,6 +91,17 @@ EOF
     fi
 }
 
+ocrEnglish() {
+    local input="$1"
+    local output="${input%.*}"
+    if [[ -f "${output}.txt" ]]; then
+        echo "Output file '${output}.txt' already exists. Overwrite? [y/N] "
+        read -r answer
+        [[ "$answer" =~ ^[Yy]$ ]] || return 1
+    fi
+    tesseract "$input" "$output" -l eng
+}
+
 git() {
     if [[ $1 == "clone" ]]; then
 	shift

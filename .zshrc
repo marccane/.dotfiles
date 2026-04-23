@@ -133,6 +133,7 @@ fi
 if [[ -a ~/.aliases_private ]]; then
 	source ~/.aliases_private
 fi
+[[ -f ~/.zshrc_secrets ]] && source ~/.zshrc_secrets
 
 if command -v fastfetch &>/dev/null; then
     fastfetch
