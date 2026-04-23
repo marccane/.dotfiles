@@ -163,6 +163,7 @@ fi
 if [[ -a ~/.aliases_private ]]; then
 	source ~/.aliases_private
 fi
+[[ -f ~/.zshrc_secrets ]] && source ~/.zshrc_secrets
 
 #if which neofetch > /dev/null; then
 #	neofetch

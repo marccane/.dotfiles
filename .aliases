@@ -29,6 +29,17 @@ brilloPantallesClaitec2(){
         sudo modprobe i2c-dev && bash -c "sudo ddcutil -b 15 setvcp 0x10 $1 & sudo ddcutil -b 16 setvcp 0x10 $1 &"
 }
 
+ocrEnglish() {
+    local input="$1"
+    local output="${input%.*}"
+    if [[ -f "${output}.txt" ]]; then
+        echo "Output file '${output}.txt' already exists. Overwrite? [y/N] "
+        read -r answer
+        [[ "$answer" =~ ^[Yy]$ ]] || return 1
+    fi
+    tesseract "$input" "$output" -l eng
+}
+
 git() {
     if [[ $1 == "clone" ]]; then
 	shift
