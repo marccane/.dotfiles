@@ -643,3 +643,8 @@ live_config_reload = true
 #"window.dynamic_title" = true
 #"window.opacity" = 0.8
 working_directory = "None"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
