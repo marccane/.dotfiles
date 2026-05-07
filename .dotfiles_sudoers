@@ -156,3 +156,8 @@ markus ALL=(root) NOPASSWD: /usr/bin/tshark
 
 #Testing
 #%wheel ALL=(root) NOPASSWD: /usr/bin/ls, /usr/bin/ls *
+
+#Coses pen claudi
+#markus ALL=(root) NOPASSWD: /usr/bin/tshark *
+#markus ALL=(root) NOPASSWD: /usr/bin/modprobe *
+#markus ALL=(root) NOPASSWD: /usr/bin/ls *
