@@ -142,24 +142,21 @@ function hex2string () {
 extract() {
   if [ -f $1 ] ; then
     case $1 in
-      *.a)         ar x $1    ;;
-#      *.deb)         ar x $1    ;;
-      *.deb)         dpkg-deb -X $1 .   ;;
-      *.tar.bz2)    tar xvjf $1    ;;
-      *.tar.gz)    tar xvzf $1    ;;
-      *.tar.xz)    tar xvf $1      ;;
-      *.tar)        tar xvf $1     ;;
-      *.tbz2)        tar xvjf $1    ;;
-      *.tgz)        tar xvzf $1    ;;
-      *.bz2)        bunzip2 $1     ;;
-      *.rar)        unrar x $1     ;;
-      *.gz)        gunzip $1      ;;
-      *.zip)        unzip $1       ;;
-      *.jar)        unzip $1       ;;
-      *.Z)        uncompress $1  ;;
-      *.7z)        7z x $1        ;;
-      *.cab)        cabextract $1        ;;
-      *)        echo "don't know how to extract '$1'..." ;;
+      *.a)         ar x $1              ;;
+      *.deb)       dpkg-deb -X $1 .     ;;
+      *.tar.*)     tar xvf $1           ;;
+      *.tar)       tar xvf $1           ;;
+      *.tbz2)      tar xvjf $1          ;;
+      *.tgz)       tar xvzf $1          ;;
+      *.bz2)       bunzip2 $1           ;;
+      *.rar)       unrar x $1           ;;
+      *.gz)        gunzip $1            ;;
+      *.zip)       unzip $1             ;;
+      *.jar)       unzip $1             ;;
+      *.Z)         uncompress $1        ;;
+      *.7z)        7z x $1              ;;
+      *.cab)       cabextract $1        ;;
+      *)           echo "don't know how to extract '$1'..." ;;
     esac
   else
     echo "'$1' is not a valid file!"
@@ -169,22 +166,18 @@ extract() {
 contents() {
   if [ -f $1 ] ; then
     case $1 in
-      *.a)         ar t $1    ;;
-#      *.deb)         ar t $1    ;;
-      *.deb)        dpkg-deb -c $1    ;;
-      *.tar.bz2)    tar tvf $1    ;;
-      *.tar.gz)    tar tvf $1    ;;
-      *.tar.xz)    tar tvf $1      ;;
-      *.tar)        tar tvf $1     ;;
-      *.tbz2)        tar tvf $1    ;;
-      *.tgz)        tar tvf $1    ;;
-#      *.bz2)        bunzip2 ??? $1     ;;
-      *.rar)        unrar v $1     ;;
-      *.zip)        unzip -l $1       ;;
-      *.jar)        unzip -l $1       ;;
-      *.7z)        7z l $1        ;;
-      *.cab)        cabextract -l $1        ;;
-      *)        echo "don't know how to list '$1'..." ;;
+      *.a)         ar t $1              ;;
+      *.deb)       dpkg-deb -c $1       ;;
+      *.tar.*)     tar tvf $1           ;;
+      *.tar)       tar tvf $1           ;;
+      *.tbz2)      tar tvf $1           ;;
+      *.tgz)       tar tvf $1           ;;
+      *.rar)       unrar v $1           ;;
+      *.zip)       unzip -l $1          ;;
+      *.jar)       unzip -l $1          ;;
+      *.7z)        7z l $1              ;;
+      *.cab)       cabextract -l $1     ;;
+      *)           echo "don't know how to list '$1'..." ;;
     esac
   else
     echo "'$1' is not a valid file!"
