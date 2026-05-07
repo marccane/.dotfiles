@@ -319,6 +319,8 @@ alias secureRm="shred -ufv -n1 --remove=wipe"
 alias pacmanConfig="sudo nano /etc/pacman.conf"
 alias yayConfig="nano ~/.config/yay/config.json"
 alias alacrittyConfig="nano .config/alacritty/alacritty.toml"
+alias gigawin="ssh gigabyte_windows"
+alias citra=azahar
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
