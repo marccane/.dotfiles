@@ -35,6 +35,62 @@ brew() {
 	citra-qt *3dsx
 }
 
+claudeSessions() {
+    find ~/.claude/projects/ -name "*.jsonl" -printf "%T@ %Tc %p\n" | sort -rn | awk '{$1=""; print NR". "$0}'
+}
+
+claudeResume() {
+    local index=$1
+    local line=$(find ~/.claude/projects/ -name "*.jsonl" -printf "%T@ %p\n" | sort -rn | sed -n "${index}p")
+    local filepath="${line##* }"
+
+    if [[ -z "$filepath" ]]; then
+        echo "No session found at index $index"
+        return 1
+    fi
+
+    local uuid=$(basename "$filepath" .jsonl)
+    local encoded=$(basename "$(dirname "$filepath")")
+
+    local project_dir=$(python3 - "$encoded" <<'EOF'
+import os, sys
+
+def find_path(encoded):
+    parts = encoded.lstrip('-').split('-')
+
+    def reconstruct(parts, current_path):
+        if not parts:
+            return current_path
+        try:
+            entries = [e for e in os.listdir(current_path) if os.path.isdir(os.path.join(current_path, e))]
+        except (PermissionError, FileNotFoundError):
+            return None
+        for entry in sorted(entries):
+            entry_parts = entry.replace('_', '-').split('-')
+            n = len(entry_parts)
+            if parts[:n] == entry_parts:
+                result = reconstruct(parts[n:], os.path.join(current_path, entry))
+                if result is not None:
+                    return result
+        return None
+
+    return reconstruct(parts, '/')
+
+print(find_path(sys.argv[1]) or "")
+EOF
+)
+
+    echo "Session : $uuid"
+    echo "Project : $project_dir"
+
+    if [[ -n "$project_dir" && -d "$project_dir" ]]; then
+        cd "$project_dir" && claude --resume "$uuid"
+    else
+        echo "Error: could not resolve project directory for: $encoded"
+        return 1
+    fi
+}
+
 git() {
     if [[ $1 == "clone" ]]; then
 	shift
