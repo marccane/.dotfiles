@@ -3,7 +3,7 @@ set $mod Mod4
 #Alt key
 set $mod2 Mod1
 
-new_window pixel 1
+new_window pixel 3
 new_float normal
 
 hide_edge_borders none
@@ -322,11 +322,13 @@ exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
 #bar { status_command i3status }
 
 # Theme colors
-client.focused #b0c4bb #2f2f38 #b0c4bb #81a2be #81a2be
-client.focused_inactive #b0c4bb #2f2f38 #b0c4bb #688486 #688486
-client.unfocused #b0c4bb #2f2f38 #b0c4bb #688486 #688486
-client.urgent #b0c4bb #2f2f38 #b0c4bb #688486 #688486
-client.placeholder #b0c4bb #2f2f38 #b0c4bb #688486 #688486
+set $neongreen #00FF88
+# class                 border      backgr.   text      indicator   child_border
+client.focused          $neongreen  $neongreen #FFFFFF   $neongreen  $neongreen
+client.focused_inactive #333333     #222222   #888888   #484848     #333333
+client.unfocused        #222222     #1A1A1A   #555555   #292929     #222222
+client.urgent           #FF0000     #900000   #FFFFFF   #900000     #900000
+client.placeholder      #b0c4bb    #2f2f38   #b0c4bb   #688486     #688486
 
 client.background #2f2f38
 
