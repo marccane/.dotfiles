@@ -35,6 +35,17 @@ brew() {
 	citra-qt *3dsx
 }
 
+ocrCatala() {
+    local input="$1"
+    local output="${input%.*}"
+    if [[ -f "${output}.txt" ]]; then
+        echo "Output file '${output}.txt' already exists. Overwrite? [y/N] "
+        read -r answer
+        [[ "$answer" =~ ^[Yy]$ ]] || return 1
+    fi
+    tesseract "$input" "$output" -l cat
+}
+
 claudeSessions() {
     find ~/.claude/projects/ -name "*.jsonl" -printf "%T@ %Tc %p\n" | sort -rn | awk '{$1=""; print NR". "$0}'
 }
