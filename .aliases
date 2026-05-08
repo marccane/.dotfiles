@@ -352,7 +352,7 @@ alias editPacmanConfigGUI="sudo leafpad /etc/pacman.conf"
 alias pacmanRemoveUnstableRepos="sudo sed -i 's/^\([^#].*\(dkp-libs\|dkp-linux\|pkg\.devkitpro\).*\)$/#\1/' /etc/pacman.conf"
 alias pacmanAddUnstableRepos="sudo sed -i 's/^#\(.*\(dkp-libs\|dkp-linux\|pkg\.devkitpro\).*\)$/\1/' /etc/pacman.conf"
 alias ip2geo=geoiplookup
-alias ip2geo2="ip2geotools -d dbipcity"
+alias ip2geo2="ipinfo"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias prettyjson="jq . "
 alias citraLog="cat ~/.local/share/citra-emu/log/citra_log.txt"
@@ -387,7 +387,7 @@ alias gitd="git diff"
 alias gitdc="git diff --cached"
 alias gitadog="git log --all --decorate --oneline --graph" #CLI branch graph
 alias fixbrillo="sudo ddcutil detect"
-alias codiFrancescOg="bat ~/dw1000_stuff/francescM/T10UWBv3.00.14/libraries/arduino-dw1000-master/src/DW1000Ranging.cpp"
+alias codiFrancescOg="bat ~/noActiusProjectes/tot_dw1000/dw1000_stuff/francescM/T10UWBv3.00.14/libraries/arduino-dw1000-master/src/DW1000Ranging.cpp"
 alias todocane=todoscane
 alias todoscane="grep -i "//ToDo" src lib -R"
 alias retry="while [ $? -ne 0 ]; do eval $(history -p !!); done" #no funciona???
@@ -402,7 +402,7 @@ alias dfa="dotfiles add"
 alias dfc="dotfiles commit"
 alias dfp="dotfiles push"
 pdf() { evince "$@" > /dev/null 2>&1 & disown; }
-alias venv_qm35="pyenv shell 3.10.14 && source ~/qorvo_QM35825DK_devkit/qm35-sdk/Samples/Python/UWB-Qorvo-Tools/.venv/bin/activate"
+alias venv_qm35="pyenv shell 3.10.14 && source ~/aio/qorvo_QM35825DK_devkit/qm35-sdk/Samples/Python/UWB-Qorvo-Tools/.venv/bin/activate"
 alias venv_qm33="pyenv shell 3.10.14 && source ~/projects/DW3_QM33_SDK/SDK/Tools/uwb-qorvo-tools/.venv/bin/activate"
 alias lp="sshpass -e ssh lp"
 alias qm33port="export UQT_PORT=/dev/serial/by-id/usb-Nordic_Semiconductor_nRF52_USB_Product_D3ED785AB849-if00"
