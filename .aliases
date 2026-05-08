@@ -367,6 +367,7 @@ alias venv_qm35="pyenv shell 3.10.14 && source ~/aio/qorvo_QM35825DK_devkit/qm35
 alias venv_qm33="pyenv shell 3.10.14 && source ~/projects/DW3_QM33_SDK/SDK/Tools/uwb-qorvo-tools/.venv/bin/activate"
 alias lp="sshpass -e ssh lp"
 alias qm33port="export UQT_PORT=/dev/serial/by-id/usb-Nordic_Semiconductor_nRF52_USB_Product_D3ED785AB849-if00"
+alias pushTxts="git -C ~/txts status && git -C ~/txts add ~/txts && git -C ~/txts commit -m "txts" && git -C ~/txts push"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
