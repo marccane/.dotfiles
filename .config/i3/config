@@ -28,9 +28,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show run
 
 # rofi window viewer
-# Mod1 és Alt
-#bindsym $mod+a exec rofi -show window #descomentar aixo rebenta la config WTF MY FUCKING BROTHER, WHAT ARE YOU DOING?. WHY ARENT YOU RUNNING?
-bindsym $mod+Mod1+Tab exec rofi -show window
+bindsym $mod+t exec rofi -show window
 
 # change focus
 bindsym $mod+j focus left
