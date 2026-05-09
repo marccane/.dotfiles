@@ -67,7 +67,6 @@ unfocused_hollow = true
 log_level = "Warn"
 persistent_logging = false
 print_events = false
-ref_test = false
 render_timer = false
 
 [env]
@@ -610,12 +609,6 @@ hide_when_typing = false
 action = "PasteSelection"
 mouse = "Middle"
 
-[mouse.double_click]
-threshold = 300
-
-[mouse.triple_click]
-threshold = 300
-
 [scrolling]
 history = 10000
 multiplier = 3
@@ -638,10 +631,7 @@ x = 5
 y = 5
 
 [general]
-enable_experimental_conpty_backend = false
 live_config_reload = true
-"window.dynamic_title" = true
-"window.opacity" = 0.8
 working_directory = "None"
 
 [[keyboard.bindings]]
