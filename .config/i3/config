@@ -270,7 +270,7 @@ bindsym $mod+r mode "resize"
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec alacritty
 
 bindsym Ctrl+Mod1+e exec thunar
 

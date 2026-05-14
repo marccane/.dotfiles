@@ -8,3 +8,4 @@
 #@reboot sleep 25 && DISPLAY=:0 nitrogen --restore || DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send "Ha fallat el setup dels fons de pantalla"
 0 1  * * 0-5 RCLCRON_RCLINDEX= RECOLL_CONFDIR="/home/markus/.recoll" recollindex
 0 19 * * * /usr/bin/bluetoothctl disconnect
+*/15 * * * * /bin/sh -c 'mv /home/markus/aio/qorvo_QM35825DK_devkit/qm35-sdk/diagnostic_report*.json /home/markus/aio/qorvo_QM35825DK_devkit/qm35-sdk/diagnostic_reports/ 2>/dev/null'
