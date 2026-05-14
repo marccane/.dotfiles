@@ -2,7 +2,6 @@
 animation = "Ease"
 color = "0x00b6b2"
 duration = 300
-command = { program = "notify-send", args = ["Alacritty", "Bell rang!"] }
 
 [colors]
 draw_bold_text_with_bright_colors = true
