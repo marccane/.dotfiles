@@ -1,11 +1,8 @@
-enable_experimental_conpty_backend = false
-"window.dynamic_title" = true
-"window.opacity" = 0.8
-
 [bell]
-animation = "EaseOutExpo"
-color = "0xffffff"
-duration = 0
+animation = "Ease"
+color = "0x00b6b2"
+duration = 300
+command = { program = "notify-send", args = ["Alacritty", "Bell rang!"] }
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -70,21 +67,20 @@ unfocused_hollow = true
 log_level = "Warn"
 persistent_logging = false
 print_events = false
-ref_test = false
 render_timer = false
 
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 9
+size = 11
 
 [font.glyph_offset]
 x = 0
 y = 0
 
 [font.normal]
-family = "hack"
+family = "Source Code Pro"
 
 [font.offset]
 x = 0
@@ -613,11 +609,6 @@ working_directory = "None"
 [mouse]
 hide_when_typing = false
 
-[mouse.double_click]
-threshold = 300
-
-[mouse.triple_click]
-threshold = 300
 
 [[mouse.bindings]]
 action = "PasteSelection"
@@ -634,6 +625,8 @@ semantic_escape_chars = """,│`|:"' ()[]{}<>"""
 [window]
 decorations = "full"
 dynamic_padding = false
+dynamic_title = true
+opacity = 0.8
 startup_mode = "Windowed"
 
 [window.dimensions]
@@ -643,13 +636,6 @@ lines = 0
 [window.padding]
 x = 5
 y = 5
-
-[general]
-#enable_experimental_conpty_backend = false
-live_config_reload = true
-#"window.dynamic_title" = true
-#"window.opacity" = 0.8
-working_directory = "None"
 
 [[keyboard.bindings]]
 key = "Return"
