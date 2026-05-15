@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "notify-send 'Claude Code' 'Ja he acabat de touring-computar' && paplay /usr/share/sounds/freedesktop/stereo/message.oga"
+            "command": "notify-send 'Claude Code' 'Ja he acabat de Turing-computar' && paplay /usr/share/sounds/freedesktop/stereo/message.oga"
           }
         ]
       }
@@ -15,7 +15,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "notify-send 'Claude Code' 'Beep boop, donam permisos humà inútil' && paplay /usr/share/sounds/freedesktop/stereo/message.oga"
+            "command": "notify-send 'Claude Code' 'Beep boop, donam permisos humà tonto' && paplay /usr/share/sounds/freedesktop/stereo/message.oga"
           }
         ]
       }
