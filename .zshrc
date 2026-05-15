@@ -168,18 +168,10 @@ fi
 #if which neofetch > /dev/null; then
 #	neofetch
 #fi
-if which pyenv > /dev/null; then
-	PATH=$(pyenv root)/shims:$PATH
-	export PYENV_ROOT="$HOME/.pyenv"
-	command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-	eval "$(pyenv init -)"
-fi
 
 # opam configuration
 [[ ! -r /home/markus/.opam/opam-init/init.zsh ]] || source /home/markus/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
-# Created by `pipx` on 2025-12-18 17:00:11
-export PATH="$PATH:/home/markus/.local/bin"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
