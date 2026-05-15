@@ -376,6 +376,8 @@ alias pushTxts="git -C ~/txts status && git -C ~/txts add ~/txts && git -C ~/txt
 alias alaconfig="nano ~/.config/alacritty/alacritty.toml"
 alias updateVenvQm35="venv_qm35 && pip install -e /home/markus/aio/qorvo_QM35825DK_devkit/qm35-sdk/Samples/Python/UWB-Qorvo-Tools"
 alias reinstallVenvQm35=updateVenvQm35
+alias ft4222devices="lsusb | grep 0403"
+alias ft4222devices2="qsoc-flash -D s:FT4222 -l"
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
