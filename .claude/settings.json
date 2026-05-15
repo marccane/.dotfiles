@@ -1,9 +1,4 @@
 {
-  "enabledPlugins": {
-    "clangd-lsp@claude-plugins-official": true
-  },
-  "effortLevel": "medium",
-  "preferredNotifChannel": "auto",
   "hooks": {
     "Stop": [
       {
@@ -25,5 +20,10 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "preferredNotifChannel": "auto"
 }
