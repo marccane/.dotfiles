@@ -149,6 +149,20 @@ function hex2string () {
   fi
 }
 
+windowinfo() {
+    sleep 1
+    local wid pid
+    wid=$(xdotool getactivewindow)
+    pid=$(xdotool getwindowpid "$wid" 2>/dev/null)
+    printf "Win ID:  %s\nName:    %s\nPID:     %s\nProcess: %s\nClass:   %s\n" \
+      "$wid" \
+      "$(xdotool getwindowname "$wid")" \
+      "${pid:--}" \
+      "$(ps -p "$pid" -o comm= 2>/dev/null || echo -)" \
+      "$(xprop -id "$wid" WM_CLASS 2>/dev/null | cut -d= -f2)"
+  }
+alias wininfo=windowinfo
+
 #https://www.linuxfordevices.com/tutorials/linux/extract-compressed-files-custom-command
 extract() {
   if [ -f $1 ] ; then
