@@ -11,7 +11,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "notify-send 'Claude Code' 'Claude needs your approval' 2>/dev/null; paplay /usr/share/sounds/freedesktop/stereo/window-question.oga 2>/dev/null",
+            "command": "notify-send 'Claude Code' 'Claude needs your approval' 2>/dev/null; paplay /usr/share/sounds/freedesktop/stereo/window-question.oga 2>/dev/null || true; ~/scripts/sendToTelegramViaBot.sh 'Claude needs your approval' 2>/dev/null || true",
             "async": true
           }
         ]
@@ -22,7 +22,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "notify-send 'Claude Code' 'Claude has responded' 2>/dev/null; paplay /usr/share/sounds/freedesktop/stereo/complete.oga 2>/dev/null",
+            "command": "notify-send 'Claude Code' 'Claude has responded' 2>/dev/null; paplay /usr/share/sounds/freedesktop/stereo/complete.oga 2>/dev/null || true; ~/scripts/sendToTelegramViaBot.sh 'Claude has responded' 2>/dev/null || true",
             "async": true
           }
         ]
