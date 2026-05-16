@@ -163,6 +163,17 @@ windowinfo() {
   }
 alias wininfo=windowinfo
 
+7zpassword() {
+      if [[ $# -lt 3 ]]; then
+          echo "Usage: 7zpassword <archive.7z> <password> <file|dir> [...]"
+          return 1
+      fi
+      local archive="$1"
+      local password="$2"
+      shift 2
+      7z a -p"$password" -mhe=on "$archive" "$@"
+  }
+
 #https://www.linuxfordevices.com/tutorials/linux/extract-compressed-files-custom-command
 extract() {
   if [ -f $1 ] ; then
