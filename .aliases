@@ -429,3 +429,6 @@ alias citra=azahar
 alias starti2c="sudo modprobe i2c-dev"
 alias startnm="sudo systemctl start NetworkManager && nm-applet & disown"
 alias startbt="sudo systemctl start bluetooth"
+
+alias claudeTelegramNotificationsEnable="echo 1 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications enabled'"
+alias claudeTelegramNotificationsDisable="echo 0 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications disabled'"
