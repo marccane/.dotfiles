@@ -406,8 +406,6 @@ bindsym Ctrl+$mod2+k exec systemctl is-active --quiet bluetooth && (notify-send 
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+w exec /usr/bin/firefox
-bindsym $mod+n exec /usr/bin/thunar
 #bindsym Print exec scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 bindsym Print exec flameshot gui
 bindsym shift+Print exec flameshot gui --path ~/Dropbox/screenshots
