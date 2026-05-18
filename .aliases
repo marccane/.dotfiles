@@ -328,6 +328,11 @@ alias passwordManager=buttercup
 alias terminalGros=gnome-terminal
 alias cputemperature=sensors
 
+#Init/Start of services and other stuff
+alias starti2c="sudo modprobe i2c-dev"
+alias startnm="sudo systemctl start NetworkManager && nm-applet & disown"
+alias startbt="sudo systemctl start bluetooth" #Ja no cal pk s'autoinicia...
+
 #Custom commands/shortcuts
 alias i3config="nano ~/.config/i3/config"
 alias myip="echo Public:;dig +short myip.opendns.com @resolver1.opendns.com;echo Local:;ip a|grep 'inet '|grep -v 127.0.0.1|tr -s ' '|cut -d' ' -f3|cut -d/ -f1"
@@ -403,11 +408,6 @@ alias updateVenvQm35="venv_qm35 && pip install -e /home/markus/aio/qorvo_QM35825
 alias reinstallVenvQm35=updateVenvQm35
 alias ft4222devices="lsusb | grep 0403"
 alias ft4222devices2="qsoc-flash -D s:FT4222 -l"
-
-#Init/Start of services and other stuff
-alias starti2c="sudo modprobe i2c-dev"
-alias startnm="sudo systemctl start NetworkManager && nm-applet & disown"
-alias startbt="sudo systemctl start bluetooth" #Ja no cal pk s'autoinicia...
 alias fixKvmNetwork="sudo virsh net-start default" #Ja no cal pk s'autoinicia...
 alias startKvmDefaultNetwork="sudo virsh net-start default" #Ja no cal pk s'autoinicia...
 alias claudeTelegramNotificationsEnable="echo 1 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications enabled'"
