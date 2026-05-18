@@ -274,6 +274,11 @@ alias file="file -L"
 #alias rm="safe-rm -I" #safe-rm adds itself to the path before the real rm path
 #alias cd=cd -P #not sure what this does
 
+#Init/Start of services and other stuff
+alias starti2c="sudo modprobe i2c-dev"
+alias startnm="sudo systemctl start NetworkManager && nm-applet & disown"
+alias startbt="sudo systemctl start bluetooth"
+
 #Alias/short names
 alias c=cat
 alias py=python
@@ -390,7 +395,6 @@ alias toclipboard="xclip -selection c"
 alias gitUrl="git config --get remote.origin.url"
 alias nanolines="nano -l"
 alias nanowrap="nano -S"
-#TODO: improve so doesn't ask for sudo password when bt is already initialized
 alias cascos="startbt && cascos.sh" #cascos.sh is a bash script wich does "bluetoothctl connect XX:XX:XX:XX:XX:XX"
 alias pinganillosCasa="startbt && pinganillosCasa.sh"
 alias cascosdisconnect="bluetoothctl disconnect"
@@ -424,12 +428,7 @@ alias yayConfig="nano ~/.config/yay/config.json"
 alias alacrittyConfig="nano .config/alacritty/alacritty.toml"
 alias gigawin="ssh gigabyte_windows"
 alias citra=azahar
-
-#Init/Start of services and other stuff
-alias starti2c="sudo modprobe i2c-dev"
-alias startnm="sudo systemctl start NetworkManager && nm-applet & disown"
-alias startbt="sudo systemctl start bluetooth"
-
 alias claudeTelegramNotificationsEnable="echo 1 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications enabled'"
 alias claudeTelegramNotificationsDisable="echo 0 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications disabled'"
 alias claudeUsageWatch='cd ~/Desktop && while true; do timeout 1m claude /usage; done'
+alias checksec2="py /usr/lib/python3.14/site-packages/pwnlib/commandline/checksec.py"
