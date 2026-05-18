@@ -47,7 +47,7 @@ ocrCatala() {
 }
 
 claudeSessions() {
-    find ~/.claude/projects/ -name "*.jsonl" -printf "%T@ %Tc %p\n" | sort -rn | awk '{$1=""; print NR". "$0}'
+    find ~/.claude/projects/ -name "*.jsonl" -printf "%T@ %Tc %p\n" | sort -rn | awk '{$1=""; print NR". "$0}' | tac
 }
 
 claudeResume() {
