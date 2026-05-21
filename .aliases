@@ -437,3 +437,6 @@ alias fixKvmNetwork="sudo virsh net-start default" #Ja no cal pk s'autoinicia...
 alias startKvmDefaultNetwork="sudo virsh net-start default" #Ja no cal pk s'autoinicia...
 alias claudeTelegramNotificationsEnable="echo 1 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications enabled'"
 alias claudeTelegramNotificationsDisable="echo 0 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications disabled'"
+alias claudeCodeChatRegenerate="python ~/repos/code-chat-viewer/scripts/manager.py"
+alias claudeCodeChatOpen="firefox ~/.CodeChatViewer/CCV-Dashboard.html"
+alias dangerousClaude="claude --dangerously-skip-permissions"
