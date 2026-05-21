@@ -252,6 +252,35 @@ md2pdf() {
         markdown2pdf -p "$1" -o "${1%.md}.pdf"
 }
 
+# Cherry-pick a commit from the current dotfiles branch onto the "other"
+# branch via the ~/.dotfiles_master worktree, then push both sides.
+# Usage: df-share [sha]         (default: HEAD of current dotfiles branch)
+#        df-share <sha> <branch>  (override target branch, default: master)
+df-share() {
+  local src_sha src_branch dst_branch wt
+  src_sha=$(/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" rev-parse --verify "${1:-HEAD}") || return 1
+  src_branch=$(/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" rev-parse --abbrev-ref HEAD) || return 1
+  dst_branch=${2:-master}
+  wt="$HOME/.dotfiles_master"
+  if [ "$src_branch" = "$dst_branch" ]; then
+    echo "df-share: already on $dst_branch, nothing to do" >&2; return 1
+  fi
+  if [ ! -d "$wt" ]; then
+    echo "df-share: worktree $wt missing — run: dotfiles worktree add $wt $dst_branch" >&2; return 1
+  fi
+  echo "→ push $src_branch"
+  /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" push origin "$src_branch" || return 1
+  echo "→ cherry-pick $src_sha onto $dst_branch in $wt"
+  (
+    cd "$wt" || exit 1
+    git fetch origin "$dst_branch" || exit 1
+    git checkout "$dst_branch" || exit 1
+    git pull --ff-only || exit 1
+    git cherry-pick "$src_sha" || { echo "cherry-pick stopped — resolve in $wt, then: git cherry-pick --continue && git push" >&2; exit 1; }
+    git push origin "$dst_branch"
+  )
+}
+
 #STDERR printed in RED. Example: color ping
 color()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))
 
