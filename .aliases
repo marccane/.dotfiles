@@ -248,6 +248,10 @@ _alarm() {
   \kill -9 $pid
 }
 
+md2pdf() {
+        markdown2pdf -p "$1" -o "${1%.md}.pdf"
+}
+
 #STDERR printed in RED. Example: color ping
 color()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))
 
@@ -450,5 +454,5 @@ alias gigawin="ssh gigabyte_windows"
 alias citra=azahar
 alias claudeTelegramNotificationsEnable="echo 1 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications enabled'"
 alias claudeTelegramNotificationsDisable="echo 0 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications disabled'"
-alias claudeUsageWatch='cd ~/Desktop && while true; do timeout 1m claude /usage; done'
 alias checksec2="py /usr/lib/python3.14/site-packages/pwnlib/commandline/checksec.py"
+alias claudeUsageWatch="watch -c -n 3 claude_usage.py" #currently private script because it has hardcoded paths. I may upload it later fixed
