@@ -4,7 +4,8 @@
       "Read(/tmp/**)",
       "Edit(/tmp/**)",
       "Write(/tmp/**)"
-    ]
+    ],
+  "defaultMode": "acceptEdits"
   },
   "hooks": {
     "Notification": [
@@ -45,5 +46,6 @@
     "clangd-lsp@claude-plugins-official": true
   },
   "effortLevel": "high",
-  "preferredNotifChannel": "auto"
+  "preferredNotifChannel": "auto",
+  "model": "sonnet"
 }
