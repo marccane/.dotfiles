@@ -1,8 +1,5 @@
 realdir() {
-	#could we use realpath to simplify this?
-        V948143791354=`pwd`
-        cd "$(readlink -f $V948143791354)"
-        unset V948143791354
+        cd "$(realpath .)"
 }
 
 pkginfo() {
@@ -123,9 +120,9 @@ git() {
 }
 
 function mountTemp(){
-    device=$1
+    device="$1"
     shift
-    sudo mount $device /mnt/temp $@
+    sudo mount "$device" /mnt/temp "$@"
 }
 
 function hex2string () {
@@ -176,22 +173,34 @@ alias wininfo=windowinfo
 
 #https://www.linuxfordevices.com/tutorials/linux/extract-compressed-files-custom-command
 extract() {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.a)         ar x $1              ;;
-      *.deb)       dpkg-deb -X $1 .     ;;
-      *.tar.*)     tar xvf $1           ;;
-      *.tar)       tar xvf $1           ;;
-      *.tbz2)      tar xvjf $1          ;;
-      *.tgz)       tar xvzf $1          ;;
-      *.bz2)       bunzip2 $1           ;;
-      *.rar)       unrar x $1           ;;
-      *.gz)        gunzip $1            ;;
-      *.zip)       unzip $1             ;;
-      *.jar)       unzip $1             ;;
-      *.Z)         uncompress $1        ;;
-      *.7z)        7z x $1              ;;
-      *.cab)       cabextract $1        ;;
+  if [ -f "$1" ] ; then
+    case "$1" in
+      *.a)         ar x "$1"                  ;;
+      *.deb)       dpkg-deb -X "$1" .         ;;
+      *.tar.*)     tar xvf "$1"               ;;
+      *.tar)       tar xvf "$1"               ;;
+      *.tbz2)      tar xvjf "$1"              ;;
+      *.tgz)       tar xvzf "$1"              ;;
+      *.bz2)       bunzip2 "$1"               ;;
+      *.rar)       unrar x "$1"               ;;
+      *.gz)        gunzip "$1"                ;;
+      *.zip)       unzip "$1"                 ;;
+      *.jar)       unzip "$1"                 ;;
+      *.xpi)       unzip "$1"                 ;;
+      *.apk)       unzip "$1"                 ;;
+      *.war)       unzip "$1"                 ;;
+      *.ear)       unzip "$1"                 ;;
+      *.whl)       unzip "$1"                 ;;
+      *.crx)       unzip "$1"                 ;;
+      *.epub)      unzip "$1"                 ;;
+      *.xz)        xz -d "$1"                 ;;
+      *.zst)       zstd -d "$1"               ;;
+      *.lz4)       lz4 -d "$1"                ;;
+      *.rpm)       rpm2cpio "$1" | cpio -idmv ;;
+      *.iso)       7z x "$1"                  ;;
+      *.Z)         uncompress "$1"            ;;
+      *.7z)        7z x "$1"                  ;;
+      *.cab)       cabextract "$1"            ;;
       *)           echo "don't know how to extract '$1'..." ;;
     esac
   else
@@ -200,19 +209,30 @@ extract() {
 }
 
 contents() {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.a)         ar t $1              ;;
-      *.deb)       dpkg-deb -c $1       ;;
-      *.tar.*)     tar tvf $1           ;;
-      *.tar)       tar tvf $1           ;;
-      *.tbz2)      tar tvf $1           ;;
-      *.tgz)       tar tvf $1           ;;
-      *.rar)       unrar v $1           ;;
-      *.zip)       unzip -l $1          ;;
-      *.jar)       unzip -l $1          ;;
-      *.7z)        7z l $1              ;;
-      *.cab)       cabextract -l $1     ;;
+  if [ -f "$1" ] ; then
+    case "$1" in
+      *.a)         ar t "$1"                  ;;
+      *.deb)       dpkg-deb -c "$1"           ;;
+      *.tar.*)     tar tvf "$1"               ;;
+      *.tar)       tar tvf "$1"               ;;
+      *.tbz2)      tar tvf "$1"               ;;
+      *.tgz)       tar tvf "$1"               ;;
+      *.rar)       unrar v "$1"               ;;
+      *.zip)       unzip -l "$1"              ;;
+      *.jar)       unzip -l "$1"              ;;
+      *.xpi)       unzip -l "$1"              ;;
+      *.apk)       unzip -l "$1"              ;;
+      *.war)       unzip -l "$1"              ;;
+      *.ear)       unzip -l "$1"              ;;
+      *.whl)       unzip -l "$1"              ;;
+      *.crx)       unzip -l "$1"              ;;
+      *.epub)      unzip -l "$1"              ;;
+      *.xz)        xz -l "$1"                 ;;
+      *.zst)       zstd -l "$1"               ;;
+      *.rpm)       rpm -qlp "$1"              ;;
+      *.iso)       7z l "$1"                  ;;
+      *.7z)        7z l "$1"                  ;;
+      *.cab)       cabextract -l "$1"         ;;
       *)           echo "don't know how to list '$1'..." ;;
     esac
   else
