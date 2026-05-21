@@ -3,10 +3,61 @@
     "allow": [
       "Read(/tmp/**)",
       "Edit(/tmp/**)",
-      "Write(/tmp/**)"
+      "Write(/tmp/**)",
+      "WebFetch",
+      "WebSearch",
+      "Read",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(file *)",
+      "Bash(stat *)",
+      "Bash(pwd)",
+      "Bash(which *)",
+      "Bash(whoami)",
+      "Bash(hostname)",
+      "Bash(date)",
+      "Bash(env)",
+      "Bash(echo *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(tree *)",
+      "Bash(diff *)",
+      "Bash(git status*)",
+      "Bash(git log*)",
+      "Bash(git diff*)",
+      "Bash(git show*)",
+      "Bash(git branch*)",
+      "Bash(git remote*)",
+      "Bash(git blame*)",
+      "Bash(git ls-files*)",
+      "Bash(gh pr view*)",
+      "Bash(gh pr list*)",
+      "Bash(gh issue view*)",
+      "Bash(gh issue list*)",
+      "Bash(gh repo view*)",
+      "Bash(ps *)",
+      "Bash(df *)",
+      "Bash(du *)",
+      "Bash(free *)",
+      "Bash(uname *)",
+      "Bash(uptime)",
+      "Bash(lsblk*)",
+      "Bash(lscpu)",
+      "Bash(pacman -Q*)",
+      "Bash(pacman -Ss *)",
+      "Bash(npm ls*)",
+      "Bash(pip show *)",
+      "Bash(pip list)",
+      "Bash(python3 --version)",
+      "Bash(node --version)"
     ],
-  "defaultMode": "acceptEdits"
+    "defaultMode": "acceptEdits"
   },
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -46,6 +97,5 @@
     "clangd-lsp@claude-plugins-official": true
   },
   "effortLevel": "high",
-  "preferredNotifChannel": "auto",
-  "model": "sonnet"
+  "preferredNotifChannel": "auto"
 }
