@@ -6,7 +6,6 @@
       "Write(/tmp/**)"
     ]
   },
-  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -46,6 +45,5 @@
     "clangd-lsp@claude-plugins-official": true
   },
   "effortLevel": "high",
-  "skipDangerousModePermissionPrompt": true,
   "preferredNotifChannel": "auto"
 }
