@@ -340,6 +340,8 @@ alias gitgui=gitk
 alias gitgui2=gittyup
 alias pdfreader=evince
 alias pdfreader2=okular
+pdf() { evince "$@" > /dev/null 2>&1 & disown; }
+alias md="okular"
 alias rssreader="liferea & disown && exit"
 alias webbrowser1=firefox
 alias webbrowser2=chromium
@@ -420,7 +422,6 @@ alias dfdc="dotfiles diff --cached"
 alias dfa="dotfiles add"
 alias dfc="dotfiles commit"
 alias dfp="dotfiles push"
-pdf() { evince "$@" > /dev/null 2>&1 & disown; }
 alias venv_qm35="pyenv shell 3.10.14 && source ~/aio/qorvo_QM35825DK_devkit/qm35-sdk/Samples/Python/UWB-Qorvo-Tools/.venv/bin/activate"
 alias venv_qm33="pyenv shell 3.10.14 && source ~/projects/DW3_QM33_SDK/SDK/Tools/uwb-qorvo-tools/.venv/bin/activate"
 alias lp="sshpass -e ssh lp"
