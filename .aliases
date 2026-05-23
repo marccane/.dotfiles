@@ -397,6 +397,8 @@ alias gitgui2=gitk
 alias topgui=qps
 alias pdfreader=evince
 alias pdfreader2=okular
+pdf() { evince "$@" > /dev/null 2>&1 & disown; }
+alias md="okular"
 alias rssreader=liferea
 alias webbrowser=firefox
 alias webbrowser2=midori
@@ -429,7 +431,6 @@ alias dfdc="dotfiles diff --cached"
 alias dfa="dotfiles add"
 alias dfc="dotfiles commit"
 alias dfp="dotfiles push"
-pdf() { evince "$@" > /dev/null 2>&1 & disown; }
 alias prettyjson="jq . "
 alias citraLog="cat ~/.local/share/citra-emu/log/citra_log.txt"
 alias citraLogDir=~/.local/share/citra-emu/log/
