@@ -260,7 +260,7 @@ df-share() {
   local src_sha src_branch dst_branch wt
   src_sha=$(/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" rev-parse --verify "${1:-HEAD}") || return 1
   src_branch=$(/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" rev-parse --abbrev-ref HEAD) || return 1
-  dst_branch=${2:-master}
+  dst_branch=${2:-feina}
   wt="$HOME/.dotfiles_feina"
   if [ "$src_branch" = "$dst_branch" ]; then
     echo "df-share: already on $dst_branch, nothing to do" >&2; return 1
