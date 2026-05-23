@@ -253,7 +253,7 @@ md2pdf() {
 }
 
 # Cherry-pick a commit from the current dotfiles branch onto the "other"
-# branch via the ~/.dotfiles_master worktree, then push both sides.
+# branch via the ~/.dotfiles_feina worktree, then push both sides.
 # Usage: df-share [sha]         (default: HEAD of current dotfiles branch)
 #        df-share <sha> <branch>  (override target branch, default: master)
 df-share() {
@@ -261,7 +261,7 @@ df-share() {
   src_sha=$(/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" rev-parse --verify "${1:-HEAD}") || return 1
   src_branch=$(/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" rev-parse --abbrev-ref HEAD) || return 1
   dst_branch=${2:-master}
-  wt="$HOME/.dotfiles_master"
+  wt="$HOME/.dotfiles_feina"
   if [ "$src_branch" = "$dst_branch" ]; then
     echo "df-share: already on $dst_branch, nothing to do" >&2; return 1
   fi
