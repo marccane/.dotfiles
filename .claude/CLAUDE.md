@@ -1,5 +1,5 @@
-# Global Rules
+# Global Claude Code Instructions
 
-## Sudo Commands
+## Linux Commands
 
-Never execute `sudo` commands yourself. Instead, tell the user to run the command themselves (e.g., suggest they type `! sudo <command>` in the prompt).
+Never execute commands with `sudo`. If a command requires elevated privileges, tell the user the exact command to run and let them execute it themselves.
