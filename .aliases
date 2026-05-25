@@ -249,7 +249,7 @@ _alarm() {
 }
 
 md2pdf() {
-        markdown2pdf -p "$1" -o "${1%.md}.pdf"
+    markdown2pdf -p "$1" -o "${1%.md}.pdf"
 }
 
 # Cherry-pick a commit from the current dotfiles branch onto the "other"
@@ -279,6 +279,10 @@ df-share() {
     git cherry-pick "$src_sha" || { echo "cherry-pick stopped — resolve in $wt, then: git cherry-pick --continue && git push" >&2; exit 1; }
     git push origin "$dst_branch"
   )
+}
+
+lockAndSuspend() {
+    i3lock -n -c 000000 & sleep 0.3 && systemctl suspend && kill %1
 }
 
 #STDERR printed in RED. Example: color ping
