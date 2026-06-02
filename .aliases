@@ -488,3 +488,4 @@ alias claudeCodeChatRegenerate="python ~/repos/code-chat-viewer/scripts/manager.
 alias claudeCodeChatOpen="firefox ~/.CodeChatViewer/CCV-Dashboard.html"
 alias dangerousClaude="claude --dangerously-skip-permissions"
 alias claudeUsageWatch="watch -c -n 180 claude_usage.py" #currently private script because it has hardcoded paths. I may upload it later fixed
+alias histfileView="awk 'match(\$0,/^: [0-9]+:[0-9]+;/){ split(substr(\$0,3,RLENGTH-3),a,\":\"); printf \": %s:%s;%s\n\", strftime(\"%d/%m/%y %H:%M\",a[1]), a[2], substr(\$0,RLENGTH+1) }' ~/.histfile | less"
