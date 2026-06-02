@@ -53,7 +53,16 @@
       "Bash(pip show *)",
       "Bash(pip list)",
       "Bash(python3 --version)",
-      "Bash(node --version)"
+      "Bash(node --version)",
+      "Bash(make clean *)",
+      "Bash(make)",
+      "Bash(make -n)",
+      "Bash(xxd)",
+      "Bash(alacritty --print-events)",
+      "Bash(kill %1)",
+      "Bash(ps aux *)",
+      "Bash(ssh n5 *)",
+      "Bash(timeout 5 bash *)"
     ],
     "defaultMode": "acceptEdits"
   },
@@ -84,7 +93,8 @@
   "enabledPlugins": {
     "clangd-lsp@claude-plugins-official": true
   },
-  "effortLevel": "high",
+  "effortLevel": "xhigh",
+  "advisorModel": "opus",
   "skipDangerousModePermissionPrompt": true,
   "preferredNotifChannel": "auto"
 }
