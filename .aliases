@@ -86,8 +86,8 @@
 #   tesseract, tesseract-data-cat, tesseract-data-eng
 #
 # Misc / esoteric:
-#   brainfuck (bfc), solaar, ddcutil-git,
-#   markdown2pdf (MISSING, AUR — or use pandoc + texlive)
+#   solaar, ddcutil-git,
+#   markdown2pdf (alternative: pandoc + texlive)
 #
 # Security tools (checksec2):
 #   checksec, python-pwntools
