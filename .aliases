@@ -1,3 +1,103 @@
+# =============================================================================
+# Arch package dependencies for all commands referenced in this file.
+# Items marked (MISSING) are not currently installed on this system.
+# Items marked (AUR) are typically only available from the AUR / custom repos.
+# =============================================================================
+#
+# Core utilities (coreutils, etc.):
+#   coreutils, findutils, gawk, sed, grep, less, file, diffutils,
+#   util-linux, procps-ng, iproute2, net-tools, inetutils, openssh,
+#   kmod, systemd, sudo, perl, python, nano, jq, curl, rsync, watch,
+#   safe-rm
+#
+# Archive / compression tools (extract, contents, 7zpassword):
+#   tar, gzip, bzip2, xz, zstd, lz4, unzip, unrar, 7zip, cabextract,
+#   binutils (ar, objdump), dpkg, cpio (MISSING), rpm-tools (MISSING)
+#
+# Pacman / AUR helpers (pkginfo, fixPacmanKeyring, whichPackage, ...):
+#   pacman, pacman-contrib (pactree), yay-bin
+#
+# Xorg / desktop helpers (windowinfo, setxkb, inputdebug, ...):
+#   xdotool, xorg-xprop, xorg-xev, xorg-setxkbmap, xclip
+#
+# Audio / multimedia (whiteNoise, equalizer, soundControl, fasttracker):
+#   alsa-utils (speaker-test), pulseaudio-equalizer (qpaeq),
+#   pavucontrol, vlc-cli (cvlc), ft2-clone, imagemagick (mogrify),
+#   pulseeffects-legacy / easyeffects (MISSING)
+#
+# Notifications / GUI integration:
+#   libnotify (notify-send), network-manager-applet (nm-applet),
+#   nautilus, flatpak
+#
+# Window manager / compositor / wallpaper:
+#   picom, nitrogen, feh
+#
+# Editors / IDEs (notepad*, code, *Config aliases):
+#   vscodium-bin (codium), mousepad, gedit, xed,
+#   leafpad (MISSING, AUR)
+#
+# Image / dup-file tools:
+#   digikam, geeqie, kolourpaint, czkawka-gui-bin,
+#   findimagedupes, rdfind
+#
+# Music / podcasts:
+#   clementine (MISSING)
+#
+# Reverse engineering / hex editors:
+#   wxhexeditor, bless, fhex, ghex,
+#   iaito (MISSING, AUR)
+#
+# Document viewers / readers (pdf, md, rssreader):
+#   evince, okular, liferea, bat
+#
+# Web browsers:
+#   firefox, epiphany, chromium, lynx, midori
+#
+# VNC clients / servers:
+#   tigervnc (vncviewer, Xvnc), vncdotool (vncdo), x11vnc,
+#   gtk-vnc (gvncviewer, MISSING), vinagre (MISSING)
+#
+# Emulation / handheld dev (ard, send3dsx, brew, citra*, nds*, ...):
+#   arduino-cli, 3dslink (devkitpro repo),
+#   azahar-appimage (citra successor), desmume, melonds-bin,
+#   ninfs-gui, blobsaver-bin,
+#   citra (MISSING, replaced by azahar)
+#
+# Torrents:
+#   transmission-qt, deluge
+#
+# Git / dotfiles:
+#   git, gittyup, praise (gitblame alias)
+#
+# Process / system info:
+#   qps, udisks2 (udisksctl), libvirt (virsh)
+#
+# Settings managers:
+#   xfce4-settings (xfce4-settings-manager),
+#   plasma-workspace (systemsettings)
+#
+# Bluetooth (cascos, pinganillosCasa, btdisconnect):
+#   bluez-utils (bluetoothctl)
+#
+# Network / scanning / geo:
+#   nmap, geoip (geoiplookup), python-ip2geotools
+#
+# OCR (ocrCatala, ocrEnglish):
+#   tesseract, tesseract-data-cat, tesseract-data-eng
+#
+# Misc / esoteric:
+#   brainfuck (bfc), solaar, ddcutil-git,
+#   markdown2pdf (MISSING, AUR — or use pandoc + texlive)
+#
+# Security tools (checksec2):
+#   checksec, python-pwntools
+#
+# Not pacman-managed (informational):
+#   claude (claude-code, via npm),
+#   PTCUtilities.sh, cascos.sh, pinganillosCasa.sh, claude_usage.py
+#     — personal scripts under ~/scripts and ~/canethings
+# =============================================================================
+
 realdir() {
         cd "$(realpath .)"
 }
