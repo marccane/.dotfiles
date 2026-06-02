@@ -609,6 +609,11 @@ hide_when_typing = false
 action = "PasteSelection"
 mouse = "Middle"
 
+#Rough rule of thumb people report:
+#- 10,000 — noticeable lag on resize (what you saw)
+#- 5,000 — usually smooth
+#- 3,000 — snappy even on slower machines
+#- 50,000+ — resize becomes painful
 [scrolling]
 history = 10000
 multiplier = 3
