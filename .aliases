@@ -285,6 +285,19 @@ lockAndSuspend() {
     i3lock -n -c 000000 & sleep 0.3 && systemctl suspend && kill %1
 }
 
+claudeTelegramNotifications() {
+  local file=~/.claude/telegram_notifications_enabled
+  case "$1" in
+    enable)  echo 1 > "$file" && echo 'Claude Telegram notifications enabled' ;;
+    disable) echo 0 > "$file" && echo 'Claude Telegram notifications disabled' ;;
+    "")
+      local state=$(cat "$file" 2>/dev/null)
+      [[ "$state" == "1" ]] && echo 'Claude Telegram notifications: enabled' || echo 'Claude Telegram notifications: disabled'
+      ;;
+    *) echo "Usage: claudeTelegramNotifications [enable|disable]" >&2; return 1 ;;
+  esac
+}
+
 #STDERR printed in RED. Example: color ping
 color()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))
 
@@ -471,8 +484,6 @@ alias ft4222devices="lsusb | grep 0403"
 alias ft4222devices2="qsoc-flash -D s:FT4222 -l"
 alias fixKvmNetwork="sudo virsh net-start default" #Ja no cal pk s'autoinicia...
 alias startKvmDefaultNetwork="sudo virsh net-start default" #Ja no cal pk s'autoinicia...
-alias claudeTelegramNotificationsEnable="echo 1 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications enabled'"
-alias claudeTelegramNotificationsDisable="echo 0 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications disabled'"
 alias claudeCodeChatRegenerate="python ~/repos/code-chat-viewer/scripts/manager.py"
 alias claudeCodeChatOpen="firefox ~/.CodeChatViewer/CCV-Dashboard.html"
 alias dangerousClaude="claude --dangerously-skip-permissions"
