@@ -96,5 +96,7 @@
     "clangd-lsp@claude-plugins-official": true
   },
   "effortLevel": "high",
-  "preferredNotifChannel": "auto"
+  "advisorModel": "opus",
+  "preferredNotifChannel": "auto",
+  "skipDangerousModePermissionPrompt": true
 }
