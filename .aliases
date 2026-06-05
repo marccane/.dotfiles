@@ -2,10 +2,6 @@ realdir() {
         cd "$(realpath .)"
 }
 
-lessbat() {
-	bat --color always $@ | less
-}
-
 path() {
 	echo $PATH | sed 's/:/\n/g'
 }
