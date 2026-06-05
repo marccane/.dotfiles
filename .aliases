@@ -116,6 +116,10 @@ path() {
 	echo $PATH | sed 's/:/\n/g'
 }
 
+claudeUsageWatch() {  # no arg lists orgs; pass name substring to select (e.g. personal, troax)
+	watch -c -n 180 "claude_usage.py${1:+ $1}";
+}
+
 send3dsx() {
 	result=1
 	while [ $result -ne 0 ] ; do
@@ -582,7 +586,6 @@ alias citra=azahar
 alias claudeTelegramNotificationsEnable="echo 1 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications enabled'"
 alias claudeTelegramNotificationsDisable="echo 0 > ~/.claude/telegram_notifications_enabled && echo 'Claude Telegram notifications disabled'"
 alias checksec2="py /usr/lib/python3.14/site-packages/pwnlib/commandline/checksec.py"
-alias claudeUsageWatch="watch -c -n 180 claude_usage.py" #currently private script because it has hardcoded paths. I may upload it later fixed
 alias claudeCodeChatRegenerate="python ~/repos/code-chat-viewer/scripts/manager.py"
 alias claudeCodeChatOpen="firefox ~/.CodeChatViewer/CCV-Dashboard.html"
 alias dangerousClaude="claude --dangerously-skip-permissions"
