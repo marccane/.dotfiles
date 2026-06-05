@@ -26,6 +26,10 @@ claudeUsageWatch() {  # no arg lists orgs; pass name substring to select (e.g. p
 	watch -c -n 180 "claude_usage.py${1:+ $1}";
 }
 
+pdf() {
+	evince "$@" > /dev/null 2>&1 & disown;
+}
+
 retry() {
     local cmd
     cmd=$(fc -ln -1 | sed 's/^ *//')
@@ -157,7 +161,7 @@ windowinfo() {
       "${pid:--}" \
       "$(ps -p "$pid" -o comm= 2>/dev/null || echo -)" \
       "$(xprop -id "$wid" WM_CLASS 2>/dev/null | cut -d= -f2)"
-  }
+}
 alias wininfo=windowinfo
 
 7zpassword() {
@@ -169,7 +173,7 @@ alias wininfo=windowinfo
       local password="$2"
       shift 2
       7z a -p"$password" -mhe=on "$archive" "$@"
-  }
+}
 
 #https://www.linuxfordevices.com/tutorials/linux/extract-compressed-files-custom-command
 extract() {
@@ -390,7 +394,6 @@ alias gitgui=gitk
 alias gitgui2=gittyup
 alias pdfreader=evince
 alias pdfreader2=okular
-pdf() { evince "$@" > /dev/null 2>&1 & disown; }
 alias md="okular"
 alias rssreader="liferea & disown && exit"
 alias webbrowser1=firefox
@@ -424,7 +427,7 @@ alias fixPacmanKeyring="sudo pacman -S archlinux-keyring"
 alias pacmanRemoveUnstableRepos="sudo sed -i 's/^\([^#].*\(dkp-libs\|dkp-linux\|pkg\.devkitpro\).*\)$/#\1/' /etc/pacman.conf"
 alias pacmanAddUnstableRepos="sudo sed -i 's/^#\(.*\(dkp-libs\|dkp-linux\|pkg\.devkitpro\).*\)$/\1/' /etc/pacman.conf"
 alias ip2geo=geoiplookup
-alias ip2geo2="ipinfo"
+alias ip2geo2=ipinfo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias prettyjson="jq . "
 alias citraLog="cat ~/.local/share/citra-emu/log/citra_log.txt"
