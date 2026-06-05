@@ -26,6 +26,10 @@ claudeUsageWatch() {  # no arg lists orgs; pass name substring to select (e.g. p
 	watch -c -n 180 "claude_usage.py${1:+ $1}";
 }
 
+lockAndSuspend() {
+	i3lock -n -c 000000 & sleep 0.3 && systemctl suspend && kill %1
+}
+
 pdf() {
 	evince "$@" > /dev/null 2>&1 & disown;
 }
@@ -283,10 +287,6 @@ df-share() {
     git cherry-pick "$src_sha" || { echo "cherry-pick stopped — resolve in $wt, then: git cherry-pick --continue && git push" >&2; exit 1; }
     git push origin "$dst_branch"
   )
-}
-
-lockAndSuspend() {
-    i3lock -n -c 000000 & sleep 0.3 && systemctl suspend && kill %1
 }
 
 claudeTelegramNotifications() {
