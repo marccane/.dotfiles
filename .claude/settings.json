@@ -66,6 +66,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
+  "model": "opus[1m]",
   "hooks": {
     "Notification": [
       {
@@ -94,7 +95,6 @@
     "clangd-lsp@claude-plugins-official": true
   },
   "effortLevel": "xhigh",
-  "advisorModel": "opus",
   "skipDangerousModePermissionPrompt": true,
   "preferredNotifChannel": "auto"
 }
