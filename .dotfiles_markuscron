@@ -8,4 +8,3 @@
 0 19 * * * /usr/bin/bluetoothctl disconnect
 */15 * * * * /bin/sh -c 'mv /home/markus/aio/qorvo_QM35825DK_devkit/qm35-sdk/diagnostic_report*.json /home/markus/diagnostic_report*.json /home/markus/aio/qorvo_QM35825DK_devkit/diagnostic_reports/ 2>/dev/null'
 0 10 * * * /usr/bin/zstd --rm /home/markus/aio/qorvo_QM35825DK_devkit/diagnostic_reports/diagnostic*json
-*/30 * * * * jq 'del(.model)' /home/markus/.claude/settings.json > /home/markus/.claude/settings.json.tmp && mv /home/markus/.claude/settings.json.tmp /home/markus/.claude/settings.json
