@@ -85,7 +85,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "notify-send 'Claude Code' 'Beep boop, donam permisos humà tonto' 2>/dev/null; paplay /usr/share/sounds/freedesktop/stereo/window-question.oga 2>/dev/null; grep -qx 1 ~/.claude/telegram_notifications_enabled 2>/dev/null && ~/.scripts/sendToTelegramViaBot.sh 'Beep boop, donam permisos humà tonto' 2>/dev/null; true",
+            "command": "notify-send 'Claude Code' 'Beep boop, donam permisos humà lent' 2>/dev/null; paplay /usr/share/sounds/freedesktop/stereo/window-question.oga 2>/dev/null; grep -qx 1 ~/.claude/telegram_notifications_enabled 2>/dev/null && ~/.scripts/sendToTelegramViaBot.sh 'Beep boop, donam permisos humà lent' 2>/dev/null; true",
             "async": true
           }
         ]
@@ -95,8 +95,8 @@
   "enabledPlugins": {
     "clangd-lsp@claude-plugins-official": true
   },
+  "model": "opus",
   "effortLevel": "high",
-  "advisorModel": "opus",
-  "preferredNotifChannel": "auto",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "preferredNotifChannel": "auto"
 }
