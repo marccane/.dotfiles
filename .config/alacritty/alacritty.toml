@@ -597,9 +597,7 @@ key = "F12"
 mods = "Super"
 
 [[keyboard.bindings]]
-chars = """
-
-"""
+chars = "\r"
 key = "NumpadEnter"
 
 [mouse]
