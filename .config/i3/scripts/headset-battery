@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# i3blocks: Bluetooth headset battery indicator.
+# Shows nothing if no headset is connected. Turns orange at <=30%.
+
+dev=$(upower -e 2>/dev/null | grep -m1 headset)
+[ -z "$dev" ] && exit 0
+
+pct=$(upower -i "$dev" 2>/dev/null | awk '/percentage:/ {gsub("%","",$2); print $2; exit}')
+[ -z "$pct" ] && exit 0
+
+if [ "$pct" -le 30 ]; then
+    color="orange"
+else
+    color="#ffffff"
+fi
+
+printf '<span color="%s"><span font="FontAwesome"></span> %s%%</span>\n' "$color" "$pct"
