@@ -172,11 +172,8 @@ fi
 # opam configuration
 [[ ! -r /home/markus/.opam/opam-init/init.zsh ]] || source /home/markus/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
-
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)" #aixo delayeja l'startup del terminal pero es lo que hay
 
-export RASPI_UCI_PORT="/dev/serial/by-id/usb-Qorvo_Inc._Raspberry_Pi_Composite_Gadget-if00"
-export FT_PORT="ftdi://FT4222"
-export UQT_PORT=$FT_PORT
+#les variables de PORTS de UWB estàn a .zshrc_secrets
