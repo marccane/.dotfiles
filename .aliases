@@ -148,7 +148,21 @@ claudeSessions() {
 }
 
 claudeResume() {
-    local index=$1
+    local index=""
+    local claude_args=()
+    for arg in "$@"; do
+        if [[ -z "$index" && "$arg" =~ ^[0-9]+$ ]]; then
+            index="$arg"
+        else
+            claude_args+=("$arg")
+        fi
+    done
+
+    if [[ -z "$index" ]]; then
+        echo "Usage: claudeResume <index> [claude flags...]"
+        return 1
+    fi
+
     local line=$(find ~/.claude/projects/ -name "*.jsonl" -printf "%T@ %p\n" | sort -rn | sed -n "${index}p")
     local filepath="${line##* }"
 
@@ -192,7 +206,7 @@ EOF
     echo "Project : $project_dir"
 
     if [[ -n "$project_dir" && -d "$project_dir" ]]; then
-        cd "$project_dir" && claude --resume "$uuid"
+        cd "$project_dir" && claude "${claude_args[@]}" --resume "$uuid"
     else
         echo "Error: could not resolve project directory for: $encoded"
         return 1
@@ -590,3 +604,5 @@ alias claudeCodeChatRegenerate="python ~/repos/code-chat-viewer/scripts/manager.
 alias claudeCodeChatOpen="firefox ~/.CodeChatViewer/CCV-Dashboard.html"
 alias dangerousClaude="claude --dangerously-skip-permissions"
 alias histfileView="awk 'match(\$0,/^: [0-9]+:[0-9]+;/){ split(substr(\$0,3,RLENGTH-3),a,\":\"); printf \": %s:%s;%s\n\", strftime(\"%d/%m/%y %H:%M\",a[1]), a[2], substr(\$0,RLENGTH+1) }' ~/.histfile | less"
+alias claudeResumeDangerous="claudeResume --dangerously-skip-permissions"
+alias claudeResumeDangerousLatestSession="claudeResumeDangerous 1"
