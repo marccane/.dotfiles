@@ -150,3 +150,14 @@ if which pyenv > /dev/null; then
 	command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
 fi
+
+# >>> claude-auto-retry (opt-in) >>>
+# Opt-in wrapper for the local claude-auto-retry fork (~/repos/claude-auto-retry).
+# This intentionally does NOT override `claude` — your default `claude` is
+# untouched. Run `claude-retry ...` when you want the auto-retry behavior.
+# The env var is scoped to this one command, so it never leaks into your shell.
+claude-retry() {
+  CLAUDE_AUTO_RETRY_ACTIVE=1 node "$HOME/repos/claude-auto-retry/src/launcher.js" "$@"
+}
+# <<< claude-auto-retry (opt-in) <<<
+
