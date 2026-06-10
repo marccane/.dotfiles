@@ -638,7 +638,6 @@ alias ba=brilloAcer
 alias cpProgress="rsync -ah --progress"
 alias stdinToClipboard="xclip -selection c"
 alias toclipboard="xclip -selection c"
-alias gitUrl="git config --get remote.origin.url"
 alias nanolines="nano -l"
 alias nanowrap="nano -S"
 alias cascos="startbt && cascos.sh" #cascos.sh is a bash script wich does "bluetoothctl connect XX:XX:XX:XX:XX:XX"
