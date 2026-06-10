@@ -413,6 +413,65 @@ df-share() {
   )
 }
 
+# Cherry-pick a .scripts commit onto the target branch and push it (df-share for the non-bare scripts repo)
+# Target branch resolution: <branch> arg > `git config share.target` > origin's HEAD branch.
+# Set the per-machine target with: git -C ~/.scripts config share.target <branch>
+# Usage: scripts-share [sha]          (default: HEAD of current .scripts branch)
+#        scripts-share <sha> <branch>  (override target branch)
+scripts-share() {
+  local repo="$HOME/.scripts" src_sha src_branch dst_branch wt
+  src_sha=$(git -C "$repo" rev-parse --verify "${1:-HEAD}") || return 1
+  src_branch=$(git -C "$repo" rev-parse --abbrev-ref HEAD) || return 1
+  dst_branch=$2
+  if [ -z "$dst_branch" ]; then
+    if git -C "$repo" config --get share.target >/dev/null 2>&1; then
+      dst_branch=$(git -C "$repo" config --get share.target)
+      if [ -z "${dst_branch// }" ]; then
+        echo "scripts-share: share.target is set but empty — fix it: git -C $repo config share.target <branch>" >&2; return 1
+      fi
+    else
+      dst_branch=$(git -C "$repo" symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)
+      dst_branch=${dst_branch#origin/}
+    fi
+  fi
+  if [ -z "$dst_branch" ]; then
+    echo "scripts-share: could not determine target branch — pass it explicitly or set share.target" >&2; return 1
+  fi
+  wt="$HOME/.scripts_$dst_branch"
+  if [ "$src_branch" = "$dst_branch" ]; then
+    echo "scripts-share: already on $dst_branch, nothing to do" >&2; return 1
+  fi
+  if [ ! -d "$wt" ]; then
+    echo "→ creating worktree $wt for $dst_branch"
+    git -C "$repo" fetch origin "$dst_branch" || return 1
+    git -C "$repo" worktree add "$wt" "$dst_branch" || return 1
+  fi
+  echo "→ push $src_branch"
+  git -C "$repo" push origin "$src_branch" || return 1
+  echo "→ cherry-pick $src_sha onto $dst_branch in $wt"
+  (
+    cd "$wt" || exit 1
+    git fetch origin "$dst_branch" || exit 1
+    git checkout "$dst_branch" || exit 1
+    git pull --ff-only || exit 1
+    git cherry-pick "$src_sha" || { echo "cherry-pick stopped — resolve in $wt, then: git cherry-pick --continue && git push" >&2; exit 1; }
+    git push origin "$dst_branch"
+  )
+}
+
+claudeTelegramNotifications() {
+  local file=~/.claude/telegram_notifications_enabled
+  case "$1" in
+    enable)  echo 1 > "$file" && echo 'Claude Telegram notifications enabled' ;;
+    disable) echo 0 > "$file" && echo 'Claude Telegram notifications disabled' ;;
+    "")
+      local state=$(cat "$file" 2>/dev/null)
+      [[ "$state" == "1" ]] && echo 'Claude Telegram notifications: enabled' || echo 'Claude Telegram notifications: disabled'
+      ;;
+    *) echo "Usage: claudeTelegramNotifications [enable|disable]" >&2; return 1 ;;
+  esac
+}
+
 #STDERR printed in RED. Example: color ping
 color()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))
 
