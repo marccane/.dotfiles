@@ -367,20 +367,38 @@ md2pdf() {
 }
 
 # Cherry-pick a commit from the current dotfiles branch onto the "other"
-# branch via the ~/.dotfiles_feina worktree, then push both sides.
+# branch via the ~/.dotfiles_master worktree, then push both sides.
+# Target branch resolution: <branch> arg > `git config share.target` > origin's HEAD branch.
+# Set the per-machine target with: git --git-dir=$HOME/.dotfiles --work-tree=$HOME config share.target <branch>
 # Usage: df-share [sha]         (default: HEAD of current dotfiles branch)
-#        df-share <sha> <branch>  (override target branch, default: master)
+#        df-share <sha> <branch>  (override target branch)
 df-share() {
   local src_sha src_branch dst_branch wt
   src_sha=$(/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" rev-parse --verify "${1:-HEAD}") || return 1
   src_branch=$(/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" rev-parse --abbrev-ref HEAD) || return 1
-  dst_branch=${2:-feina}
-  wt="$HOME/.dotfiles_feina"
+  dst_branch=$2
+  if [ -z "$dst_branch" ]; then
+    if /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" config --get share.target >/dev/null 2>&1; then
+      dst_branch=$(/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" config --get share.target)
+      if [ -z "${dst_branch// }" ]; then
+        echo "df-share: share.target is set but empty — fix it: git --git-dir=$HOME/.dotfiles --work-tree=$HOME config share.target <branch>" >&2; return 1
+      fi
+    else
+      dst_branch=$(/usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)
+      dst_branch=${dst_branch#origin/}
+    fi
+  fi
+  if [ -z "$dst_branch" ]; then
+    echo "df-share: could not determine target branch — pass it explicitly or set share.target" >&2; return 1
+  fi
+  wt="$HOME/.dotfiles_$dst_branch"
   if [ "$src_branch" = "$dst_branch" ]; then
     echo "df-share: already on $dst_branch, nothing to do" >&2; return 1
   fi
   if [ ! -d "$wt" ]; then
-    echo "df-share: worktree $wt missing — run: dotfiles worktree add $wt $dst_branch" >&2; return 1
+    echo "→ creating worktree $wt for $dst_branch"
+    /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" fetch origin "$dst_branch" || return 1
+    /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" worktree add "$wt" "$dst_branch" || return 1
   fi
   echo "→ push $src_branch"
   /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" push origin "$src_branch" || return 1
