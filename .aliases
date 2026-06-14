@@ -630,7 +630,7 @@ alias topgui=qps
 alias pdfreader=evince
 alias pdfreader2=okular
 pdf() { evince "$@" > /dev/null 2>&1 & disown; }
-alias md="okular"
+md() { okular "$@" > /dev/null 2>&1 & disown; }
 alias rssreader=liferea
 alias webbrowser=firefox
 alias webbrowser2=midori
