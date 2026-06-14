@@ -119,17 +119,69 @@ claudeUsageWatch() {  # no arg lists orgs; pass name substring to select (e.g. p
 	watch -c -n 180 "claude_usage.py${1:+ $1}";
 }
 
+# Resolve a single .3dsx target from an argument.
+# Dir arg  -> most recent *.3dsx in it (non-recursive).
+# File arg -> itself (must have a .3dsx extension).
+# Prints the path on success; error to stderr + returns 1 on failure.
+_resolve3dsx() {
+	local arg="$1" file ext
+	if [ -d "$arg" ]; then
+		file=$(find "$arg" -maxdepth 1 -type f -iname '*.3dsx' -printf '%T@ %p\n' 2>/dev/null \
+		       | sort -rn | head -n1 | cut -d' ' -f2-)
+		if [ -z "$file" ]; then
+			echo "3dsx: no .3dsx file found in '$arg'" >&2
+			return 1
+		fi
+		printf '%s\n' "$file"
+	elif [ -f "$arg" ]; then
+		ext=$(printf '%s' "${arg##*.}" | tr '[:upper:]' '[:lower:]')
+		if [ "$ext" != "3dsx" ]; then
+			echo "3dsx: not a .3dsx file: '$arg'" >&2
+			return 1
+		fi
+		printf '%s\n' "$arg"
+	else
+		echo "3dsx: no such file or directory: '$arg'" >&2
+		return 1
+	fi
+}
+
 send3dsx() {
-	result=1
+	if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+		echo "Usage: send3dsx [file.3dsx | directory]"
+		echo "  (no arg)    send the most recent *.3dsx in the current directory"
+		echo "  directory   send the most recent *.3dsx in it (non-recursive)"
+		echo "  file.3dsx   send that specific file"
+		echo "Retries via 3dslink until the transfer succeeds."
+		return 0
+	fi
+	local target result=1
+	target=$(_resolve3dsx "${1:-.}") || return 1
+	echo "Sending: $target"
 	while [ $result -ne 0 ] ; do
-	        3dslink *3dsx
+	        command 3dslink "$target"
 		result=$?
 	done
 }
 
 brew() {
-	citra-qt *3dsx
+	if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+		echo "Usage: brew [file.3dsx | directory]"
+		echo "  (no arg)    launch the most recent *.3dsx in the current directory"
+		echo "  directory   launch the most recent *.3dsx in it (non-recursive)"
+		echo "  file.3dsx   launch that specific file"
+		echo "Runs the .3dsx in the azahar emulator."
+		return 0
+	fi
+	local target
+	target=$(_resolve3dsx "${1:-.}") || return 1
+	echo "Launching: $target"
+	azahar "$target"
 }
+
+# Override 3dslink to route through send3dsx (which itself uses `command 3dslink`,
+# so no recursion). Args after the alias are appended, e.g. `3dslink ~/builds`.
+alias 3dslink='echo "redirecting to send3dsx" && send3dsx'
 
 ocrCatala() {
     local input="$1"
