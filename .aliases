@@ -94,7 +94,7 @@
 # Not pacman-managed (informational):
 #   claude (claude-code, via npm),
 #   PTCUtilities.sh, cascos.sh, pinganillosCasa.sh, claude_usage.py
-#     — personal scripts under ~/scripts and ~/canethings
+#     — personal scripts under ~/.scripts and ~/canethings
 # =============================================================================
 
 realdir() {

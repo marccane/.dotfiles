@@ -4,8 +4,8 @@
 
 #[[ -f ~/.bashrc ]] && . ~/.bashrc
 
-export PATH=$HOME/scripts/prio:$PATH
-export PATH=$PATH:$HOME/scripts
+export PATH=$HOME/.scripts/prio:$PATH
+export PATH=$PATH:$HOME/.scripts
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/canethings
 export PATH=$PATH:$HOME/.cargo/bin
