@@ -61,7 +61,6 @@
 #   arduino-cli, 3dslink (devkitpro repo),
 #   azahar-appimage (citra successor), desmume, melonds-bin,
 #   ninfs-gui, blobsaver-bin,
-#   citra (MISSING, replaced by azahar)
 #
 # Torrents:
 #   transmission-qt, deluge
@@ -394,16 +393,15 @@ df-share() {
   if [ ! -d "$wt" ]; then
     echo "→ creating worktree $wt for $dst_branch"
     /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" fetch origin "$dst_branch" || return 1
-    /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" worktree add "$wt" "$dst_branch" || return 1
+    /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" worktree add --track -B "$dst_branch" "$wt" "origin/$dst_branch" || return 1
   fi
   echo "→ push $src_branch"
   /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" push origin "$src_branch" || return 1
   echo "→ cherry-pick $src_sha onto $dst_branch in $wt"
   (
     cd "$wt" || exit 1
-    git fetch origin "$dst_branch" || exit 1
     git checkout "$dst_branch" || exit 1
-    git pull --ff-only || exit 1
+    git pull --ff-only origin "$dst_branch" || exit 1
     git cherry-pick "$src_sha" || { echo "cherry-pick stopped — resolve in $wt, then: git cherry-pick --continue && git push" >&2; exit 1; }
     git push origin "$dst_branch"
   )
@@ -436,16 +434,15 @@ scripts-share() {
   if [ ! -d "$wt" ]; then
     echo "→ creating worktree $wt for $dst_branch"
     git -C "$repo" fetch origin "$dst_branch" || return 1
-    git -C "$repo" worktree add "$wt" "$dst_branch" || return 1
+    git -C "$repo" worktree add --track -B "$dst_branch" "$wt" "origin/$dst_branch" || return 1
   fi
   echo "→ push $src_branch"
   git -C "$repo" push origin "$src_branch" || return 1
   echo "→ cherry-pick $src_sha onto $dst_branch in $wt"
   (
     cd "$wt" || exit 1
-    git fetch origin "$dst_branch" || exit 1
     git checkout "$dst_branch" || exit 1
-    git pull --ff-only || exit 1
+    git pull --ff-only origin "$dst_branch" || exit 1
     git cherry-pick "$src_sha" || { echo "cherry-pick stopped — resolve in $wt, then: git cherry-pick --continue && git push" >&2; exit 1; }
     git push origin "$dst_branch"
   )
