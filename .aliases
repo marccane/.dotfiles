@@ -79,7 +79,7 @@
 #   bluez-utils (bluetoothctl)
 #
 # Network / scanning / geo:
-#   nmap, geoip (geoiplookup), python-ip2geotools
+#   nmap, geoip (geoiplookup)
 #
 # OCR (ocrCatala, ocrEnglish):
 #   tesseract, tesseract-data-cat, tesseract-data-eng
@@ -655,7 +655,6 @@ alias editPacmanConfigGUI="sudo leafpad /etc/pacman.conf"
 alias pacmanRemoveUnstableRepos="sudo sed -i 's/^\([^#].*\(dkp-libs\|dkp-linux\|pkg\.devkitpro\).*\)$/#\1/' /etc/pacman.conf"
 alias pacmanAddUnstableRepos="sudo sed -i 's/^#\(.*\(dkp-libs\|dkp-linux\|pkg\.devkitpro\).*\)$/\1/' /etc/pacman.conf"
 alias ip2geo=geoiplookup
-alias ip2geo2="ip2geotools -d dbipcity"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dfs="dotfiles status"
 alias dfd="dotfiles diff"
