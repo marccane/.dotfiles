@@ -82,6 +82,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Remove oh-my-zsh's `md` alias (mkdir -p) — defined in lib/directories.zsh
+unalias md 2>/dev/null
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment

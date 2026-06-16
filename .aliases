@@ -34,6 +34,10 @@ pdf() {
 	evince "$@" > /dev/null 2>&1 & disown;
 }
 
+md() {
+    okular "$@" > /dev/null 2>&1 & disown;
+}
+
 retry() {
     local cmd
     cmd=$(fc -ln -1 | sed 's/^ *//')
@@ -464,7 +468,6 @@ alias gitgui=gitk
 alias gitgui2=gittyup
 alias pdfreader=evince
 alias pdfreader2=okular
-alias md="okular"
 alias rssreader="liferea & disown && exit"
 alias webbrowser1=firefox
 alias webbrowser2=chromium
