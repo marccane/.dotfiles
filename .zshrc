@@ -128,6 +128,12 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# Tab-completion for the `dotfiles` bare-repo alias.
+# compdef makes `dotfiles` complete like git; the git-dir zstyle points file/branch
+# completion at the right repo so e.g. `dotfiles add <tab>` lists the right files.
+compdef dotfiles=git
+zstyle ':completion:*:*:dotfiles:*' git-dir "$HOME/.dotfiles"
+
 #PROMPT='%m:%1~ %n%#'
 
 if [[ -a ~/.profile ]]; then
