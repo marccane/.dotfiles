@@ -38,12 +38,6 @@ md() {
     okular "$@" > /dev/null 2>&1 & disown;
 }
 
-retry() {
-    local cmd
-    cmd=$(fc -ln -1 | sed 's/^ *//')
-    while ! eval "$cmd"; do :; done
-}
-
 ocrEnglish() {
     local input="$1"
     local output="${input%.*}"
