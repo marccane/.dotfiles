@@ -129,10 +129,12 @@ compinit
 # End of lines added by compinstall
 
 # Tab-completion for the `dotfiles` bare-repo alias.
-# compdef makes `dotfiles` complete like git; the git-dir zstyle points file/branch
-# completion at the right repo so e.g. `dotfiles add <tab>` lists the right files.
-compdef dotfiles=git
-zstyle ':completion:*:*:dotfiles:*' git-dir "$HOME/.dotfiles"
+# zsh's _git finds the repo by running plain `git` from the current dir, which
+# fails here (there is no .git under $HOME). So we wrap _git and export
+# GIT_DIR/GIT_WORK_TREE for the duration of completion only — scoped to the
+# completer, it does not leak into the interactive shell.
+_dotfiles_complete() { local -x GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME"; _git }
+compdef _dotfiles_complete dotfiles
 
 #PROMPT='%m:%1~ %n%#'
 
