@@ -155,13 +155,15 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# Tab-completion for the `docs` bare-repo alias (tracks files in ~ and ~/aio).
-# compdef makes `docs` complete like git; the git-dir zstyle points file/branch
-# completion at the right repo so e.g. `docs add <tab>` lists the right files.
-compdef docs=git
-zstyle ':completion:*:*:docs:*' git-dir "$HOME/aio/.documents_bare_repo"
-compdef dotfiles=git
-zstyle ':completion:*:*:dotfiles:*' git-dir "$HOME/.dotfiles"
+# Tab-completion for the bare-repo aliases (docs, dotfiles).
+# zsh's _git finds the repo by running plain `git` from the current dir, which
+# fails for these aliases (there is no .git under $HOME). So we wrap _git and
+# export GIT_DIR/GIT_WORK_TREE for the duration of completion only — this is
+# scoped to the completer, it does not leak into the interactive shell.
+_docs_complete()     { local -x GIT_DIR="$HOME/aio/.documents_bare_repo" GIT_WORK_TREE="$HOME"; _git }
+_dotfiles_complete() { local -x GIT_DIR="$HOME/.dotfiles"                 GIT_WORK_TREE="$HOME"; _git }
+compdef _docs_complete docs
+compdef _dotfiles_complete dotfiles
 
 #PROMPT='%m:%1~ %n%#'
 
