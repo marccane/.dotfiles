@@ -570,6 +570,7 @@ alias py=python
 alias code=codium
 alias sus="systemctl suspend"
 alias poweroff="systemctl poweroff"
+alias lock="loginctl lock-session"
 alias please=sudo
 alias sudo='sudo ' #gigafix de'n claudi perquè funcioni sudo cpProgress i altres alias amb sudo
 alias uefiReboot="systemctl reboot --firmware-setup"
