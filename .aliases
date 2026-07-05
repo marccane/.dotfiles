@@ -704,7 +704,6 @@ alias gitadog="git log --all --decorate --oneline --graph" #CLI branch graph
 alias fixbrillo="sudo ddcutil detect"
 alias fixKvmNetwork="sudo virsh net-start default"
 alias crashes="coredumpctl list"
-alias retry="while [ $? -ne 0 ]; do eval $(history -p !!); done"
 alias stophdd="sudo udisksctl power-off -b /dev/sda" #sudo permission in /etc/sudoers allows to execute without passwd
 alias hibernacioNormal="sudo cp -f /etc/systemd/sleep.conf.normal /etc/systemd/sleep.conf" #perquè no rebooteji després d'hibernar
 alias printGitRepoRemotes="find -maxdepth 5 -type d -name ".git" 2>/dev/null | grep -v "\.cache" | xargs -I{} bash -c 'cd {}; cd ..; echo; echo '{}'; git remote -v'"
