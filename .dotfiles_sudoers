@@ -153,6 +153,8 @@ markus ALL=(root) NOPASSWD: /usr/bin/tshark
 %wheel ALL=(root) NOPASSWD: /usr/bin/ddcutil *
 #dmesg
 %wheel ALL=(root) NOPASSWD: /usr/bin/dmesg -kw
+#htop
+%wheel ALL=(root) NOPASSWD: /usr/bin/htop *
 
 #Testing
 #%wheel ALL=(root) NOPASSWD: /usr/bin/ls, /usr/bin/ls *
