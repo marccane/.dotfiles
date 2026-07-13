@@ -172,3 +172,4 @@ claude-retry() {
 }
 # <<< claude-auto-retry (opt-in) <<<
 
+export BEFORE_SUSPEND_KEEP=10
