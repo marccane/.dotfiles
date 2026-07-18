@@ -195,7 +195,7 @@ ocrCatala() {
 }
 
 claudeSessions() {
-    find ~/.claude/projects/ -name "*.jsonl" -printf "%T@ %Tc %p\n" | sort -rn | awk '{$1=""; print NR". "$0}' | tac
+    find ~/.claude/projects/ -name "*.jsonl" -printf "%T@ %Tc %p\n" | sort -rn | awk '{$1=""; print NR". "$0}' | tac | grep -v "/subagents/"
 }
 
 claudeResume() {
