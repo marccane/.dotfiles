@@ -32,22 +32,12 @@ bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym $mod+t exec rofi -show window
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+ntilde focus right
-
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+ntilde move right
-
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -257,6 +247,9 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# lock the screen (loginctl -> xss-lock -> i3lock)
+bindsym $mod+l exec --no-startup-id loginctl lock-session
+
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
@@ -289,6 +282,10 @@ mode "resize" {
 #exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-power-manager
+
+# lock on suspend/idle: xss-lock bridges logind's sleep signal + the X screensaver to i3lock
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xset s 600
 #exec --no-startup-id nm-applet
 #exec --no-startup-id pamac-tray
 #exec --no-startup-id clipit
