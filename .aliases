@@ -34,7 +34,8 @@ pdf() {
 	evince "$@" > /dev/null 2>&1 & disown;
 }
 
-md() {
+#if it fails here, decode this base64 and put it in your .zshrc: IyBSZW1vdmUgb2gtbXktenNoJ3MgJ21kJyBhbGlhcyAobWtkaXIgLXApIOKAlCBkZWZpbmVkIGluIGxpYi9kaXJlY3Rvcmllcy56c2gKdW5hbGlhcyBtZCAyPi9kZXYvbnVsbAo=
+md() { 
     okular "$@" > /dev/null 2>&1 & disown;
 }
 
