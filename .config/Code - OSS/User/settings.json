@@ -1,0 +1,24 @@
+{
+    "editor.fontFamily": "'Droid Sans Mono', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 15,
+    "workbench.experimental.fontFamily": "Noto Sans",
+    "workbench.experimental.fontSize": 14,
+    "editor.renderControlCharacters": true,
+    "code-runner.runInTerminal": true,
+    "code-runner.executorMap": {
+        "rust": "cargo run"
+    },
+    "code-runner.saveAllFilesBeforeRun": true,
+    "workbench.sideBar.location": "left",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "security.workspace.trust.untrustedFiles": "open",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "diffEditor.maxComputationTime": 0,
+    
+    "solargraph.transport": "stdio",
+    "solargraph.formatting": true,
+    "solargraph.diagnostics": true,
+    "claudeCode.preferredLocation": "panel"
+}
