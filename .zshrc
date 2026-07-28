@@ -149,11 +149,11 @@ if [[ -a ~/.aliases_private ]]; then
 fi
 [[ -f ~/.zshrc_secrets ]] && source ~/.zshrc_secrets
 
-if command -v fastfetch &>/dev/null; then
-    fastfetch
-elif command -v neofetch &>/dev/null; then
-    neofetch
-fi
+#if command -v fastfetch &>/dev/null; then
+#    fastfetch
+#elif command -v neofetch &>/dev/null; then
+#    neofetch
+#fi
 
 if which pyenv > /dev/null; then
 	PATH=$(pyenv root)/shims:$PATH
