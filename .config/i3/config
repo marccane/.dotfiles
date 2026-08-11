@@ -517,6 +517,10 @@ exec --no-startup-id /usr/bin/dunst
 # `yay -S autotiling ;) (it is in AUR)
 #exec_always --no-startup-id autotiling
 
+# bluetooth agent
+# requires packages bluez-utils bluez-tools
+exec --no-startup-id bt-agent --capability=NoInputNoOutput
+
 exec --no-startup-id $HOME/.local/bin/startup-reminder
 
 ###############
