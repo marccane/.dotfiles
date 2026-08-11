@@ -65,8 +65,9 @@ ocrCatala() {
     tesseract "$input" "$output" -l cat
 }
 
-claudeSessions() {
-    find ~/.claude/projects/ -name "*.jsonl" -printf "%T@ %Tc %p\n" | sort -rn | awk '{$1=""; print NR". "$0}' | tac | grep -v "/subagents/"
+claudeSessions() { #optional arg: restrict to a specific ~/.claude/projects/<encoded> dir instead of all projects
+    local dir="${1:-$HOME/.claude/projects/}"
+    find "$dir" -name "*.jsonl" -printf "%T@ %Tc %p\n" | sort -rn | awk '{$1=""; print NR". "$0}' | tac | grep -v "/subagents/"
 }
 
 claudeResume() { #skip permissions by default!
@@ -133,6 +134,20 @@ EOF
         echo "Error: could not resolve project directory for: $encoded"
         return 1
     fi
+}
+
+claudeQuick() { #resumes the latest session from the ~/porqueries/claudeQuick project
+    local project_dir=~/porqueries/claudeQuick
+    local encoded=$(echo "$project_dir" | sed 's/[\/_]/-/g')
+    local filepath=$(claudeSessions "$HOME/.claude/projects/$encoded" | tail -1 | awk '{print $NF}')
+
+    if [[ -z "$filepath" ]]; then
+        echo "No claudeQuick sessions found in $encoded"
+        return 1
+    fi
+
+    local uuid=$(basename "$filepath" .jsonl)
+    cd "$project_dir" && claude --dangerously-skip-permissions --resume "$uuid"
 }
 
 git() {
