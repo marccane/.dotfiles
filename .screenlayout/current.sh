@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# 1=claitec1, 2=claitec2 (default)
-LOCATION=${1:-2}
+# Change this one value to set which layout runs when no argument is given.
+DEFAULT_LOCATION=1
+
+# 1=claitec1, 2=claitec2
+LOCATION=${1:-$DEFAULT_LOCATION}
 
 case "$LOCATION" in
   1)
@@ -16,8 +19,8 @@ case "$LOCATION" in
     ;;
   *)
     echo "Usage: $0 [1|2]"
-    echo "  1 = claitec1 layout"
-    echo "  2 = claitec2 layout (default)"
+    echo "  1 = claitec1 layout$([ "$DEFAULT_LOCATION" = 1 ] && echo ' (default)')"
+    echo "  2 = claitec2 layout$([ "$DEFAULT_LOCATION" = 2 ] && echo ' (default)')"
     exit 1
     ;;
 esac
