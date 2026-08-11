@@ -1,4 +1,3 @@
-0 14 * * * DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /usr/bin/notify-send -t 100000 'Recordatori!' 'FITXAR'
 25 9 * * 1 DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /bin/sh -c '/usr/bin/notify-send -t 100000 "Recordatori!" "ANGLES!"; sleep 300; /usr/bin/notify-send -t 100000 "Recordatori!" "ANGLES!"'
 30 14 * * 5 DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /bin/sh -c '/usr/bin/notify-send -t 100000 "Recordatori!" "PUSHTXTS!"; sleep 300; /usr/bin/notify-send -t 100000 "Recordatori!" "PUSHTXTS!"'
 0 10 * * * /home/markus/.scripts/checkMaliciousScriptsClaitec.sh
@@ -7,4 +6,4 @@
 0 1  * * 0-5 RCLCRON_RCLINDEX= RECOLL_CONFDIR="/home/markus/.recoll" recollindex
 0 19 * * * /usr/bin/bluetoothctl disconnect
 */15 * * * * /bin/sh -c 'mv /home/markus/aio/qorvo_QM35825DK_devkit/qm35-sdk/diagnostic_report*.json /home/markus/diagnostic_report*.json /home/markus/aio/qorvo_QM35825DK_devkit/diagnostic_reports/ 2>/dev/null'
-0 10 * * * /usr/bin/zstd --rm /home/markus/aio/qorvo_QM35825DK_devkit/diagnostic_reports/diagnostic*json
+#0 10 * * * /usr/bin/zstd --rm /home/markus/aio/qorvo_QM35825DK_devkit/diagnostic_reports/diagnostic*json
