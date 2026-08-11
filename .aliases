@@ -579,6 +579,7 @@ alias claudeCodeChatOpen="firefox ~/.CodeChatViewer/CCV-Dashboard.html"
 alias dangerousClaude="claude --dangerously-skip-permissions"
 alias histfileView="awk 'match(\$0,/^: [0-9]+:[0-9]+;/){ split(substr(\$0,3,RLENGTH-3),a,\":\"); printf \": %s:%s;%s\n\", strftime(\"%d/%m/%y %H:%M\",a[1]), a[2], substr(\$0,RLENGTH+1) }' ~/.histfile | less"
 alias claudeResumeLatestSession="claudeResume 1"
+alias servoInfiniteGoto='while true; do angle=$(( (RANDOM % 73) * 5 )); echo "goto $angle" | servoctl 192.168.26.49; echo "##########\nGOTO $angle\n##########"; sleep 9; done'
 
 # Bare git repo for tracking dotfiles/documents across ~ and ~/aio
 alias docs='git --git-dir=$HOME/aio/.documents_bare_repo --work-tree=$HOME'
