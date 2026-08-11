@@ -613,7 +613,7 @@ mouse = "Middle"
 
 [scrolling]
 history = 10000
-multiplier = 3
+multiplier = 8
 
 [selection]
 save_to_clipboard = false
