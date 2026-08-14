@@ -35,7 +35,7 @@ pdf() {
 }
 
 printRemotesOfLocalGitRepos() {
-    find -maxdepth 5 -type d -name ".git" 2>/dev/null | grep -v "\.cache" | xargs -I{} bash -c 'cd "{}"; cd ..; echo '{}'; git remote -v; echo'
+    find -L -maxdepth 5 -type d -name ".git" 2>/dev/null | grep -v "\.cache" | xargs -I{} bash -c 'cd "{}"; cd ..; echo '{}'; git remote -v; echo'
 }
 
 #if it fails here, decode this base64 and put it in your .zshrc: IyBSZW1vdmUgb2gtbXktenNoJ3MgJ21kJyBhbGlhcyAobWtkaXIgLXApIOKAlCBkZWZpbmVkIGluIGxpYi9kaXJlY3Rvcmllcy56c2gKdW5hbGlhcyBtZCAyPi9kZXYvbnVsbAo=
