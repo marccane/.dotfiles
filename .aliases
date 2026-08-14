@@ -264,6 +264,20 @@ EOF
     fi
 }
 
+claudeQuick() { #resumes the latest session from the ~/porqueries/claudeQuick project
+    local project_dir=~/porqueries/claudeQuick
+    local encoded=$(echo "$project_dir" | sed 's/[\/_]/-/g')
+    local filepath=$(claudeSessions "$HOME/.claude/projects/$encoded" | tail -1 | awk '{print $NF}')
+
+    if [[ -z "$filepath" ]]; then
+        echo "No claudeQuick sessions found in $encoded"
+        return 1
+    fi
+
+    local uuid=$(basename "$filepath" .jsonl)
+    cd "$project_dir" && claude --dangerously-skip-permissions --resume "$uuid"
+}
+
 ocrEnglish() {
     local input="$1"
     local output="${input%.*}"
