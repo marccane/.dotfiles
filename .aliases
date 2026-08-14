@@ -350,6 +350,10 @@ alias wininfo=windowinfo
       7z a -p"$password" -mhe=on "$archive" "$@"
   }
 
+printRemotesOfLocalGitRepos() {
+    find -L -maxdepth 5 -type d -name ".git" 2>/dev/null | grep -v "\.cache" | xargs -I{} bash -c 'cd "{}"; cd ..; echo '{}'; git remote -v; echo'
+}
+
 #https://www.linuxfordevices.com/tutorials/linux/extract-compressed-files-custom-command
 extract() {
   if [ -f "$1" ] ; then
