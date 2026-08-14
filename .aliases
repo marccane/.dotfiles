@@ -194,8 +194,9 @@ ocrCatala() {
     tesseract "$input" "$output" -l cat
 }
 
-claudeSessions() {
-    find ~/.claude/projects/ -name "*.jsonl" -printf "%T@ %Tc %p\n" | sort -rn | awk '{$1=""; print NR". "$0}' | tac | grep -v "/subagents/"
+claudeSessions() { #optional arg: restrict to a specific ~/.claude/projects/<encoded> dir instead of all projects
+    local dir="${1:-$HOME/.claude/projects/}"
+    find "$dir" -name "*.jsonl" -printf "%T@ %Tc %p\n" | sort -rn | awk '{$1=""; print NR". "$0}' | tac | grep -v "/subagents/"
 }
 
 claudeResume() { #skip permissions by default!
