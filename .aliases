@@ -116,7 +116,7 @@ path() {
 }
 
 claudeUsageWatch() {  # no arg lists orgs; pass name substring to select (e.g. personal, troax)
-	watch -c -n 180 "claude_usage.py${1:+ $1}";
+	watch -c -n 240 "claude_usage.py${1:+ $1}";
 }
 
 # Resolve a single .3dsx target from an argument.
