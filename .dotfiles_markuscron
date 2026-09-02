@@ -1,5 +1,6 @@
 25 9 * * 1 DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /bin/sh -c '/usr/bin/notify-send -t 100000 "Recordatori!" "ANGLES!"; sleep 300; /usr/bin/notify-send -t 100000 "Recordatori!" "ANGLES!"'
 30 14 * * 5 DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /bin/sh -c '/usr/bin/notify-send -t 100000 "Recordatori!" "PUSHTXTS!"; sleep 300; /usr/bin/notify-send -t 100000 "Recordatori!" "PUSHTXTS!"'
+45 16 * * 5 DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus /bin/sh -c '/usr/bin/notify-send -t 100000 "Recordatori!" "Imputar hores Jira!"; sleep 300; /usr/bin/notify-send -t 100000 "Recordatori!" "Imputar hores Jira!"'
 0 10 * * * /home/markus/.scripts/checkMaliciousScriptsClaitec.sh
 #Autoiniciar xarxa virtual per les VMs de qemu/kvm/libvirtman. Regla NOPASSWD al visudo!
 @reboot sudo virsh net-start default
