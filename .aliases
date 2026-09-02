@@ -453,6 +453,7 @@ alias file="file -L"
 #alias rm="safe-rm -I" #safe-rm adds itself to the path before the real rm path
 #alias cd=cd -P #not sure what this does
 alias shred="shred -n1 --remove=wipe"
+alias unwrap-url="unwrap-url.sh -v -c"
 
 #Alias/short names
 alias c=cat
@@ -497,8 +498,9 @@ alias cputemperature=sensors
 
 #Init/Start of services and other stuff
 alias starti2c="sudo modprobe i2c-dev"
-alias startnm="sudo systemctl start NetworkManager && nm-applet & disown"
+alias startnm="sudo systemctl start NetworkManager && nm-applet & disown" #Ja no cal pk s'autoinicia...
 alias startbt="sudo systemctl start bluetooth" #Ja no cal pk s'autoinicia...
+alias startKvmDefaultNetwork="sudo virsh net-start default" #Ja no cal pk s'autoinicia...
 
 #Custom commands/shortcuts
 alias i3config="nano ~/.config/i3/config"
@@ -572,8 +574,6 @@ alias updateVenvQm35="venv_qm35 && (cd ~/aio/qorvo_QM35825DK_devkit/qm35-sdk/Sam
 alias reinstallVenvQm35=updateVenvQm35
 alias ft4222devices="lsusb | grep 0403"
 alias ft4222devices2="qsoc-flash -D s:FT4222 -l"
-alias fixKvmNetwork="sudo virsh net-start default" #Ja no cal pk s'autoinicia...
-alias startKvmDefaultNetwork="sudo virsh net-start default" #Ja no cal pk s'autoinicia...
 alias claudeCodeChatRegenerate="python ~/repos/code-chat-viewer/scripts/manager.py"
 alias claudeCodeChatOpen="firefox ~/.CodeChatViewer/CCV-Dashboard.html"
 alias dangerousClaude="claude --dangerously-skip-permissions"
