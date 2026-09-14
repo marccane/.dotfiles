@@ -1,5 +1,5 @@
 {
-  "cleanupPeriodDays": 365250,
+  "cleanupPeriodDays": 36500,
   "permissions": {
     "allow": [
       "Read(/tmp/**)",
@@ -57,7 +57,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
-  "model": "fable",
+  "model": "opus",
   "hooks": {
     "Stop": [
       {
