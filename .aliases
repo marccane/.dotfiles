@@ -454,6 +454,7 @@ alias file="file -L"
 #alias cd=cd -P #not sure what this does
 alias shred="shred -n1 --remove=wipe"
 alias unwrap-url="unwrap-url.sh -v -c"
+alias url-unwrap="unwrap-url.sh -v -c"
 
 #Alias/short names
 alias c=cat
