@@ -58,7 +58,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
-  "model": "fable",
+  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
@@ -84,9 +84,15 @@
     ]
   },
   "enabledPlugins": {
-    "clangd-lsp@claude-plugins-official": true
+    "clangd-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
   },
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
-  "preferredNotifChannel": "auto"
+  "preferredNotifChannel": "auto",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  }
 }
