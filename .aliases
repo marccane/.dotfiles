@@ -743,3 +743,5 @@ alias histfileView="awk 'match(\$0,/^: [0-9]+:[0-9]+;/){ split(substr(\$0,3,RLEN
 alias claudeResumeLatestSession="claudeResume 1"
 alias tl=toggle_ledvance_plug.py
 alias ts=toggle_shelly_plug.py
+alias uartTag="picocom /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0 --baud 76800"
+alias uartC6="picocom /dev/serial/by-id/usb-Espressif_USB_JTAG_serial_debug_unit_98:A3:16:96:A5:BC-if00 --baud 115200"
