@@ -554,10 +554,8 @@ alias gitd="git diff"
 alias gitdc="git diff --cached"
 alias gitadog="git log --all --decorate --oneline --graph" #CLI branch graph
 alias fixbrillo="sudo ddcutil detect"
-alias codiFrancescOg="bat ~/noActiusProjectes/tot_dw1000/dw1000_stuff/francescM/T10UWBv3.00.14/libraries/arduino-dw1000-master/src/DW1000Ranging.cpp"
 alias todocane=todoscane
 alias todoscane="grep -i "//ToDo" src lib -R"
-alias interficieEspProg="readlink -f /dev/serial/by-id/usb-FTDI_Dual_RS232-HS-if01-port0"
 alias llistarKvmNetworkClients="sudo virsh net-dhcp-leases default"
 alias infections="libredefender infections -C"
 alias vmsImagesFolder="cd /var/lib/libvirt/images"
@@ -567,12 +565,8 @@ alias dfdc="dotfiles diff --cached"
 alias dfa="dotfiles add"
 alias dfc="dotfiles commit"
 alias dfp="dotfiles push"
-alias venv_qm35="pyenv shell 3.10.14 && source ~/aio/qorvo_QM35825DK_devkit/qm35-sdk/Samples/Python/UWB-Qorvo-Tools/.venv/bin/activate"
-alias qm33port="export UQT_PORT=/dev/serial/by-id/usb-Nordic_Semiconductor_nRF52_USB_Product_D3ED785AB849-if00"
 alias pushTxts="git -C ~/txts status && git -C ~/txts add ~/txts && git -C ~/txts commit -m "txts" && git -C ~/txts push"
 alias alaconfig="nano ~/.config/alacritty/alacritty.toml"
-alias updateVenvQm35="venv_qm35 && (cd ~/aio/qorvo_QM35825DK_devkit/qm35-sdk/Samples/Python/UWB-Qorvo-Tools && pip install -e . && pip install -r requirements.txt)"
-alias reinstallVenvQm35=updateVenvQm35
 alias ft4222devices="lsusb | grep 0403"
 alias ft4222devices2="qsoc-flash -D s:FT4222 -l"
 alias claudeCodeChatRegenerate="python ~/repos/code-chat-viewer/scripts/manager.py"
@@ -582,7 +576,10 @@ alias histfileView="awk 'match(\$0,/^: [0-9]+:[0-9]+;/){ split(substr(\$0,3,RLEN
 alias claudeResumeLatestSession="claudeResume 1"
 alias servoInfiniteGoto='while true; do angle=$(( (RANDOM % 73) * 5 )); echo "goto $angle" | servoctl 192.168.26.49; echo "##########\nGOTO $angle\n##########"; sleep 9; done'
 alias pio="~/.platformio/penv/bin/pio "
-alias compileAndFlashCopilot="pio run -e COPILOT -t upload -c platformio.ini --upload-port "
+alias canopeneditor="wine ~/.local/bin/CANopenEditor/net481/EDSEditor.exe"
 
+# Unified build wrapper: real make when there is a Makefile, otherwise the
+# project's own build (pio / cmake / CreateTarget). See ~/.scripts/make.
+alias make="$HOME/.scripts/make"
 # Bare git repo for tracking dotfiles/documents across ~ and ~/aio
 alias docs='git --git-dir=$HOME/aio/.documents_bare_repo --work-tree=$HOME'

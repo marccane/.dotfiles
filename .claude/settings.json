@@ -57,7 +57,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
-  "model": "opus[1m]",
+  "model": "claude-opus-5-5",
   "hooks": {
     "Stop": [
       {
@@ -87,5 +87,10 @@
   },
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
-  "preferredNotifChannel": "auto"
+  "preferredNotifChannel": "auto",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  }
 }
