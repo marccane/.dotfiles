@@ -278,6 +278,23 @@ claudeQuick() { #resumes the latest session from the ~/porqueries/claudeQuick pr
     local uuid=$(basename "$filepath" .jsonl)
     cd "$project_dir" && claude --dangerously-skip-permissions --resume "$uuid"
 }
+claudePick() { #fzf over ALL sessions of all projects; star/rename/note them (kept in ~/.config/claudePick/sessions.tsv, transcripts never touched). --starred opens the starred view. skip permissions by default like claudeResume!
+    local view=all
+    [[ "$1" == "--starred" ]] && { view=starred; shift; }
+    local sel
+    sel=$(claudePick.py pick --view "$view") || return
+    local cwd="${sel%%$'\t'*}" uuid="${sel##*$'\t'}"
+
+    echo "Session : $uuid"
+    echo "Project : $cwd"
+    if [[ ! -d "$cwd" ]]; then
+        read -q "?Project dir no longer exists. Resume from $PWD instead? [y/N] " || { echo; return 1; }
+        echo
+        cwd=$PWD
+    fi
+    cd "$cwd" && claude "$@" --dangerously-skip-permissions --resume "$uuid"
+}
+alias claudeStarred='claudePick --starred'
 
 ocrEnglish() {
     local input="$1"
