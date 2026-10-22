@@ -593,7 +593,7 @@ alias histfileView="awk 'match(\$0,/^: [0-9]+:[0-9]+;/){ split(substr(\$0,3,RLEN
 alias claudeResumeLatestSession="claudeResume 1"
 alias servoInfiniteGoto='while true; do angle=$(( (RANDOM % 73) * 5 )); echo "goto $angle" | servoctl 192.168.26.49; echo "##########\nGOTO $angle\n##########"; sleep 9; done'
 alias pio="~/.platformio/penv/bin/pio "
-alias canopeneditor="wine ~/.local/bin/CANopenEditor/net481/EDSEditor.exe"
+alias canopeneditor="mono ~/.local/bin/CANopenEditor/net481/EDSEditor.exe"
 
 # Unified build wrapper: real make when there is a Makefile, otherwise the
 # project's own build (pio / cmake / CreateTarget). See ~/.scripts/make.
