@@ -58,7 +58,7 @@
     ],
     "defaultMode": "acceptEdits"
   },
-  "model": "opus[1m]",
+  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -88,11 +88,11 @@
     "rust-analyzer-lsp@claude-plugins-official": true
   },
   "effortLevel": "xhigh",
-  "skipDangerousModePermissionPrompt": true,
-  "preferredNotifChannel": "auto",
   "modelSettings": {
     "claude-opus-5-5": {
       "effortLevel": "xhigh"
     }
-  }
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "preferredNotifChannel": "auto"
 }

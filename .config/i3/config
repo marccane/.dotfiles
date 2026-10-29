@@ -282,6 +282,7 @@ mode "resize" {
 #exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xfce4-power-manager
+exec --no-startup-id ~/.scripts/thunderbird-cleanup.sh
 
 # lock on suspend/idle: xss-lock bridges logind's sleep signal + the X screensaver to i3lock
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
