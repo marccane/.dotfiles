@@ -600,3 +600,55 @@ alias canopeneditor="mono ~/.local/bin/CANopenEditor/net481/EDSEditor.exe"
 alias make="$HOME/.scripts/make"
 # Bare git repo for tracking dotfiles/documents across ~ and ~/aio
 alias docs='git --git-dir=$HOME/aio/.documents_bare_repo --work-tree=$HOME'
+
+# Named links for serial adapters: /iddev/<name> -> /dev/serial/by-id/<id>.
+# The link stays when the adapter is unplugged; it just dangles, so opening it fails.
+#   iddev              list the links and whether each adapter is plugged in
+#   iddev <id> <name>  create a link (<TAB> completes the ids in /dev/serial/by-id)
+iddev() {
+	setopt localoptions nullglob
+	local l
+	if (( $# == 0 )); then
+		for l in /iddev/*; do
+			[[ -L $l ]] || continue
+			if [[ -e $l ]]; then
+				printf '%-22s %-8s %s\n' ${l:t} ${$(readlink -f $l):t} ${$(readlink $l):t}
+			else
+				printf '%-22s %-8s %s\n' ${l:t} - ${$(readlink $l):t}
+			fi
+		done
+		return
+	fi
+	if (( $# != 2 )) || [[ -z $2 || $2 == */* ]]; then
+		echo "usage: iddev [<by-id name> <custom name>]" >&2
+		return 1
+	fi
+	local id=${1:t} name=$2
+	if [[ ! -e /dev/serial/by-id/$id ]]; then
+		echo "iddev: /dev/serial/by-id/$id doesn't exist (adapter unplugged?)" >&2
+		return 1
+	fi
+	if [[ -e /iddev/$name || -L /iddev/$name ]]; then
+		echo "iddev: /iddev/$name already exists -> $(readlink /iddev/$name)" >&2
+		return 1
+	fi
+	for l in /iddev/*; do
+		[[ $(readlink $l) == /dev/serial/by-id/$id ]] && echo "iddev: note: this adapter is also /iddev/${l:t}"
+	done
+	sudo ln -s /dev/serial/by-id/$id /iddev/$name && ls -l /iddev/$name
+}
+_iddev() {
+	setopt localoptions nullglob
+	(( CURRENT == 2 )) || return 1
+	local d l desc
+	local -a ids
+	for d in /dev/serial/by-id/*; do
+		desc=${$(readlink -f $d):t}
+		for l in /iddev/*; do
+			[[ $(readlink $l) == $d ]] && desc+=" ${l:t}"
+		done
+		ids+=("${d:t}:$desc")
+	done
+	_describe 'serial device' ids
+}
+compdef _iddev iddev
