@@ -672,3 +672,8 @@ _iddev() {
 	_describe 'serial device' ids
 }
 compdef _iddev iddev
+# watchIddev [secs]: rerun iddev every secs (default 5). watch can't run it: it uses sh -c, which has no zsh functions.
+# The 'function' keyword keeps a re-source working in shells that still have the old watchIddev alias.
+function watchIddev {
+	while :; do clear; iddev; sleep ${1:-5}; done
+}
