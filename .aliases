@@ -609,6 +609,7 @@ iddev() {
 	setopt localoptions nullglob
 	local l d
 	if (( $# == 0 )); then
+		[[ -d /iddev ]] || echo "iddev: /iddev doesn't exist yet; the first 'iddev <id> <name>' creates it" >&2
 		local -A named
 		for l in /iddev/*; do
 			[[ -L $l ]] || continue
@@ -647,6 +648,10 @@ iddev() {
 	for l in /iddev/*; do
 		[[ $(readlink $l) == /dev/serial/by-id/$id ]] && echo "iddev: note: this adapter is also /iddev/${l:t}"
 	done
+	if [[ ! -d /iddev ]]; then
+		echo "iddev: creating /iddev"
+		sudo mkdir -m 755 /iddev || return 1
+	fi
 	sudo ln -s /dev/serial/by-id/$id /iddev/$name && ls -l /iddev/$name
 }
 _iddev() {
