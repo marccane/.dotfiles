@@ -407,6 +407,83 @@ claudeTelegramNotifications() {
   esac
 }
 
+# Named links for serial adapters: /iddev/<name> -> /dev/serial/by-id/<id>.
+# The link stays when the adapter is unplugged; it just dangles, so opening it fails.
+#   iddev              list the links and whether each adapter is plugged in
+#   iddev <id> <name>  create a link (<TAB> completes the ids in /dev/serial/by-id)
+iddev() {
+	setopt localoptions nullglob
+	local l d
+	if (( $# == 0 )); then
+		[[ -d /iddev ]] || echo "iddev: /iddev doesn't exist yet; the first 'iddev <id> <name>' creates it" >&2
+		# plugged-in adapters get one colour per column (only on a terminal)
+		local off='%-22s %-8s %s\n' on='%-22s %-8s %s\n'
+		[[ -t 1 ]] && on=$'\e[1;32m%-22s\e[0m \e[33m%-8s\e[0m \e[36m%s\e[0m\n'
+		local -A named
+		for l in /iddev/*; do
+			[[ -L $l ]] || continue
+			named[$(readlink $l)]=1
+			if [[ -e $l ]]; then
+				printf $on ${l:t} ${$(readlink -f $l):t} ${$(readlink $l):t}
+			else
+				printf $off ${l:t} - ${$(readlink $l):t}
+			fi
+		done
+		local -a unnamed
+		for d in /dev/serial/by-id/*; do
+			(( ${+named[$d]} )) || unnamed+=($d)
+		done
+		if (( $#unnamed )); then
+			echo "\nnot named yet:"
+			for d in $unnamed; do
+				printf $on - ${$(readlink -f $d):t} ${d:t}
+			done
+		fi
+		return
+	fi
+	if (( $# != 2 )) || [[ -z $2 || $2 == */* ]]; then
+		echo "usage: iddev [<by-id name> <custom name>]" >&2
+		return 1
+	fi
+	local id=${1:t} name=$2
+	if [[ ! -e /dev/serial/by-id/$id ]]; then
+		echo "iddev: /dev/serial/by-id/$id doesn't exist (adapter unplugged?)" >&2
+		return 1
+	fi
+	if [[ -e /iddev/$name || -L /iddev/$name ]]; then
+		echo "iddev: /iddev/$name already exists -> $(readlink /iddev/$name)" >&2
+		return 1
+	fi
+	for l in /iddev/*; do
+		[[ $(readlink $l) == /dev/serial/by-id/$id ]] && echo "iddev: note: this adapter is also /iddev/${l:t}"
+	done
+	if [[ ! -d /iddev ]]; then
+		echo "iddev: creating /iddev"
+		sudo mkdir -m 755 /iddev || return 1
+	fi
+	sudo ln -s /dev/serial/by-id/$id /iddev/$name && ls -l /iddev/$name
+}
+_iddev() {
+	setopt localoptions nullglob
+	(( CURRENT == 2 )) || return 1
+	local d l desc
+	local -a ids
+	for d in /dev/serial/by-id/*; do
+		desc=${$(readlink -f $d):t}
+		for l in /iddev/*; do
+			[[ $(readlink $l) == $d ]] && desc+=" ${l:t}"
+		done
+		ids+=("${d:t}:$desc")
+	done
+	_describe 'serial device' ids
+}
+compdef _iddev iddev
+# watchIddev [secs]: rerun iddev every secs (default 5). watch can't run it: it uses sh -c, which has no zsh functions.
+# The 'function' keyword keeps a re-source working in shells that still have the old watchIddev alias.
+function watchIddev {
+	while :; do clear; iddev; sleep ${1:-5}; done
+}
+
 #STDERR printed in RED. Example: color ping
 color()(set -o pipefail;"$@" 2> >(sed $'s,.*,\e[31m&\e[m,'>&2))
 
@@ -571,8 +648,6 @@ alias gitd="git diff"
 alias gitdc="git diff --cached"
 alias gitadog="git log --all --decorate --oneline --graph" #CLI branch graph
 alias fixbrillo="sudo ddcutil detect"
-alias todocane=todoscane
-alias todoscane="grep -i "//ToDo" src lib -R"
 alias llistarKvmNetworkClients="sudo virsh net-dhcp-leases default"
 alias infections="libredefender infections -C"
 alias vmsImagesFolder="cd /var/lib/libvirt/images"
@@ -601,80 +676,3 @@ alias canopeneditor="mono ~/.local/bin/CANopenEditor/net481/EDSEditor.exe"
 alias make="$HOME/.scripts/make"
 # Bare git repo for tracking dotfiles/documents across ~ and ~/aio
 alias docs='git --git-dir=$HOME/aio/.documents_bare_repo --work-tree=$HOME'
-
-# Named links for serial adapters: /iddev/<name> -> /dev/serial/by-id/<id>.
-# The link stays when the adapter is unplugged; it just dangles, so opening it fails.
-#   iddev              list the links and whether each adapter is plugged in
-#   iddev <id> <name>  create a link (<TAB> completes the ids in /dev/serial/by-id)
-iddev() {
-	setopt localoptions nullglob
-	local l d
-	if (( $# == 0 )); then
-		[[ -d /iddev ]] || echo "iddev: /iddev doesn't exist yet; the first 'iddev <id> <name>' creates it" >&2
-		# plugged-in adapters get one colour per column (only on a terminal)
-		local off='%-22s %-8s %s\n' on='%-22s %-8s %s\n'
-		[[ -t 1 ]] && on=$'\e[1;32m%-22s\e[0m \e[33m%-8s\e[0m \e[36m%s\e[0m\n'
-		local -A named
-		for l in /iddev/*; do
-			[[ -L $l ]] || continue
-			named[$(readlink $l)]=1
-			if [[ -e $l ]]; then
-				printf $on ${l:t} ${$(readlink -f $l):t} ${$(readlink $l):t}
-			else
-				printf $off ${l:t} - ${$(readlink $l):t}
-			fi
-		done
-		local -a unnamed
-		for d in /dev/serial/by-id/*; do
-			(( ${+named[$d]} )) || unnamed+=($d)
-		done
-		if (( $#unnamed )); then
-			echo "\nnot named yet:"
-			for d in $unnamed; do
-				printf $on - ${$(readlink -f $d):t} ${d:t}
-			done
-		fi
-		return
-	fi
-	if (( $# != 2 )) || [[ -z $2 || $2 == */* ]]; then
-		echo "usage: iddev [<by-id name> <custom name>]" >&2
-		return 1
-	fi
-	local id=${1:t} name=$2
-	if [[ ! -e /dev/serial/by-id/$id ]]; then
-		echo "iddev: /dev/serial/by-id/$id doesn't exist (adapter unplugged?)" >&2
-		return 1
-	fi
-	if [[ -e /iddev/$name || -L /iddev/$name ]]; then
-		echo "iddev: /iddev/$name already exists -> $(readlink /iddev/$name)" >&2
-		return 1
-	fi
-	for l in /iddev/*; do
-		[[ $(readlink $l) == /dev/serial/by-id/$id ]] && echo "iddev: note: this adapter is also /iddev/${l:t}"
-	done
-	if [[ ! -d /iddev ]]; then
-		echo "iddev: creating /iddev"
-		sudo mkdir -m 755 /iddev || return 1
-	fi
-	sudo ln -s /dev/serial/by-id/$id /iddev/$name && ls -l /iddev/$name
-}
-_iddev() {
-	setopt localoptions nullglob
-	(( CURRENT == 2 )) || return 1
-	local d l desc
-	local -a ids
-	for d in /dev/serial/by-id/*; do
-		desc=${$(readlink -f $d):t}
-		for l in /iddev/*; do
-			[[ $(readlink $l) == $d ]] && desc+=" ${l:t}"
-		done
-		ids+=("${d:t}:$desc")
-	done
-	_describe 'serial device' ids
-}
-compdef _iddev iddev
-# watchIddev [secs]: rerun iddev every secs (default 5). watch can't run it: it uses sh -c, which has no zsh functions.
-# The 'function' keyword keeps a re-source working in shells that still have the old watchIddev alias.
-function watchIddev {
-	while :; do clear; iddev; sleep ${1:-5}; done
-}
