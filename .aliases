@@ -607,16 +607,28 @@ alias docs='git --git-dir=$HOME/aio/.documents_bare_repo --work-tree=$HOME'
 #   iddev <id> <name>  create a link (<TAB> completes the ids in /dev/serial/by-id)
 iddev() {
 	setopt localoptions nullglob
-	local l
+	local l d
 	if (( $# == 0 )); then
+		local -A named
 		for l in /iddev/*; do
 			[[ -L $l ]] || continue
+			named[$(readlink $l)]=1
 			if [[ -e $l ]]; then
 				printf '%-22s %-8s %s\n' ${l:t} ${$(readlink -f $l):t} ${$(readlink $l):t}
 			else
 				printf '%-22s %-8s %s\n' ${l:t} - ${$(readlink $l):t}
 			fi
 		done
+		local -a unnamed
+		for d in /dev/serial/by-id/*; do
+			(( ${+named[$d]} )) || unnamed+=($d)
+		done
+		if (( $#unnamed )); then
+			echo "\nnot named yet:"
+			for d in $unnamed; do
+				printf '%-22s %-8s %s\n' - ${$(readlink -f $d):t} ${d:t}
+			done
+		fi
 		return
 	fi
 	if (( $# != 2 )) || [[ -z $2 || $2 == */* ]]; then
