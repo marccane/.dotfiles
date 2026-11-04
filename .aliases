@@ -610,14 +610,17 @@ iddev() {
 	local l d
 	if (( $# == 0 )); then
 		[[ -d /iddev ]] || echo "iddev: /iddev doesn't exist yet; the first 'iddev <id> <name>' creates it" >&2
+		# plugged-in adapters get one colour per column (only on a terminal)
+		local off='%-22s %-8s %s\n' on='%-22s %-8s %s\n'
+		[[ -t 1 ]] && on=$'\e[1;32m%-22s\e[0m \e[33m%-8s\e[0m \e[36m%s\e[0m\n'
 		local -A named
 		for l in /iddev/*; do
 			[[ -L $l ]] || continue
 			named[$(readlink $l)]=1
 			if [[ -e $l ]]; then
-				printf '%-22s %-8s %s\n' ${l:t} ${$(readlink -f $l):t} ${$(readlink $l):t}
+				printf $on ${l:t} ${$(readlink -f $l):t} ${$(readlink $l):t}
 			else
-				printf '%-22s %-8s %s\n' ${l:t} - ${$(readlink $l):t}
+				printf $off ${l:t} - ${$(readlink $l):t}
 			fi
 		done
 		local -a unnamed
@@ -627,7 +630,7 @@ iddev() {
 		if (( $#unnamed )); then
 			echo "\nnot named yet:"
 			for d in $unnamed; do
-				printf '%-22s %-8s %s\n' - ${$(readlink -f $d):t} ${d:t}
+				printf $on - ${$(readlink -f $d):t} ${d:t}
 			done
 		fi
 		return
