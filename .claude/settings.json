@@ -93,5 +93,6 @@
   },
   "skipDangerousModePermissionPrompt": true,
   "preferredNotifChannel": "auto",
+  "autoCompactEnabled": true,
   "switchModelsOnFlag": true
 }
