@@ -18,10 +18,6 @@ brilloPantalles(){
 	sudo modprobe i2c-dev && bash -c "sudo ddcutil -d 3 setvcp 0x10 $1 && sudo ddcutil -d 1 setvcp 0x10 $1 && sudo ddcutil -d 2 setvcp 0x10 $1"
 }
 
-brilloPantallesClaitec2(){
-        sudo modprobe i2c-dev && bash -c "sudo ddcutil -b 15 setvcp 0x10 $1 & sudo ddcutil -b 16 setvcp 0x10 $1 &"
-}
-
 claudeUsageWatch() {  # no arg lists orgs; pass name substring to select (e.g. personal, troax)
 	watch -c -n 180 "claude_usage.py${1:+ $1}";
 }
